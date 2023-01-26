@@ -1,5 +1,9 @@
-import 'package:biodiversity/presentation/home/view/home_page.dart';
+import 'package:biodiversity/presentation/app/app.dart';
+import 'package:biodiversity/presentation/home/home.dart';
+import 'package:biodiversity/presentation/login/login.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppView extends StatelessWidget {
   const AppView({super.key});
@@ -8,20 +12,21 @@ class AppView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       theme: ThemeData(
         useMaterial3: true,
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.green,
       ),
-      home: const HomePage(),
+      home: BlocBuilder<AppCubit, AppState>(
+        buildWhen: (previous, current) => previous.status != current.status,
+        builder: (context, state) {
+          return state.status == AppStatus.authenticated
+              ? const HomePage()
+              : const LoginPage();
+        },
+      ),
     );
   }
 }

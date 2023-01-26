@@ -1,0 +1,10 @@
+name: validation
+description: Package that manages the validation rules.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  formz: ^0.4.1

@@ -1,0 +1,45 @@
+{
+  "LOGIN": {
+    "PROTOTYPE": "Gamification Prototype",
+    "USERNAME": "Nutzername",
+    "PASSWORD": "Passwort",
+    "LOGIN": "Login"
+  },
+  "REPORT": {
+    "REPORT_SIGHTING": "Fund melden",
+    "COMMENT": "Kommentar",
+    "BACK": "Zurück",
+    "CONTINUE": "Weiter",
+    "STEP_1": {
+      "STEP_1": "Schritt 1 / 5: Artinformationen",
+      "SPECIES_INFORMATION": "Artinformationen",
+      "SPECIES": "Art",
+      "AMOUNT": "Anzahl",
+      "ADD_SPECIES": "Art hinzufügen"
+    },
+    "STEP_2": {
+      "STEP_2": "Schritt 2 / 5: Ort",
+      "PLACE": "Ort"
+    },
+    "STEP_3": {
+      "STEP_3": "Schritt 3 / 5: Nachweisbilder",
+      "IMAGES": "Nachweisbilder",
+      "CAMERA": "Kamera",
+      "GALLERY": "Galerie"
+    },
+    "STEP_4": {
+      "STEP_4": "Schritt 4 / 5: Details"
+    },
+    "STEP_5": {
+      "STEP_5": "Schritt 5 / 5: Zusammenfassung"
+    }
+  },
+  "SETTINGS": {
+    "SETTINGS": "Einstellungen",
+    "LOGOUT": "Ausloggen"
+  },
+  "VALIDATION": {
+    "PASSWORD_TOO_SHORT": "Das Passwort ist zu kurz",
+    "REQUIRED": "Dieses Feld darf nicht leer sein"
+  }
+}

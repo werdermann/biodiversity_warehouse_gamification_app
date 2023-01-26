@@ -1,6 +1,7 @@
 import 'package:biodiversity/presentation/home/cubit/home_cubit.dart';
 import 'package:biodiversity/presentation/report/report.dart';
 import 'package:biodiversity/presentation/settings/settings.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,16 +19,16 @@ class HomeView extends StatelessWidget {
           bottomNavigationBar: NavigationBar(
             selectedIndex: state.pageIndex,
             onDestinationSelected: cubit.pageChanged,
-            destinations: const [
-              NavigationDestination(
+            destinations: [
+              const NavigationDestination(
                 selectedIcon: Icon(Icons.person),
                 icon: Icon(Icons.person_outline),
                 label: 'Report',
               ),
               NavigationDestination(
-                selectedIcon: Icon(Icons.engineering),
-                icon: Icon(Icons.engineering_outlined),
-                label: 'Relearn',
+                selectedIcon: const Icon(Icons.settings),
+                icon: const Icon(Icons.settings_outlined),
+                label: 'SETTINGS.SETTINGS'.tr(),
               ),
             ],
           ),
