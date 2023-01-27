@@ -1,5 +1,5 @@
 import 'package:biodiversity/data/auth_repository.dart';
-import 'package:biodiversity/data/common/api_result.dart';
+import 'package:biodiversity/data/common/result.dart';
 import 'package:biodiversity/data/dto/login_result.dart';
 import 'package:biodiversity/data/local_storage.dart';
 
@@ -15,7 +15,7 @@ class LoginUseCase {
   final AuthRepository _authRepository;
   final LocalStorage _localStorage;
 
-  Future<ApiResult<void>> execute({
+  Future<Result<void>> execute({
     required String username,
     required String password,
   }) async {
@@ -32,13 +32,13 @@ class LoginUseCase {
             await _localStorage.storeString(value: 'token', key: 'token');
 
         if (storeTokenSuccessfully) {
-          return const ApiResult.success(data: 'asdasd');
+          return const Result.success(data: 'asdasd');
         } else {
-          return const ApiResult.failure(error: 'STORE_DATA_FAILED');
+          return const Result.failure(error: 'STORE_DATA_FAILED');
         }
       },
       failure: (error) {
-        return ApiResult.failure(error: error);
+        return Result.failure(error: error);
       },
     );
   }

@@ -1,6 +1,7 @@
 import 'package:biodiversity/presentation/app/app.dart';
 import 'package:biodiversity/presentation/home/home.dart';
 import 'package:biodiversity/presentation/login/login.dart';
+import 'package:biodiversity/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,10 +16,7 @@ class AppView extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      theme: ThemeData(
-        useMaterial3: true,
-        primarySwatch: Colors.green,
-      ),
+      theme: biodiversityTheme,
       home: BlocBuilder<AppCubit, AppState>(
         buildWhen: (previous, current) => previous.status != current.status,
         builder: (context, state) {

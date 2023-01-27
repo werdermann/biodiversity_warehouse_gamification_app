@@ -2,30 +2,42 @@ import 'package:biodiversity/presentation/report/report.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
 
 class ReportView extends StatelessWidget {
   const ReportView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<ReportCubit>();
-
     final size = MediaQuery.of(context).size;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Fund melden"),
-      ),
-      body: SizedBox(
-        height: size.height,
-        width: size.width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _stepTitle,
-            _stepView,
-            _navigationButtons,
-          ],
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<ReportCubit, ReportState>(
+          listenWhen: (previous, current) =>
+              previous.galleryImageStatus != current.galleryImageStatus,
+          listener: (context, state) {
+            if (state.galleryImageStatus.isSubmissionFailure) {
+              print("ERROR!");
+            }
+          },
+        ),
+      ],
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Fund melden"),
+        ),
+        body: SizedBox(
+          height: size.height,
+          width: size.width,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _stepTitle,
+              _stepView,
+              _navigationButtons,
+            ],
+          ),
         ),
       ),
     );
@@ -120,7 +132,7 @@ class ReportView extends StatelessWidget {
                       const Icon(Icons.navigate_next)
                     ],
                   ),
-                )
+                ),
             ],
           ),
         );

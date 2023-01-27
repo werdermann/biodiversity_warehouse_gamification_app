@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:biodiversity/data/auth_client.dart';
-import 'package:biodiversity/data/common/api_result.dart';
+import 'package:biodiversity/data/common/result.dart';
 import 'package:biodiversity/data/dto/login_result.dart';
 import 'package:biodiversity/data/dto/user.dart';
 import 'package:cache/cache.dart';
@@ -50,7 +50,7 @@ class AuthRepository {
     _userStreamController.add(user);
   }
 
-  Future<ApiResult<LoginResult>> login({
+  Future<Result<LoginResult>> login({
     required String username,
     required String password,
   }) async {
@@ -60,9 +60,9 @@ class AuthRepository {
         password: password,
       );
 
-      return ApiResult.success(data: response);
+      return Result.success(data: response);
     } catch (e) {
-      return const ApiResult.failure(error: '');
+      return const Result.failure(error: '');
     }
   }
 }

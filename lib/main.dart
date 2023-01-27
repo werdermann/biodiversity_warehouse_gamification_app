@@ -1,10 +1,14 @@
 import 'package:biodiversity/data/auth_repository.dart';
+import 'package:biodiversity/data/image_picker_repository.dart';
 import 'package:biodiversity/data/local_storage.dart';
 import 'package:biodiversity/domain/login_use_case.dart';
+import 'package:biodiversity/domain/take_camera_image_use_case.dart';
+import 'package:biodiversity/domain/take_gallery_image_use_case.dart';
 import 'package:biodiversity/presentation/app/app.dart';
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
@@ -30,8 +34,23 @@ void main() async {
     authRepository: authRepository,
   );
 
+  final imagePicker = ImagePicker();
+
+  final imagePickerRepository = ImagePickerRepository(imagePicker: imagePicker);
+
+  final takeCameraImageUseCase = TakeCameraImageUseCase(
+    imageRepository: imagePickerRepository,
+  );
+
+  final takeGalleryImageUseCase = TakeGalleryImageUseCase(
+    imageRepository: imagePickerRepository,
+  );
+
   runApp(
     App(
+      takeGalleryImageUseCase: takeGalleryImageUseCase,
+      takeCameraImageUseCase: takeCameraImageUseCase,
+      imagePickerRepository: imagePickerRepository,
       localStorage: localStorage,
       loginUseCase: loginUseCase,
       authRepository: authRepository,

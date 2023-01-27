@@ -50,7 +50,6 @@ class LoginView extends StatelessWidget {
             labelText: 'LOGIN.USERNAME'.tr(),
             errorText:
                 state.username.pure ? null : state.username.error?.message.tr(),
-            border: const OutlineInputBorder(),
           ),
         );
       },
@@ -70,7 +69,6 @@ class LoginView extends StatelessWidget {
             labelText: 'LOGIN.PASSWORD'.tr(),
             errorText:
                 state.password.pure ? null : state.password.error?.message.tr(),
-            border: const OutlineInputBorder(),
           ),
         );
       },

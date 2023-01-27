@@ -28,7 +28,25 @@
       "GALLERY": "Galerie"
     },
     "STEP_4": {
-      "STEP_4": "Schritt 4 / 5: Details"
+      "STEP_4": "Schritt 4 / 5: Details",
+      "REPORT_DATE": "Funddatum",
+      "UNKNOWN_DATE": "Unbekanntes Datum",
+      "METHOD": "Methode",
+      "COMMENT": "Kommentar",
+      "SELECT_DATE": "Funddatum auswählen",
+      "IMAGE": "Bild {index}",
+      "NO_IMAGE_SELECTED": "Noch kein Nachweisbild ausgewählt",
+      "INTRODUCTION": "Klicke auf 'Kamera' um ein Bild direkt von der Kamera aufzunehmen oder auf 'Galerie' um ein bereits ersteltes Bild aus der Galerie zu wählen",
+      "METHODS": {
+        "FISHING": "Angelfischerei",
+        "NOT_SPECIFIED": "Keine Angabe",
+        "NET_CATCH": "Netzfang",
+        "TRAP_FISHING": "Reusenfischerei",
+        "VISUAL_OBSERVATION": "Sichtbeobachtung",
+        "MISC": "Sonstige",
+        "TRADITIONAL_FISHING": "Traditionelle Fischerei"
+      }
+
     },
     "STEP_5": {
       "STEP_5": "Schritt 5 / 5: Zusammenfassung"
@@ -41,5 +59,8 @@
   "VALIDATION": {
     "PASSWORD_TOO_SHORT": "Das Passwort ist zu kurz",
     "REQUIRED": "Dieses Feld darf nicht leer sein"
+  },
+  "ERROR": {
+    "TAKE_IMAGE_FAILED": "Prozess ist fehlgeschlagen"
   }
 }
