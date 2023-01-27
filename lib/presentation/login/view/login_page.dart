@@ -1,4 +1,4 @@
-import 'package:biodiversity/domain/login_use_case.dart';
+import 'package:biodiversity/domain/use_case/login/login_use_case.dart';
 import 'package:biodiversity/presentation/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,19 +1,21 @@
 import 'dart:async';
 
 import 'package:biodiversity/data/auth_client.dart';
-import 'package:biodiversity/data/common/result.dart';
+import 'package:biodiversity/data/common/network_exceptions.dart';
 import 'package:biodiversity/data/dto/login_result.dart';
 import 'package:biodiversity/data/dto/user.dart';
+import 'package:biodiversity/domain/repository/auth_repository.dart';
 import 'package:cache/cache.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-class AuthRepository {
+class AuthRepositoryImpl implements AuthRepository {
   /// Constructor.
-  AuthRepository({
+  AuthRepositoryImpl({
+    required String baseUrl,
     required Dio dio,
     CacheClient? cache,
-  })  : _authClient = RestClient(dio, baseUrl: 'http://127.0.0.1:3000/'),
+  })  : _authClient = RestClient(dio, baseUrl: baseUrl),
         _cache = cache ?? CacheClient();
 
   final RestClient _authClient;
@@ -28,29 +30,22 @@ class AuthRepository {
   @visibleForTesting
   static const userCacheKey = '__user_cache_key__';
 
-  /// Stream of [User] which will emit the current user when the
-  /// authentication state changes
-  ///
-  /// Emits [User.empty] if the user is not authenticated.
-  Stream<User> get user {
-    return _userStreamController.stream.asBroadcastStream().map(
-          (user) => user,
-        );
-  }
-
   /// Returns the current cached user.
   /// Defaults to [User.empty] if there is no cached user.
+  @override
   User get currentUser {
     return _cache.read<User>(key: userCacheKey) ?? User.empty;
   }
 
   /// Updates the user and triggers the stream controller
+  @override
   void updateUser({required User user}) {
     _cache.write(key: userCacheKey, value: user);
     _userStreamController.add(user);
   }
 
-  Future<Result<LoginResult>> login({
+  @override
+  Future<LoginResult> login({
     required String username,
     required String password,
   }) async {
@@ -60,9 +55,22 @@ class AuthRepository {
         password: password,
       );
 
-      return Result.success(data: response);
+      return response;
     } catch (e) {
-      return const Result.failure(error: '');
+      final error = NetworkExceptions.getDioException(e);
+
+      throw error;
     }
+  }
+
+  /// Stream of [User] which will emit the current user when the
+  /// authentication state changes
+  ///
+  /// Emits [User.empty] if the user is not authenticated.
+  @override
+  Stream<User> get user {
+    return _userStreamController.stream.asBroadcastStream().map(
+          (user) => user,
+        );
   }
 }

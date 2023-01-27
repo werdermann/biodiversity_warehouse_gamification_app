@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:biodiversity/domain/interfaces/image_picker_interface.dart';
+import 'package:biodiversity/domain/repository/image_picker_repository.dart';
 import 'package:image_picker/image_picker.dart';
 
-class ImagePickerRepository implements ImageRepositoryInterface {
-  ImagePickerRepository({
+class ImageRepositoryImpl implements ImageRepository {
+  ImageRepositoryImpl({
     required ImagePicker imagePicker,
   }) : _imagePicker = imagePicker;
 

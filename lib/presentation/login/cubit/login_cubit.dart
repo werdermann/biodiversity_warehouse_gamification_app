@@ -1,4 +1,4 @@
-import 'package:biodiversity/domain/login_use_case.dart';
+import 'package:biodiversity/domain/use_case/login/login_use_case.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
@@ -42,18 +42,29 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> login() async {
     emit(state.copyWith(loginStatus: FormzStatus.submissionInProgress));
 
-    final result = await _loginUseCase.execute(
+    final result = _loginUseCase.execute(
       username: state.username.value,
       password: state.password.value,
     );
 
-    result.when(
-      success: (success) {
-        emit(state.copyWith(loginStatus: FormzStatus.submissionSuccess));
-      },
-      failure: (error) {
-        emit(state.copyWith());
-      },
-    );
+    result.forEach((element) {
+      print("TRIGGERED!");
+
+      element.when(
+        loading: () {
+          emit(state.copyWith(loginStatus: FormzStatus.submissionInProgress));
+        },
+        success: () {
+          print("SUccess");
+          emit(state.copyWith(loginStatus: FormzStatus.submissionSuccess));
+        },
+        error: (message) {
+          state.copyWith(
+            loginStatus: FormzStatus.submissionFailure,
+            loginErrorMessage: message,
+          );
+        },
+      );
+    });
   }
 }

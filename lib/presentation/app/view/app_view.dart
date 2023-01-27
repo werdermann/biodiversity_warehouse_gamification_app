@@ -1,7 +1,7 @@
 import 'package:biodiversity/presentation/app/app.dart';
 import 'package:biodiversity/presentation/home/home.dart';
 import 'package:biodiversity/presentation/login/login.dart';
-import 'package:biodiversity/theme/theme.dart';
+import 'package:biodiversity/presentation/ui/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,6 +1,6 @@
 import 'dart:io';
 
-abstract class ImageRepositoryInterface {
+abstract class ImageRepository {
   Future<File?> takeImageFromCamera();
   Future<File?> takeImageFromGallery();
 }

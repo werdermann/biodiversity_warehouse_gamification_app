@@ -1,16 +1,16 @@
-import 'package:biodiversity/domain/interfaces/local_storage_interface.dart';
+import 'package:biodiversity/domain/repository/local_storage_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LocalStorage implements LocalStorageInterface {
-  LocalStorage({
+class LocalStorageRepositoryImpl implements LocalStorageRepository {
+  LocalStorageRepositoryImpl({
     required SharedPreferences sharedPreferences,
   }) : _sharedPreferences = sharedPreferences;
 
   final SharedPreferences _sharedPreferences;
 
   @override
-  T getObject<T>({required String key}) {
-    return _sharedPreferences.get(key) as T;
+  T? getObject<T>({required String key}) {
+    return _sharedPreferences.get(key) as T?;
   }
 
   @override

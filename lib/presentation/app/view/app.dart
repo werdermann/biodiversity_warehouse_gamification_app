@@ -1,9 +1,9 @@
-import 'package:biodiversity/data/auth_repository.dart';
-import 'package:biodiversity/data/image_picker_repository.dart';
-import 'package:biodiversity/data/local_storage.dart';
-import 'package:biodiversity/domain/login_use_case.dart';
-import 'package:biodiversity/domain/take_camera_image_use_case.dart';
-import 'package:biodiversity/domain/take_gallery_image_use_case.dart';
+import 'package:biodiversity/data/repository/auth_repository_impl.dart';
+import 'package:biodiversity/data/repository/image_picker_repository.dart';
+import 'package:biodiversity/data/repository/local_storage_repository_impl.dart';
+import 'package:biodiversity/domain/use_case/login/login_use_case.dart';
+import 'package:biodiversity/domain/use_case/take_image/take_camera_image_use_case.dart';
+import 'package:biodiversity/domain/use_case/take_image/take_gallery_image_use_case.dart';
 import 'package:biodiversity/presentation/app/app.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
@@ -27,9 +27,9 @@ class App extends StatelessWidget {
 
   final TakeCameraImageUseCase takeCameraImageUseCase;
 
-  final LocalStorage localStorage;
-  final AuthRepository authRepository;
-  final ImagePickerRepository imagePickerRepository;
+  final LocalStorageRepositoryImpl localStorage;
+  final AuthRepositoryImpl authRepository;
+  final ImageRepositoryImpl imagePickerRepository;
 
   @override
   Widget build(BuildContext context) {

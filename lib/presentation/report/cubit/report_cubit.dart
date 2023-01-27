@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:biodiversity/domain/take_camera_image_use_case.dart';
-import 'package:biodiversity/domain/take_gallery_image_use_case.dart';
+import 'package:biodiversity/domain/use_case/take_image/take_camera_image_use_case.dart';
+import 'package:biodiversity/domain/use_case/take_image/take_gallery_image_use_case.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
@@ -36,38 +36,49 @@ class ReportCubit extends Cubit<ReportState> {
   void takeImageFromGallery() async {
     emit(state.copyWith(galleryImageStatus: FormzStatus.submissionInProgress));
 
-    final result = await _takeGalleryImageUseCase.execute();
+    final result = _takeGalleryImageUseCase.execute();
 
-    result.when(
-      success: (file) {
-        final images = List<File>.from(state.images);
+    result.listen((event) {
+      event.when(
+        success: (data) {
+          final images = List<File>.from(state.images);
 
-        images.add(file);
-
-        emit(
-          state.copyWith(
-            images: images,
-            galleryImageStatus: FormzStatus.submissionSuccess,
-          ),
-        );
-      },
-      failure: (error) {
-        emit(
-          state.copyWith(
-            galleryImageStatus: FormzStatus.submissionFailure,
-            galleryImageError: error,
-          ),
-        );
-      },
-    );
+          images.add(data);
+          emit(
+            state.copyWith(
+              images: images,
+              galleryImageStatus: FormzStatus.submissionSuccess,
+            ),
+          );
+        },
+        error: (message) {
+          emit(
+            state.copyWith(
+              galleryImageStatus: FormzStatus.submissionFailure,
+              galleryImageError: message,
+            ),
+          );
+        },
+        loading: () {
+          emit(
+            state.copyWith(
+              galleryImageStatus: FormzStatus.submissionInProgress,
+            ),
+          );
+        },
+      );
+    });
   }
 
   void takeImageFromCamera() async {
     emit(state.copyWith(cameraImageStatus: FormzStatus.submissionInProgress));
 
-    final result = await _takeCameraImageUseCase.execute();
+    final result = _takeCameraImageUseCase.execute();
 
-    result.when(
+    /*
+    result.listen((event) {
+      event.when(loading: (), success: success, error: error)
+    }
       success: (file) {},
       failure: (error) {
         emit(
@@ -78,6 +89,8 @@ class ReportCubit extends Cubit<ReportState> {
         );
       },
     );
+
+     */
   }
 
   void removeImage(File value) {

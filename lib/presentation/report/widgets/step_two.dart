@@ -8,18 +8,24 @@ class StepTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
       margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-      child: FlutterMap(
-        options: MapOptions(
-          center: LatLng(51.509364, -0.128928),
-          zoom: 9.2,
-        ),
-        nonRotatedChildren: const [],
+      child: Column(
         children: [
-          TileLayer(
-            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-            userAgentPackageName: 'com.example.app',
+          SizedBox(
+            height: 300,
+            child: FlutterMap(
+              options: MapOptions(
+                center: LatLng(51.509364, -0.128928),
+                zoom: 9.2,
+              ),
+              nonRotatedChildren: const [],
+              children: [
+                TileLayer(
+                  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                  userAgentPackageName: 'com.example.app',
+                ),
+              ],
+            ),
           ),
         ],
       ),

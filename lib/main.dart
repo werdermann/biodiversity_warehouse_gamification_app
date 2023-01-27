@@ -1,9 +1,10 @@
-import 'package:biodiversity/data/auth_repository.dart';
-import 'package:biodiversity/data/image_picker_repository.dart';
-import 'package:biodiversity/data/local_storage.dart';
-import 'package:biodiversity/domain/login_use_case.dart';
-import 'package:biodiversity/domain/take_camera_image_use_case.dart';
-import 'package:biodiversity/domain/take_gallery_image_use_case.dart';
+import 'package:biodiversity/common/constants.dart';
+import 'package:biodiversity/data/repository/auth_repository_impl.dart';
+import 'package:biodiversity/data/repository/image_picker_repository.dart';
+import 'package:biodiversity/data/repository/local_storage_repository_impl.dart';
+import 'package:biodiversity/domain/use_case/login/login_use_case.dart';
+import 'package:biodiversity/domain/use_case/take_image/take_camera_image_use_case.dart';
+import 'package:biodiversity/domain/use_case/take_image/take_gallery_image_use_case.dart';
 import 'package:biodiversity/presentation/app/app.dart';
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -24,19 +25,23 @@ void main() async {
     ),
   );
 
-  final authRepository = AuthRepository(dio: dio);
+  final authRepository = AuthRepositoryImpl(
+    dio: dio,
+    baseUrl: Constants.baseUrl,
+  );
 
   final sharedPreferences = await SharedPreferences.getInstance();
-  final localStorage = LocalStorage(sharedPreferences: sharedPreferences);
+  final localStorage =
+      LocalStorageRepositoryImpl(sharedPreferences: sharedPreferences);
 
   final loginUseCase = LoginUseCase(
-    localStorage: localStorage,
     authRepository: authRepository,
+    localStorageRepository: localStorage,
   );
 
   final imagePicker = ImagePicker();
 
-  final imagePickerRepository = ImagePickerRepository(imagePicker: imagePicker);
+  final imagePickerRepository = ImageRepositoryImpl(imagePicker: imagePicker);
 
   final takeCameraImageUseCase = TakeCameraImageUseCase(
     imageRepository: imagePickerRepository,

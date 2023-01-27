@@ -1,5 +1,5 @@
-import 'package:biodiversity/domain/take_camera_image_use_case.dart';
-import 'package:biodiversity/domain/take_gallery_image_use_case.dart';
+import 'package:biodiversity/domain/use_case/take_image/take_camera_image_use_case.dart';
+import 'package:biodiversity/domain/use_case/take_image/take_gallery_image_use_case.dart';
 import 'package:biodiversity/presentation/report/report.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
