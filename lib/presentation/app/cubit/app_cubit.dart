@@ -33,7 +33,7 @@ class AppCubit extends Cubit<AppState> {
   }
 
   void _userChanged(User user) {
-    print("User changed!");
+    print('User changed!');
 
     emit(
       state.copyWith(
@@ -52,7 +52,7 @@ class AppCubit extends Cubit<AppState> {
         element.when(
           loading: () {},
           success: () {
-            print("Token is saved!");
+            print('Token is saved!');
 
             // TODO: Fetch user from backend?
           },

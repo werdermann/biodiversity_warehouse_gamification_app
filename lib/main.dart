@@ -2,6 +2,8 @@ import 'package:biodiversity/common/constants.dart';
 import 'package:biodiversity/data/repository/auth_repository_impl.dart';
 import 'package:biodiversity/data/repository/image_picker_repository.dart';
 import 'package:biodiversity/data/repository/local_storage_repository_impl.dart';
+import 'package:biodiversity/domain/use_case/location/get_location_use_case.dart';
+import 'package:biodiversity/domain/use_case/location/request_location_permission_use_case.dart';
 import 'package:biodiversity/domain/use_case/login/check_token_use_case.dart';
 import 'package:biodiversity/domain/use_case/login/login_use_case.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_camera_image_use_case.dart';
@@ -10,6 +12,7 @@ import 'package:biodiversity/presentation/app/app.dart';
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -26,7 +29,6 @@ void main() async {
     ),
   );
 
-  print("Set interceptor afterwards");
   dio.interceptors.add(Interceptor());
 
   final authRepository = AuthRepositoryImpl(
@@ -61,6 +63,14 @@ void main() async {
     localStorageRepository: localStorage,
   );
 
+  final locator = GeolocatorPlatform.instance;
+
+  final requestLocationPermissionUseCase = RequestLocationPermissionUseCase(
+    locator: locator,
+  );
+
+  final getLocationUseCase = GetLocationUseCase(locator: locator);
+
   runApp(
     App(
       checkTokenUseCase: checkTokenUseCase,
@@ -70,6 +80,8 @@ void main() async {
       localStorage: localStorage,
       loginUseCase: loginUseCase,
       authRepository: authRepository,
+      requestLocationPermissionUseCase: requestLocationPermissionUseCase,
+      getLocationUseCase: getLocationUseCase,
     ),
   );
 }

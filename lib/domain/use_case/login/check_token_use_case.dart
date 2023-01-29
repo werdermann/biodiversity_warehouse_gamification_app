@@ -37,11 +37,11 @@ class CheckTokenUseCase {
 
         yield const EmptyResource.success();
       } catch (_) {
-        print("ERROR ! 2");
+        print('ERROR ! 2');
         yield const EmptyResource.error('ERROR.GENERAL');
       }
     } else {
-      print("ERROR ! 1");
+      print('ERROR ! 1');
       yield const EmptyResource.error('ERROR.GENERAL');
     }
   }

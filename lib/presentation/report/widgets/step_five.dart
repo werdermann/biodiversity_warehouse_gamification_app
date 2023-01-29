@@ -5,6 +5,6 @@ class StepFive extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("STEP 5");
+    return const Text('STEP 5');
   }
 }

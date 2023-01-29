@@ -14,11 +14,11 @@ class SettingsView extends StatelessWidget {
       appBar: AppBar(
         title: Text('SETTINGS.SETTINGS'.tr()),
         actions: [
-          IconButton(onPressed: cubit.logout, icon: Icon(Icons.logout)),
+          IconButton(onPressed: cubit.logout, icon: const Icon(Icons.logout)),
         ],
       ),
       body: ListView(
-        children: [],
+        children: const [],
       ),
     );
   }

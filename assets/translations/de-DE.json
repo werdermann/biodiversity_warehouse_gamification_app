@@ -23,7 +23,9 @@
     },
     "STEP_2": {
       "STEP_2": "Schritt 2 / 5: Ort",
-      "PLACE": "Ort"
+      "PLACE": "Ort",
+      "SET_POSITION": "Position setzen",
+      "CURRENT_POSITION": "Aktuelle Position"
     },
     "STEP_3": {
       "STEP_3": "Schritt 3 / 5: Nachweisbilder",
@@ -66,7 +68,9 @@
   },
   "ERROR": {
     "GENERAL": "Fehler. Prozess ist fehlgeschlagen",
-    "TAKE_IMAGE_FAILED": "Fehler. Prozess ist fehlgeschlagen"
+    "TAKE_IMAGE_FAILED": "Fehler. Prozess ist fehlgeschlagen",
+    "LOCATION_PERMISSION_DISABLED": "Fehler. Keine Erlaubnis um auf die Ortungsdienste zu zugreifen",
+    "LOCATION_CANT_BE_FOUND": "Fehler. Position kann nicht ermittelt werden"
   },
   "ANIMALS": {
     "NOT_SPECIFIED": "Keine Angabe",

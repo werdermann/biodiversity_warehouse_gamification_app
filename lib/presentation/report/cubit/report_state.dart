@@ -11,7 +11,12 @@ class ReportState extends Equatable {
     this.methodComment = '',
     this.reportMethod = 4,
     this.date,
-    this.species = const [],
+    this.species = const [SpeciesEntry()],
+    this.locationPermissionStatus = FormzStatus.pure,
+    this.locationPermissionError = '',
+    this.getPositionStatus = FormzStatus.pure,
+    this.getPositionError = '',
+    this.location,
   });
 
   /// The current step of the reporting process.
@@ -44,6 +49,22 @@ class ReportState extends Equatable {
   /// List of species that shall be reported.
   final List<SpeciesEntry> species;
 
+  /// Validation status for requesting the location permission.
+  final FormzStatus locationPermissionStatus;
+
+  /// Error message that is being displayed when the requesting the location
+  /// permission fails.
+  final String locationPermissionError;
+
+  /// Validation status for getting the current position.
+  final FormzStatus getPositionStatus;
+
+  /// Error message when getting the current position fails.
+  final String getPositionError;
+
+  /// Position of the species.
+  final LatLng? location;
+
   /// Updates the state and returns a new instance.
   ReportState copyWith({
     int? step,
@@ -56,6 +77,11 @@ class ReportState extends Equatable {
     int? reportMethod,
     DateTime? date,
     List<SpeciesEntry>? species,
+    FormzStatus? locationPermissionStatus,
+    String? locationPermissionError,
+    FormzStatus? getPositionStatus,
+    String? getPositionError,
+    LatLng? location,
   }) {
     return ReportState(
       step: step ?? this.step,
@@ -68,6 +94,13 @@ class ReportState extends Equatable {
       reportMethod: reportMethod ?? this.reportMethod,
       date: date ?? this.date,
       species: species ?? this.species,
+      locationPermissionStatus:
+          locationPermissionStatus ?? this.locationPermissionStatus,
+      locationPermissionError:
+          locationPermissionError ?? this.locationPermissionError,
+      getPositionStatus: getPositionStatus ?? this.getPositionStatus,
+      getPositionError: getPositionError ?? this.getPositionError,
+      location: location ?? this.location,
     );
   }
 
@@ -83,5 +116,10 @@ class ReportState extends Equatable {
         reportMethod,
         date,
         species,
+        locationPermissionStatus,
+        locationPermissionError,
+        getPositionStatus,
+        getPositionError,
+        location,
       ];
 }

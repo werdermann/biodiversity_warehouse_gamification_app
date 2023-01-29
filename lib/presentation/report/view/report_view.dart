@@ -1,4 +1,5 @@
 import 'package:biodiversity/presentation/report/report.dart';
+import 'package:biodiversity/presentation/ui/snackbars.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,14 +19,14 @@ class ReportView extends StatelessWidget {
               previous.galleryImageStatus != current.galleryImageStatus,
           listener: (context, state) {
             if (state.galleryImageStatus.isSubmissionFailure) {
-              print("ERROR!");
+              showErrorSnackBar(context, error: state.galleryImageError.tr());
             }
           },
         ),
       ],
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Fund melden"),
+          title: const Text('Fund melden'),
         ),
         body: SizedBox(
           height: size.height,

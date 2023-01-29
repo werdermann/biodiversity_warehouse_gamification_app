@@ -16,12 +16,7 @@ class LoginView extends StatelessWidget {
       listenWhen: (previous, current) =>
           previous.loginStatus != current.loginStatus,
       listener: (context, state) {
-        print("TRIGGER asdasd ED!");
-
-        print("State $state");
-
         if (state.loginStatus.isSubmissionFailure) {
-          print("Show error snackbar");
           showErrorSnackBar(context, error: state.loginErrorMessage.tr());
         }
       },
@@ -62,6 +57,7 @@ class LoginView extends StatelessWidget {
           initialValue: state.username.value,
           onChanged: cubit.usernameChanged,
           decoration: InputDecoration(
+            suffixIcon: const Icon(Icons.person),
             labelText: 'LOGIN.USERNAME'.tr(),
             errorText:
                 state.username.pure ? null : state.username.error?.message.tr(),
@@ -81,6 +77,7 @@ class LoginView extends StatelessWidget {
           initialValue: state.password.value,
           onChanged: cubit.passwordChanged,
           decoration: InputDecoration(
+            suffixIcon: const Icon(Icons.lock),
             labelText: 'LOGIN.PASSWORD'.tr(),
             errorText:
                 state.password.pure ? null : state.password.error?.message.tr(),
