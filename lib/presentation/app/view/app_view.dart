@@ -17,13 +17,15 @@ class AppView extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       theme: biodiversityTheme,
-      home: BlocBuilder<AppCubit, AppState>(
-        buildWhen: (previous, current) => previous.status != current.status,
-        builder: (context, state) {
-          return state.status == AppStatus.authenticated
-              ? const HomePage()
-              : const LoginPage();
-        },
+      home: ScaffoldMessenger(
+        child: BlocBuilder<AppCubit, AppState>(
+          buildWhen: (previous, current) => previous.status != current.status,
+          builder: (context, state) {
+            return state.status == AppStatus.authenticated
+                ? const HomePage()
+                : const LoginPage();
+          },
+        ),
       ),
     );
   }

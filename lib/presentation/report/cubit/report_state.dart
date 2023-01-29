@@ -11,6 +11,7 @@ class ReportState extends Equatable {
     this.methodComment = '',
     this.reportMethod = 4,
     this.date,
+    this.species = const [],
   });
 
   /// The current step of the reporting process.
@@ -40,6 +41,9 @@ class ReportState extends Equatable {
   /// Date of the report.
   final DateTime? date;
 
+  /// List of species that shall be reported.
+  final List<SpeciesEntry> species;
+
   /// Updates the state and returns a new instance.
   ReportState copyWith({
     int? step,
@@ -51,6 +55,7 @@ class ReportState extends Equatable {
     String? methodComment,
     int? reportMethod,
     DateTime? date,
+    List<SpeciesEntry>? species,
   }) {
     return ReportState(
       step: step ?? this.step,
@@ -62,6 +67,7 @@ class ReportState extends Equatable {
       methodComment: methodComment ?? this.methodComment,
       reportMethod: reportMethod ?? this.reportMethod,
       date: date ?? this.date,
+      species: species ?? this.species,
     );
   }
 
@@ -76,5 +82,6 @@ class ReportState extends Equatable {
         methodComment,
         reportMethod,
         date,
+        species,
       ];
 }

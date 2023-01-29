@@ -8,6 +8,9 @@ abstract class AuthRepository {
     required String username,
     required String password,
   });
+
+  Future<User> fetchUser();
+
   void updateUser({required User user});
 
   Stream<User> get user;

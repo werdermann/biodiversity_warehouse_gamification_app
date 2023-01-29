@@ -10,12 +10,16 @@
     "COMMENT": "Kommentar",
     "BACK": "Zurück",
     "CONTINUE": "Weiter",
+    "CLOSE": "Schließen",
     "STEP_1": {
       "STEP_1": "Schritt 1 / 5: Artinformationen",
       "SPECIES_INFORMATION": "Artinformationen",
       "SPECIES": "Art",
       "AMOUNT": "Anzahl",
-      "ADD_SPECIES": "Art hinzufügen"
+      "STATUS": "Status",
+      "ADD_SPECIES": "Art hinzufügen",
+      "REMOVE_ENTRY": "Eintrag entfernen",
+      "COMMENT_INFO": "Hinterlasse einen Kommentar bezüglich der Art oder dem Status"
     },
     "STEP_2": {
       "STEP_2": "Schritt 2 / 5: Ort",
@@ -61,6 +65,19 @@
     "REQUIRED": "Dieses Feld darf nicht leer sein"
   },
   "ERROR": {
-    "TAKE_IMAGE_FAILED": "Prozess ist fehlgeschlagen"
+    "GENERAL": "Fehler. Prozess ist fehlgeschlagen",
+    "TAKE_IMAGE_FAILED": "Fehler. Prozess ist fehlgeschlagen"
+  },
+  "ANIMALS": {
+    "NOT_SPECIFIED": "Keine Angabe",
+    "SQUIRREL": "Eichhörnchen (Sciurus vulgaris)",
+    "HEDGEHOG": "Igel (Erinaceus europaeus)",
+    "MOOSE": "Elch"
+  },
+  "EVIDENCE_METHOD": {
+    "ALIVE": "Lebendnachweis",
+    "DEAD": "Totfund",
+    "INDIRECT": "Indirekter Nachweis (Spuren, Nester, Haare, etc.)",
+    "NOT_SPECIFIED": "Keine Angabe"
   }
 }

@@ -48,20 +48,19 @@ class LoginCubit extends Cubit<LoginState> {
     );
 
     result.forEach((element) {
-      print("TRIGGERED!");
-
       element.when(
         loading: () {
           emit(state.copyWith(loginStatus: FormzStatus.submissionInProgress));
         },
         success: () {
-          print("SUccess");
           emit(state.copyWith(loginStatus: FormzStatus.submissionSuccess));
         },
         error: (message) {
-          state.copyWith(
-            loginStatus: FormzStatus.submissionFailure,
-            loginErrorMessage: message,
+          emit(
+            state.copyWith(
+              loginStatus: FormzStatus.submissionFailure,
+              loginErrorMessage: message,
+            ),
           );
         },
       );

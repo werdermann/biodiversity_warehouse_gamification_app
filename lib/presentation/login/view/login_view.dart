@@ -1,4 +1,5 @@
 import 'package:biodiversity/presentation/login/cubit/login_cubit.dart';
+import 'package:biodiversity/presentation/ui/snackbars.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,26 +12,40 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Scaffold(
-      appBar: AppBar(title: Text('LOGIN.LOGIN'.tr())),
-      body: SafeArea(
-        child: Container(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Text(
-                'LOGIN.PROTOTYPE'.tr(),
-                style: textTheme.titleMedium,
-              ),
-              const SizedBox(height: 32),
-              _usernameInputField,
-              const SizedBox(height: 32),
-              _passwordInputField,
-              const SizedBox(height: 32),
-              _loginButton,
-            ],
+    return BlocListener<LoginCubit, LoginState>(
+      listenWhen: (previous, current) =>
+          previous.loginStatus != current.loginStatus,
+      listener: (context, state) {
+        print("TRIGGER asdasd ED!");
+
+        print("State $state");
+
+        if (state.loginStatus.isSubmissionFailure) {
+          print("Show error snackbar");
+          showErrorSnackBar(context, error: state.loginErrorMessage.tr());
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(title: Text('LOGIN.LOGIN'.tr())),
+        body: SafeArea(
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Text(
+                  'LOGIN.PROTOTYPE'.tr(),
+                  style: textTheme.titleMedium,
+                ),
+                const SizedBox(height: 32),
+                _usernameInputField,
+                const SizedBox(height: 32),
+                _passwordInputField,
+                const SizedBox(height: 32),
+                _loginButton,
+              ],
+            ),
           ),
         ),
       ),

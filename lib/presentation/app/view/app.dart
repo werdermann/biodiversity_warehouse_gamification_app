@@ -1,6 +1,7 @@
 import 'package:biodiversity/data/repository/auth_repository_impl.dart';
 import 'package:biodiversity/data/repository/image_picker_repository.dart';
 import 'package:biodiversity/data/repository/local_storage_repository_impl.dart';
+import 'package:biodiversity/domain/use_case/login/check_token_use_case.dart';
 import 'package:biodiversity/domain/use_case/login/login_use_case.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_camera_image_use_case.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_gallery_image_use_case.dart';
@@ -18,14 +19,14 @@ class App extends StatelessWidget {
     required this.imagePickerRepository,
     required this.takeGalleryImageUseCase,
     required this.takeCameraImageUseCase,
+    required this.checkTokenUseCase,
   });
 
   /// Use cases
   final LoginUseCase loginUseCase;
-
   final TakeGalleryImageUseCase takeGalleryImageUseCase;
-
   final TakeCameraImageUseCase takeCameraImageUseCase;
+  final CheckTokenUseCase checkTokenUseCase;
 
   final LocalStorageRepositoryImpl localStorage;
   final AuthRepositoryImpl authRepository;
@@ -48,6 +49,7 @@ class App extends StatelessWidget {
         ],
         child: BlocProvider(
           create: (_) => AppCubit(
+            checkTokenUseCase: checkTokenUseCase,
             authRepository: authRepository,
           ),
           child: const AppView(),

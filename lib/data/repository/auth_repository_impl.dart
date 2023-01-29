@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:biodiversity/data/auth_client.dart';
 import 'package:biodiversity/data/common/network_exceptions.dart';
 import 'package:biodiversity/data/dto/login_result.dart';
 import 'package:biodiversity/data/dto/user.dart';
+import 'package:biodiversity/data/rest_client.dart';
 import 'package:biodiversity/domain/repository/auth_repository.dart';
 import 'package:cache/cache.dart';
 import 'package:dio/dio.dart';
@@ -40,6 +40,7 @@ class AuthRepositoryImpl implements AuthRepository {
   /// Updates the user and triggers the stream controller
   @override
   void updateUser({required User user}) {
+    print("UPDATE user!");
     _cache.write(key: userCacheKey, value: user);
     _userStreamController.add(user);
   }
@@ -72,5 +73,14 @@ class AuthRepositoryImpl implements AuthRepository {
     return _userStreamController.stream.asBroadcastStream().map(
           (user) => user,
         );
+  }
+
+  @override
+  Future<User> fetchUser() async {
+    try {
+      return await _authClient.getUser();
+    } catch (_) {
+      rethrow;
+    }
   }
 }

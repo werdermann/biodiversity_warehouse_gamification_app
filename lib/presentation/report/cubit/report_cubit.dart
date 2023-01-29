@@ -1,5 +1,8 @@
 import 'dart:io';
 
+import 'package:biodiversity/domain/model/evidence_status.dart';
+import 'package:biodiversity/domain/model/species.dart';
+import 'package:biodiversity/domain/model/species_entry.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_camera_image_use_case.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_gallery_image_use_case.dart';
 import 'package:equatable/equatable.dart';
@@ -17,6 +20,7 @@ class ReportCubit extends Cubit<ReportState> {
         super(const ReportState()) {
     emit(
       state.copyWith(
+        species: [SpeciesEntry()],
         date: DateTime.now(),
       ),
     );
@@ -31,6 +35,90 @@ class ReportCubit extends Cubit<ReportState> {
 
   void showPreviousStep() {
     emit(state.copyWith(step: state.step - 1));
+  }
+
+  void addSpeciesEntry() {
+    final species = List<SpeciesEntry>.from(state.species);
+    species.add(SpeciesEntry());
+
+    emit(state.copyWith(species: species));
+  }
+
+  void speciesChanged({
+    required int index,
+    required,
+    required int speciesIndex,
+  }) {
+    final speciesList = List<SpeciesEntry>.from(state.species);
+    final item = speciesList[index];
+
+    final updatedEntry = item.copyWith(species: Species.values[speciesIndex]);
+
+    speciesList[index] = updatedEntry;
+
+    emit(state.copyWith(species: speciesList));
+  }
+
+  void evidenceMethodChanged({
+    required int index,
+    required int evidenceStatusIndex,
+  }) {
+    final speciesList = List<SpeciesEntry>.from(state.species);
+    final item = speciesList[index];
+
+    final updatedEntry = item.copyWith(
+      evidenceStatus: EvidenceStatus.values[evidenceStatusIndex],
+    );
+
+    speciesList[index] = updatedEntry;
+
+    emit(state.copyWith(species: speciesList));
+  }
+
+  void addSpeciesCount({required index}) {
+    final speciesList = List<SpeciesEntry>.from(state.species);
+    final item = speciesList[index];
+
+    final updatedEntry = item.copyWith(
+      count: item.count + 1,
+    );
+
+    speciesList[index] = updatedEntry;
+
+    emit(state.copyWith(species: speciesList));
+  }
+
+  void removeSpeciesCount({required index}) {
+    final speciesList = List<SpeciesEntry>.from(state.species);
+    final item = speciesList[index];
+
+    final updatedEntry = item.copyWith(
+      count: item.count - 1,
+    );
+
+    speciesList[index] = updatedEntry;
+
+    emit(state.copyWith(species: speciesList));
+  }
+
+  void speciesCommentChanged({required int index, required String value}) {
+    final speciesList = List<SpeciesEntry>.from(state.species);
+    final item = speciesList[index];
+
+    final updatedEntry = item.copyWith(
+      comment: value,
+    );
+
+    speciesList[index] = updatedEntry;
+
+    emit(state.copyWith(species: speciesList));
+  }
+
+  void removeEntry(int index) {
+    final speciesList = List<SpeciesEntry>.from(state.species);
+    speciesList.removeAt(index);
+
+    emit(state.copyWith(species: speciesList));
   }
 
   void takeImageFromGallery() async {

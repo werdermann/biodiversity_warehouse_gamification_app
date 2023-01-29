@@ -55,16 +55,6 @@ class StepFour extends StatelessWidget {
   }
 
   Widget get _methodInputField {
-    final methods = [
-      ReportMethod.fishing,
-      ReportMethod.notSpecified,
-      ReportMethod.netCatch,
-      ReportMethod.trapFishing,
-      ReportMethod.visualObservation,
-      ReportMethod.misc,
-      ReportMethod.traditionalFishing,
-    ];
-
     return BlocBuilder<ReportCubit, ReportState>(
       builder: (context, state) {
         final cubit = context.read<ReportCubit>();
@@ -74,7 +64,7 @@ class StepFour extends StatelessWidget {
           decoration: InputDecoration(
             labelText: 'REPORT.STEP_4.METHOD'.tr(),
           ),
-          items: methods.map<DropdownMenuItem<int>>(
+          items: ReportMethod.values.map<DropdownMenuItem<int>>(
             (ReportMethod method) {
               return DropdownMenuItem<int>(
                 value: method.index,

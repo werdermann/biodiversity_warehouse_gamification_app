@@ -37,10 +37,10 @@ class LoginUseCase {
 
         yield const EmptyResource.success();
       } else {
-        yield const EmptyResource.error('ERROR.SOMETHING_WENT_WRONG');
+        yield const EmptyResource.error('ERROR.GENERAL');
       }
     } catch (_) {
-      yield const EmptyResource.error('ERROR');
+      yield const EmptyResource.error('ERROR.GENERAL');
     }
   }
 }
