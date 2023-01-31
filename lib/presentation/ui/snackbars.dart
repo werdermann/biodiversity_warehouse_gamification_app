@@ -16,3 +16,19 @@ void showErrorSnackBar(
       ),
     );
 }
+
+void showSuccessSnackBar(
+  BuildContext context, {
+  String message = 'SUCCESS.GENERAL',
+  int duration = 3000,
+}) {
+  ScaffoldMessenger.of(context)
+    ..hideCurrentSnackBar()
+    ..showSnackBar(
+      SnackBar(
+        content: Text(message.tr()),
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Colors.green,
+      ),
+    );
+}

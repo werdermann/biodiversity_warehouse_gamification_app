@@ -1,5 +1,6 @@
 import 'package:biodiversity/domain/use_case/location/get_location_use_case.dart';
 import 'package:biodiversity/domain/use_case/location/request_location_permission_use_case.dart';
+import 'package:biodiversity/domain/use_case/submit/submit_sighting_use_case.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_camera_image_use_case.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_gallery_image_use_case.dart';
 import 'package:biodiversity/presentation/report/report.dart';
@@ -18,6 +19,7 @@ class ReportPage extends StatelessWidget {
         getLocationUseCase: context.read<GetLocationUseCase>(),
         requestLocationPermissionUseCase:
             context.read<RequestLocationPermissionUseCase>(),
+        submitSightingUseCase: context.read<SubmitSightingUseCase>(),
       ),
       child: const ReportView(),
     );

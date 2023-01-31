@@ -15,8 +15,7 @@ class StepOne extends StatelessWidget {
 
     final size = MediaQuery.of(context).size;
 
-    return Container(
-      padding: const EdgeInsets.all(16),
+    return SizedBox(
       width: size.width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -61,7 +60,7 @@ class StepOne extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     DropdownButtonFormField(
-                      value: state.species[index].species?.index,
+                      value: state.species[index].species.index,
                       decoration: InputDecoration(
                         labelText: 'REPORT.STEP_1.SPECIES'.tr(),
                       ),
@@ -84,7 +83,7 @@ class StepOne extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     DropdownButtonFormField(
-                      value: state.species[index].species?.index,
+                      value: state.species[index].species.index,
                       decoration: InputDecoration(
                         labelText: 'REPORT.STEP_1.STATUS'.tr(),
                       ),

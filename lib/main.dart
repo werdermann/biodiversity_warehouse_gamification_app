@@ -1,11 +1,15 @@
 import 'package:biodiversity/common/constants.dart';
 import 'package:biodiversity/data/repository/auth_repository_impl.dart';
+import 'package:biodiversity/data/repository/gamification_repository_impl.dart';
 import 'package:biodiversity/data/repository/image_picker_repository.dart';
 import 'package:biodiversity/data/repository/local_storage_repository_impl.dart';
+import 'package:biodiversity/data/repository/sighting_repository_impl.dart';
+import 'package:biodiversity/domain/use_case/config/get_gamification_config_use_case.dart';
 import 'package:biodiversity/domain/use_case/location/get_location_use_case.dart';
 import 'package:biodiversity/domain/use_case/location/request_location_permission_use_case.dart';
 import 'package:biodiversity/domain/use_case/login/check_token_use_case.dart';
 import 'package:biodiversity/domain/use_case/login/login_use_case.dart';
+import 'package:biodiversity/domain/use_case/submit/submit_sighting_use_case.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_camera_image_use_case.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_gallery_image_use_case.dart';
 import 'package:biodiversity/presentation/app/app.dart';
@@ -36,9 +40,15 @@ void main() async {
     baseUrl: Constants.baseUrl,
   );
 
+  final gamificationRepository = GamificationRepositoryImpl(
+    dio: dio,
+    baseUrl: Constants.baseUrl,
+  );
+
   final sharedPreferences = await SharedPreferences.getInstance();
-  final localStorage =
-      LocalStorageRepositoryImpl(sharedPreferences: sharedPreferences);
+  final localStorage = LocalStorageRepositoryImpl(
+    sharedPreferences: sharedPreferences,
+  );
 
   final loginUseCase = LoginUseCase(
     authRepository: authRepository,
@@ -71,6 +81,19 @@ void main() async {
 
   final getLocationUseCase = GetLocationUseCase(locator: locator);
 
+  final sightingRepository = SightingRepositoryImpl(
+    dio: dio,
+    baseUrl: Constants.baseUrl,
+  );
+
+  final submitSightingUseCase = SubmitSightingUseCase(
+    sightingRepository: sightingRepository,
+  );
+
+  final getGamificationConfigUseCase = GetGamificationConfigUseCase(
+    gamificationRepository: gamificationRepository,
+  );
+
   runApp(
     App(
       checkTokenUseCase: checkTokenUseCase,
@@ -82,6 +105,9 @@ void main() async {
       authRepository: authRepository,
       requestLocationPermissionUseCase: requestLocationPermissionUseCase,
       getLocationUseCase: getLocationUseCase,
+      submitSightingUseCase: submitSightingUseCase,
+      getGamificationConfigUseCase: getGamificationConfigUseCase,
+      gamificationRepository: gamificationRepository,
     ),
   );
 }

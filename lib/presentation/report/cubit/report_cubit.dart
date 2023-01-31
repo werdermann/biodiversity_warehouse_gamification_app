@@ -1,11 +1,14 @@
 import 'dart:io';
 
 import 'package:biodiversity/common/constants.dart';
+import 'package:biodiversity/data/dto/create_sighting_dto.dart';
+import 'package:biodiversity/data/dto/report_method.dart';
 import 'package:biodiversity/domain/model/evidence_status.dart';
 import 'package:biodiversity/domain/model/species.dart';
 import 'package:biodiversity/domain/model/species_entry.dart';
 import 'package:biodiversity/domain/use_case/location/get_location_use_case.dart';
 import 'package:biodiversity/domain/use_case/location/request_location_permission_use_case.dart';
+import 'package:biodiversity/domain/use_case/submit/submit_sighting_use_case.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_camera_image_use_case.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_gallery_image_use_case.dart';
 import 'package:equatable/equatable.dart';
@@ -17,20 +20,24 @@ import 'package:latlong2/latlong.dart';
 part 'report_state.dart';
 
 class ReportCubit extends Cubit<ReportState> {
+  /// Constructor
   ReportCubit({
     required TakeGalleryImageUseCase takeGalleryImageUseCase,
     required TakeCameraImageUseCase takeCameraImageUseCase,
     required GetLocationUseCase getLocationUseCase,
     required RequestLocationPermissionUseCase requestLocationPermissionUseCase,
+    required SubmitSightingUseCase submitSightingUseCase,
   })  : _takeGalleryImageUseCase = takeGalleryImageUseCase,
         _takeCameraImageUseCase = takeCameraImageUseCase,
         _getLocationUseCase = getLocationUseCase,
         _requestLocationPermissionUseCase = requestLocationPermissionUseCase,
+        _submitSightingUseCase = submitSightingUseCase,
         super(const ReportState()) {
-    // Get current date
+    // Set current date and start position
     emit(
       state.copyWith(
         date: DateTime.now(),
+        location: Constants.mapStartPosition,
       ),
     );
 
@@ -41,8 +48,10 @@ class ReportCubit extends Cubit<ReportState> {
   final TakeCameraImageUseCase _takeCameraImageUseCase;
   final GetLocationUseCase _getLocationUseCase;
   final RequestLocationPermissionUseCase _requestLocationPermissionUseCase;
+  final SubmitSightingUseCase _submitSightingUseCase;
 
   final MapController mapController = MapController();
+  final MapController summaryMapController = MapController();
 
   void showNextStep() {
     emit(state.copyWith(step: state.step + 1));
@@ -147,11 +156,13 @@ class ReportCubit extends Cubit<ReportState> {
           );
         },
         success: (position) {
-          final center = LatLng(position.latitude, position.longitude);
+          final location = LatLng(position.latitude, position.longitude);
 
-          print("Trigger controller!");
+          mapController.move(location, Constants.zoomLevel);
 
-          mapController.move(center, Constants.zoomLevel);
+          // summaryMapController.move(location, Constants.zoomLevel);
+
+          emit(state.copyWith(location: location));
         },
         error: (message) {
           emit(
@@ -275,7 +286,7 @@ class ReportCubit extends Cubit<ReportState> {
     emit(state.copyWith(methodComment: value));
   }
 
-  void methodChanged(int? value) {
+  void methodChanged(ReportMethod? value) {
     emit(state.copyWith(reportMethod: value));
   }
 
@@ -284,6 +295,44 @@ class ReportCubit extends Cubit<ReportState> {
   }
 
   void submitSighting() async {
-    print('Submit sighting1');
+    final createSightingDto = CreateSightingDto(
+      latitude: state.location!.latitude,
+      longitude: state.location!.longitude,
+      locationComment: state.locationComment,
+      date: state.date!.toIso8601String(),
+      reportMethod: state.reportMethod,
+      detailsComment: state.methodComment,
+      speciesEntries: state.species,
+    );
+
+    _submitSightingUseCase
+        .execute(createSightingDto: createSightingDto, images: state.images)
+        .forEach((result) {
+      result.when(loading: () {
+        emit(
+          state.copyWith(
+            submitStatus: FormzStatus.submissionInProgress,
+          ),
+        );
+      }, success: (data) {
+        print("SUCCESS!");
+        // TODO: Fetch data correctly
+
+        emit(
+          state.copyWith(
+            submitStatus: FormzStatus.submissionSuccess,
+          ),
+        );
+      }, error: (message) {
+        print("ERROR!");
+
+        emit(
+          state.copyWith(
+            submitError: message,
+            submitStatus: FormzStatus.submissionFailure,
+          ),
+        );
+      });
+    });
   }
 }

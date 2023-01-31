@@ -8,9 +8,12 @@
   "REPORT": {
     "REPORT_SIGHTING": "Fund melden",
     "COMMENT": "Kommentar",
+    "REPORT": "Melden...",
     "BACK": "Zurück",
     "CONTINUE": "Weiter",
     "CLOSE": "Schließen",
+    "CANCEL": "Abbrechen",
+    "CONFIRM_TEXT": "Möchtest du diesen Fund melden? Er kann danach nicht mehr geändert werden.",
     "STEP_1": {
       "STEP_1": "Schritt 1 / 5: Artinformationen",
       "SPECIES_INFORMATION": "Artinformationen",
@@ -25,7 +28,8 @@
       "STEP_2": "Schritt 2 / 5: Ort",
       "PLACE": "Ort",
       "SET_POSITION": "Position setzen",
-      "CURRENT_POSITION": "Aktuelle Position"
+      "CURRENT_POSITION": "Aktuelle Position",
+      "INSTRUCTIONS": "Klicke auf die Karte oder auf den Knopf um die Position deines Fundes zu setzen."
     },
     "STEP_3": {
       "STEP_3": "Schritt 3 / 5: Nachweisbilder",
@@ -55,8 +59,26 @@
 
     },
     "STEP_5": {
-      "STEP_5": "Schritt 5 / 5: Zusammenfassung"
+      "STEP_5": "Schritt 5 / 5: Zusammenfassung",
+      "DETAILS": "Details",
+      "SPECIES": "Art",
+      "AMOUNT": "Anzahl",
+      "STATUS": "Status",
+      "COMMENT": "Kommentar",
+      "PLACE": "Ort",
+      "IMAGES": "Nachweisbilder",
+      "NO_IMAGES": "Keine Bilder zum Hochladen ausgewählt",
+      "DATE": "Funddatum",
+      "METHOD": "Methode",
+      "METHOD_DETAILS": "Methodendetails",
+      "NO_COMMENT": "Kein Kommentar",
+      "UNKNOWN_ANIMAL": "Unbekanntes Tier"
     }
+  },
+  "RESULT": {
+    "AWESOME": "Super!",
+    "REPORT_SUCCESS": "Du hast deinen Fund erfolgreich gemeldet.",
+    "BACK": "Zurück zum Menü"
   },
   "SETTINGS": {
     "SETTINGS": "Einstellungen",
@@ -70,7 +92,20 @@
     "GENERAL": "Fehler. Prozess ist fehlgeschlagen",
     "TAKE_IMAGE_FAILED": "Fehler. Prozess ist fehlgeschlagen",
     "LOCATION_PERMISSION_DISABLED": "Fehler. Keine Erlaubnis um auf die Ortungsdienste zu zugreifen",
-    "LOCATION_CANT_BE_FOUND": "Fehler. Position kann nicht ermittelt werden"
+    "LOCATION_CANT_BE_FOUND": "Fehler. Position kann nicht ermittelt werden",
+    "GET_CONFIG_FAILED": "Konfiguration der Gamifizierung konnte nicht geladen werden."
+  },
+  "SUCCESS": {
+    "GENERAL": "Super. Aktion erfolgreich durchgeführt",
+    "GET_CONFIG": "Konfiguration der Gamifizierung erfolgreich geladen."
+  },
+  "LEADERBOARD": {
+    "LEADERBOARD": "Rangliste"
+  },
+  "BADGES": {
+    "BADGES": "Abzeichen",
+    "UNLOCKED_BADGES": "Freigeschaltete Abzeichen",
+    "LOCKED_BADGES": "Freispielbare Abzeichen"
   },
   "ANIMALS": {
     "NOT_SPECIFIED": "Keine Angabe",

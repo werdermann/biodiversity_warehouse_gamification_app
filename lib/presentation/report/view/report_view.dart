@@ -1,4 +1,6 @@
 import 'package:biodiversity/presentation/report/report.dart';
+import 'package:biodiversity/presentation/report/widgets/confirm_submission_dialog.dart';
+import 'package:biodiversity/presentation/report/widgets/result_page.dart';
 import 'package:biodiversity/presentation/ui/snackbars.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +22,20 @@ class ReportView extends StatelessWidget {
           listener: (context, state) {
             if (state.galleryImageStatus.isSubmissionFailure) {
               showErrorSnackBar(context, error: state.galleryImageError.tr());
+            }
+          },
+        ),
+        BlocListener<ReportCubit, ReportState>(
+          listenWhen: (previous, current) =>
+              previous.submitStatus != current.submitStatus,
+          listener: (context, state) {
+            if (state.submitStatus.isSubmissionSuccess) {
+              Navigator.pop(context);
+              Navigator.push(context, ResultPage.route());
+            }
+            if (state.submitStatus.isSubmissionFailure) {
+              Navigator.pop(context);
+              showErrorSnackBar(context, error: state.submitError.tr());
             }
           },
         ),
@@ -77,7 +93,7 @@ class ReportView extends StatelessWidget {
         return Expanded(
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
+              padding: const EdgeInsets.all(16),
               child: steps[state.step],
             ),
           ),
@@ -114,7 +130,14 @@ class ReportView extends StatelessWidget {
               const Spacer(),
               if (isLastStep)
                 TextButton(
-                  onPressed: cubit.submitSighting,
+                  onPressed: () => showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (_) => BlocProvider.value(
+                      value: cubit,
+                      child: ConfirmSubmissionDialog(),
+                    ),
+                  ),
                   child: Row(
                     children: [
                       Text('REPORT.REPORT_SIGHTING'.tr()),

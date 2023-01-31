@@ -1,28 +1,36 @@
 import 'dart:async';
 
 import 'package:biodiversity/data/dto/user.dart';
-import 'package:biodiversity/data/repository/auth_repository_impl.dart';
+import 'package:biodiversity/domain/repository/auth_repository.dart';
+import 'package:biodiversity/domain/use_case/config/get_gamification_config_use_case.dart';
 import 'package:biodiversity/domain/use_case/login/check_token_use_case.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
 
 part 'app_state.dart';
 
 class AppCubit extends Cubit<AppState> {
   AppCubit({
-    required AuthRepositoryImpl authRepository,
+    required AuthRepository authRepository,
+    required GetGamificationConfigUseCase getGamificationConfigUseCase,
     required CheckTokenUseCase checkTokenUseCase,
   })  : _authRepository = authRepository,
         _checkTokenUseCase = checkTokenUseCase,
+        _getGamificationConfigUseCase = getGamificationConfigUseCase,
         super(const AppState()) {
     _userSubscription = _authRepository.user.listen(_userChanged);
 
     _checkIfTokenIsSaved();
+
+    print("Get config!");
+    _getGamificationConfig();
   }
 
-  final AuthRepositoryImpl _authRepository;
+  final AuthRepository _authRepository;
 
   final CheckTokenUseCase _checkTokenUseCase;
+  final GetGamificationConfigUseCase _getGamificationConfigUseCase;
 
   late final StreamSubscription _userSubscription;
 
@@ -60,5 +68,35 @@ class AppCubit extends Cubit<AppState> {
         );
       },
     );
+  }
+
+  void _getGamificationConfig() async {
+    _getGamificationConfigUseCase.execute().forEach((result) {
+      result.when(
+        loading: () {
+          emit(
+            state.copyWith(
+              getConfigStatus: FormzStatus.submissionInProgress,
+            ),
+          );
+        },
+        success: () {
+          print("Fetched config successfully!");
+          emit(
+            state.copyWith(
+              getConfigStatus: FormzStatus.submissionSuccess,
+            ),
+          );
+        },
+        error: (message) {
+          emit(
+            state.copyWith(
+              getConfigStatus: FormzStatus.submissionFailure,
+              getConfigError: message,
+            ),
+          );
+        },
+      );
+    });
   }
 }

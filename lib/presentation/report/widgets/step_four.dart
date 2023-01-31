@@ -9,17 +9,14 @@ class StepFour extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(8),
-      child: Column(
-        children: [
-          _reportDateInputField,
-          const SizedBox(height: 16),
-          _methodInputField,
-          const SizedBox(height: 16),
-          _methodCommentInputField,
-        ],
-      ),
+    return Column(
+      children: [
+        _reportDateInputField,
+        const SizedBox(height: 16),
+        _methodInputField,
+        const SizedBox(height: 16),
+        _methodCommentInputField,
+      ],
     );
   }
 
@@ -36,7 +33,7 @@ class StepFour extends StatelessWidget {
         return ListTile(
           title: Text('REPORT.STEP_4.REPORT_DATE'.tr()),
           subtitle: Text(date),
-          trailing: IconButton(
+          trailing: TextButton(
             onPressed: () async {
               final date = await showDatePicker(
                 currentDate: state.date,
@@ -47,7 +44,7 @@ class StepFour extends StatelessWidget {
               );
               cubit.dateChanged(date);
             },
-            icon: const Icon(Icons.date_range, color: Colors.green),
+            child: const Icon(Icons.date_range),
           ),
         );
       },
@@ -64,10 +61,10 @@ class StepFour extends StatelessWidget {
           decoration: InputDecoration(
             labelText: 'REPORT.STEP_4.METHOD'.tr(),
           ),
-          items: ReportMethod.values.map<DropdownMenuItem<int>>(
+          items: ReportMethod.values.map<DropdownMenuItem<ReportMethod>>(
             (ReportMethod method) {
-              return DropdownMenuItem<int>(
-                value: method.index,
+              return DropdownMenuItem<ReportMethod>(
+                value: method,
                 child: Text(method.message.tr()),
               );
             },

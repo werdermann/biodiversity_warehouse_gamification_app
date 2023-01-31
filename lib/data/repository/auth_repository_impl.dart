@@ -15,17 +15,17 @@ class AuthRepositoryImpl implements AuthRepository {
     required String baseUrl,
     required Dio dio,
     CacheClient? cache,
-  })  : _authClient = RestClient(dio, baseUrl: baseUrl),
+  })  : _biodiversityApi = RestClient(dio, baseUrl: baseUrl),
         _cache = cache ?? CacheClient();
 
-  final RestClient _authClient;
+  final RestClient _biodiversityApi;
 
   final CacheClient _cache;
 
   final StreamController<User> _userStreamController =
       StreamController<User>.broadcast();
 
-  /// Player cache key.
+  /// User cache key.
   /// Should only be used for testing purposes.
   @visibleForTesting
   static const userCacheKey = '__user_cache_key__';
@@ -51,7 +51,7 @@ class AuthRepositoryImpl implements AuthRepository {
     required String password,
   }) async {
     try {
-      final response = await _authClient.login(
+      final response = await _biodiversityApi.login(
         username: username,
         password: password,
       );
@@ -78,7 +78,7 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<User> fetchUser() async {
     try {
-      return await _authClient.getUser();
+      return await _biodiversityApi.getUser();
     } catch (_) {
       rethrow;
     }

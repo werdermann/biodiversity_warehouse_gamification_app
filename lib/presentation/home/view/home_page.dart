@@ -1,3 +1,4 @@
+import 'package:biodiversity/domain/repository/gamification_repository.dart';
 import 'package:biodiversity/presentation/home/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +9,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => HomeCubit(),
+      create: (context) => HomeCubit(
+        gamificationRepository: context.read<GamificationRepository>(),
+      ),
       child: const HomeView(),
     );
   }

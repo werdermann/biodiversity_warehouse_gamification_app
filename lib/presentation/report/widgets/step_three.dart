@@ -10,48 +10,45 @@ class StepThree extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<ReportCubit>();
 
-    return Container(
-      padding: const EdgeInsets.all(8),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SizedBox(height: 8),
-          _noImagesSelectedText,
-          const SizedBox(height: 8),
-          Text(
-            'REPORT.STEP_4.INTRODUCTION'.tr(),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextButton(
-                onPressed: cubit.takeImageFromCamera,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(Icons.add_a_photo),
-                    Text('REPORT.STEP_3.CAMERA'.tr())
-                  ],
-                ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const SizedBox(height: 8),
+        _noImagesSelectedText,
+        const SizedBox(height: 8),
+        Text(
+          'REPORT.STEP_4.INTRODUCTION'.tr(),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 8),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextButton(
+              onPressed: cubit.takeImageFromCamera,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.add_a_photo),
+                  Text('REPORT.STEP_3.CAMERA'.tr())
+                ],
               ),
-              const SizedBox(width: 8),
-              TextButton(
-                onPressed: cubit.takeImageFromGallery,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(Icons.image),
-                    Text('REPORT.STEP_3.GALLERY'.tr())
-                  ],
-                ),
+            ),
+            const SizedBox(width: 8),
+            TextButton(
+              onPressed: cubit.takeImageFromGallery,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.image),
+                  Text('REPORT.STEP_3.GALLERY'.tr())
+                ],
               ),
-            ],
-          ),
-          _images,
-        ],
-      ),
+            ),
+          ],
+        ),
+        _images,
+      ],
     );
   }
 
