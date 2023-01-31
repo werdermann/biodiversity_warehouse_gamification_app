@@ -1,3 +1,4 @@
+import 'package:biodiversity/data/dto/create_species_entry_dto.dart';
 import 'package:biodiversity/data/dto/report_method.dart';
 import 'package:biodiversity/domain/model/species_entry.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -27,11 +28,11 @@ class CreateSightingDto {
 
   final String locationComment;
 
-  final List<SpeciesEntry> speciesEntries;
+  final List<CreateSpeciesEntryDto> speciesEntries;
 
   final String date;
 
-  final ReportMethod reportMethod;
+  final int reportMethod;
 
   final String detailsComment;
 }

@@ -1,10 +1,13 @@
+// Convert is required for parsing objects in a multiform request.
+// ignore: unused_import
+import 'dart:convert';
+
+import 'package:biodiversity/data/dto/create_sighting_dto.dart';
 import 'package:biodiversity/data/dto/gamification_config.dart';
 import 'package:biodiversity/data/dto/login_result.dart';
 import 'package:biodiversity/data/dto/user.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-
-import 'dto/create_sighting_dto.dart';
 
 part 'rest_client.g.dart';
 

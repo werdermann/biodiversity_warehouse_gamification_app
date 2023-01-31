@@ -1,6 +1,4 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-import 'dart:convert';
-
 
 part of 'rest_client.dart';
 

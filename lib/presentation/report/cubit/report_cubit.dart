@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:biodiversity/common/constants.dart';
 import 'package:biodiversity/data/dto/create_sighting_dto.dart';
+import 'package:biodiversity/data/dto/create_species_entry_dto.dart';
 import 'package:biodiversity/data/dto/report_method.dart';
 import 'package:biodiversity/domain/model/evidence_status.dart';
 import 'package:biodiversity/domain/model/species.dart';
@@ -295,14 +296,25 @@ class ReportCubit extends Cubit<ReportState> {
   }
 
   void submitSighting() async {
+    final speciesEntryDtos = state.species
+        .map(
+          (entry) => CreateSpeciesEntryDto(
+            species: entry.species.index,
+            evidenceStatus: entry.evidenceStatus.index,
+            count: entry.count,
+            comment: entry.comment,
+          ),
+        )
+        .toList();
+
     final createSightingDto = CreateSightingDto(
       latitude: state.location!.latitude,
       longitude: state.location!.longitude,
       locationComment: state.locationComment,
       date: state.date!.toIso8601String(),
-      reportMethod: state.reportMethod,
+      reportMethod: state.reportMethod.index,
       detailsComment: state.methodComment,
-      speciesEntries: state.species,
+      speciesEntries: speciesEntryDtos,
     );
 
     _submitSightingUseCase

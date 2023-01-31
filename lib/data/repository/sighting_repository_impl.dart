@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:biodiversity/data/common/network_exceptions.dart';
@@ -33,7 +34,12 @@ class SightingRepositoryImpl implements SightingRepository {
         multipartFiles.add(multipartFile);
       }
 
+      final json = jsonEncode(createSightingDto);
+
+      print(json);
+
       final result = await _biodiversityApi.createSighting(
+        // createSightingDto: json.toString(),
         createSightingDto: createSightingDto,
         files: multipartFiles,
       );
