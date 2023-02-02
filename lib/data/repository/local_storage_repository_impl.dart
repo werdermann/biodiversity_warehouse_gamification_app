@@ -18,6 +18,7 @@ class LocalStorageRepositoryImpl implements LocalStorageRepository {
     return await _sharedPreferences.setString(key, value);
   }
 
+  @override
   Future<bool> clearStorage() async {
     return await _sharedPreferences.clear();
   }

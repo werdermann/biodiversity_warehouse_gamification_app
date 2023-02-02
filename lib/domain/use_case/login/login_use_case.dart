@@ -2,6 +2,7 @@ import 'package:biodiversity/common/constants.dart';
 import 'package:biodiversity/common/empty_resource.dart';
 import 'package:biodiversity/domain/repository/auth_repository.dart';
 import 'package:biodiversity/domain/repository/local_storage_repository.dart';
+import 'package:dio/dio.dart';
 
 /// Logs the user into the server.
 class LoginUseCase {
@@ -9,11 +10,14 @@ class LoginUseCase {
   const LoginUseCase({
     required AuthRepository authRepository,
     required LocalStorageRepository localStorageRepository,
+    required Dio dio,
   })  : _authRepository = authRepository,
-        _localStorageRepository = localStorageRepository;
+        _localStorageRepository = localStorageRepository,
+        _dio = dio;
 
   final AuthRepository _authRepository;
   final LocalStorageRepository _localStorageRepository;
+  final Dio _dio;
 
   Stream<EmptyResource> execute({
     required String username,
@@ -33,6 +37,10 @@ class LoginUseCase {
       );
 
       if (isSaved) {
+        _dio.options.headers.addAll({
+          'Authorization': 'Bearer ${result.accessToken}',
+        });
+
         _authRepository.updateUser(user: result.user);
 
         yield const EmptyResource.success();

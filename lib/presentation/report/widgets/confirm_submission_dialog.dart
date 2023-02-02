@@ -5,10 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
 class ConfirmSubmissionDialog extends StatelessWidget {
+  const ConfirmSubmissionDialog({super.key});
+
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<ReportCubit>();
-
     final textTheme = Theme.of(context).textTheme;
 
     return Dialog(
@@ -19,11 +19,11 @@ class ConfirmSubmissionDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              "REPORT.REPORT_SIGHTING".tr(),
+              'REPORT.REPORT_SIGHTING'.tr(),
               style: textTheme.titleLarge,
             ),
             const SizedBox(height: 8),
-            Text("REPORT.CONFIRM_TEXT".tr()),
+            Text('REPORT.CONFIRM_TEXT'.tr()),
             const SizedBox(height: 8),
             _buttons,
           ],
@@ -56,7 +56,7 @@ class ConfirmSubmissionDialog extends StatelessWidget {
                   ? null
                   : cubit.submitSighting,
               child: state.submitStatus.isSubmissionInProgress
-                  ? SizedBox(
+                  ? const SizedBox(
                       height: 16,
                       width: 16,
                       child: CircularProgressIndicator(strokeWidth: 3),

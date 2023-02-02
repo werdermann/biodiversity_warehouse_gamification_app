@@ -320,31 +320,30 @@ class ReportCubit extends Cubit<ReportState> {
     _submitSightingUseCase
         .execute(createSightingDto: createSightingDto, images: state.images)
         .forEach((result) {
-      result.when(loading: () {
-        emit(
-          state.copyWith(
-            submitStatus: FormzStatus.submissionInProgress,
-          ),
-        );
-      }, success: (data) {
-        print("SUCCESS!");
-        // TODO: Fetch data correctly
-
-        emit(
-          state.copyWith(
-            submitStatus: FormzStatus.submissionSuccess,
-          ),
-        );
-      }, error: (message) {
-        print("ERROR!");
-
-        emit(
-          state.copyWith(
-            submitError: message,
-            submitStatus: FormzStatus.submissionFailure,
-          ),
-        );
-      });
+      result.when(
+        loading: () {
+          emit(
+            state.copyWith(
+              submitStatus: FormzStatus.submissionInProgress,
+            ),
+          );
+        },
+        success: () {
+          emit(
+            state.copyWith(
+              submitStatus: FormzStatus.submissionSuccess,
+            ),
+          );
+        },
+        error: (message) {
+          emit(
+            state.copyWith(
+              submitError: message,
+              submitStatus: FormzStatus.submissionFailure,
+            ),
+          );
+        },
+      );
     });
   }
 }

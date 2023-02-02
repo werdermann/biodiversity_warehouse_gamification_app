@@ -21,8 +21,8 @@ class HomeView extends StatelessWidget {
 
         final views = [
           const ReportPage(),
-          if (state.config.leaderboardActive) LeaderboardPage(),
-          if (state.config.badgesActive) BadgesPage(),
+          if (state.config.leaderboardActive) const LeaderboardPage(),
+          if (state.config.badgesActive) const BadgesPage(),
           const SettingsPage(),
         ];
 
@@ -32,15 +32,16 @@ class HomeView extends StatelessWidget {
             onDestinationSelected: cubit.pageChanged,
             destinations: [
               NavigationDestination(
-                selectedIcon: Icon(Icons.travel_explore),
-                icon: Icon(Icons.travel_explore_outlined),
+                selectedIcon: const Icon(Icons.travel_explore),
+                icon: const Icon(Icons.travel_explore_outlined),
                 label: 'REPORT.REPORT_SIGHTING'.tr(),
               ),
               if (state.config.leaderboardActive)
                 NavigationDestination(
-                    selectedIcon: const Icon(Icons.leaderboard),
-                    icon: const Icon(Icons.leaderboard_outlined),
-                    label: 'LEADERBOARD.LEADERBOARD'.tr()),
+                  selectedIcon: const Icon(Icons.leaderboard),
+                  icon: const Icon(Icons.leaderboard_outlined),
+                  label: 'LEADERBOARD.LEADERBOARD'.tr(),
+                ),
               if (state.config.badgesActive)
                 NavigationDestination(
                   selectedIcon: const Icon(Icons.military_tech),

@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:biodiversity/data/common/network_exceptions.dart';
 import 'package:biodiversity/data/dto/gamification_config.dart';
+import 'package:biodiversity/data/dto/gamification_result_response.dart';
+import 'package:biodiversity/data/rest_client.dart';
 import 'package:biodiversity/domain/repository/gamification_repository.dart';
 import 'package:cache/cache.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-
-import '../rest_client.dart';
 
 class GamificationRepositoryImpl implements GamificationRepository {
   GamificationRepositoryImpl({
@@ -28,15 +28,20 @@ class GamificationRepositoryImpl implements GamificationRepository {
   @visibleForTesting
   static const configCacheKey = '__config_cache_key__';
 
+  final StreamController<GamificationResultResponse> _resultStreamController =
+      StreamController<GamificationResultResponse>.broadcast();
+
+  /// Result cache key.
+  /// Should only be used for testing purposes.
+  @visibleForTesting
+  static const resultCacheKey = '__result_cache_key__';
+
   @override
   Future<GamificationConfig> getGamificationConfig() async {
     try {
       final config = await _biodiversityApi.getGamificationConfig();
-
       return config;
     } catch (e) {
-      print("ERROR $e");
-
       throw NetworkExceptions.getDioException(e);
     }
   }
@@ -62,5 +67,23 @@ class GamificationRepositoryImpl implements GamificationRepository {
   void updateConfig({required GamificationConfig config}) {
     _cache.write(key: configCacheKey, value: config);
     _configStreamController.add(config);
+  }
+
+  @override
+  GamificationResultResponse? get currentResult {
+    return _cache.read<GamificationResultResponse>(key: resultCacheKey);
+  }
+
+  @override
+  Stream<GamificationResultResponse> get result {
+    return _resultStreamController.stream.asBroadcastStream().map(
+          (result) => result,
+        );
+  }
+
+  @override
+  void updateResult({required GamificationResultResponse result}) {
+    _cache.write(key: resultCacheKey, value: result);
+    _resultStreamController.add(result);
   }
 }

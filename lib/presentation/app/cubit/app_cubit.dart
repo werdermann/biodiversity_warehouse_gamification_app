@@ -23,7 +23,7 @@ class AppCubit extends Cubit<AppState> {
 
     _checkIfTokenIsSaved();
 
-    print("Get config!");
+    print('Get config!');
     _getGamificationConfig();
   }
 
@@ -81,7 +81,7 @@ class AppCubit extends Cubit<AppState> {
           );
         },
         success: () {
-          print("Fetched config successfully!");
+          print('Fetched config successfully!');
           emit(
             state.copyWith(
               getConfigStatus: FormzStatus.submissionSuccess,

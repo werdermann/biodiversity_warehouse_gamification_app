@@ -1,3 +1,5 @@
+import 'package:biodiversity/data/dto/locked_badge.dart';
+import 'package:biodiversity/data/dto/unlocked_badge.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user.freezed.dart';
@@ -12,6 +14,8 @@ class User with _$User {
     @JsonKey() String? username,
     @Default(false) @JsonKey() bool isAdmin,
     @Default(0) @JsonKey() int points,
+    @Default([]) @JsonKey() List<UnlockedBadge> unlockedBadges,
+    @Default([]) @JsonKey() List<LockedBadge> lockedBadges,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

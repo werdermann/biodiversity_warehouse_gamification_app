@@ -1,6 +1,4 @@
 import 'package:biodiversity/data/dto/create_species_entry_dto.dart';
-import 'package:biodiversity/data/dto/report_method.dart';
-import 'package:biodiversity/domain/model/species_entry.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'create_sighting_dto.g.dart';

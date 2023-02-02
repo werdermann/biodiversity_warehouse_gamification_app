@@ -1,4 +1,10 @@
 {
+  "GENERAL": {
+    "POINTS": "Punkte",
+    "LEADERBOARD": "Rangliste",
+    "BADGES": "Abzeichen",
+    "UNKNOWN_NAME": "Unbekannter Name"
+  },
   "LOGIN": {
     "PROTOTYPE": "Gamification Prototype",
     "USERNAME": "Nutzername",
@@ -77,8 +83,14 @@
   },
   "RESULT": {
     "AWESOME": "Super!",
+    "RESULT": "Zusammenfassung",
     "REPORT_SUCCESS": "Du hast deinen Fund erfolgreich gemeldet.",
-    "BACK": "Zurück zum Menü"
+    "BACK": "Zurück zum Menü",
+    "GAINED_POINTS": "Mit dieser Sichtung hast du +{points} Punkte dazu gewonnen. Deine Punktzahl basiert auf den Informationsgehalt deiner Sichtung.",
+    "NEW_BADGE_UNLOCKED": "Du hast {amount} Abzeichen freigeschaltet. Es können noch {remaining} Abzeichen freigeschaltet werden.",
+    "NEW_POSITION": "Du bist eine Position in der Rangliste aufgestiegen.",
+    "SAME_POSITION": "Du befindest dich noch auf der gleichen Position.",
+    "TOP_POSITION": "Du bist aktuell der Ranglistenbeste. Starke Leistung."
   },
   "SETTINGS": {
     "SETTINGS": "Einstellungen",
@@ -118,5 +130,7 @@
     "DEAD": "Totfund",
     "INDIRECT": "Indirekter Nachweis (Spuren, Nester, Haare, etc.)",
     "NOT_SPECIFIED": "Keine Angabe"
+  },
+  "BADGE_DESCRIPTIONS": {
   }
 }

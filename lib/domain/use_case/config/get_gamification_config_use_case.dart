@@ -16,7 +16,7 @@ class GetGamificationConfigUseCase {
 
       _gamificationRepository.updateConfig(config: config);
 
-      yield EmptyResource.success();
+      yield const EmptyResource.success();
     } catch (_) {
       yield const EmptyResource.error('ERROR.GENERAL');
     }

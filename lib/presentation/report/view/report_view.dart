@@ -1,6 +1,6 @@
 import 'package:biodiversity/presentation/report/report.dart';
 import 'package:biodiversity/presentation/report/widgets/confirm_submission_dialog.dart';
-import 'package:biodiversity/presentation/report/widgets/result_page.dart';
+import 'package:biodiversity/presentation/result/view/result_page.dart';
 import 'package:biodiversity/presentation/ui/snackbars.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -135,7 +135,7 @@ class ReportView extends StatelessWidget {
                     barrierDismissible: false,
                     builder: (_) => BlocProvider.value(
                       value: cubit,
-                      child: ConfirmSubmissionDialog(),
+                      child: const ConfirmSubmissionDialog(),
                     ),
                   ),
                   child: Row(

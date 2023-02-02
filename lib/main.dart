@@ -1,7 +1,7 @@
 import 'package:biodiversity/common/constants.dart';
 import 'package:biodiversity/data/repository/auth_repository_impl.dart';
 import 'package:biodiversity/data/repository/gamification_repository_impl.dart';
-import 'package:biodiversity/data/repository/image_picker_repository.dart';
+import 'package:biodiversity/data/repository/image_picker_repository_impl.dart';
 import 'package:biodiversity/data/repository/local_storage_repository_impl.dart';
 import 'package:biodiversity/data/repository/sighting_repository_impl.dart';
 import 'package:biodiversity/domain/use_case/config/get_gamification_config_use_case.dart';
@@ -9,6 +9,7 @@ import 'package:biodiversity/domain/use_case/location/get_location_use_case.dart
 import 'package:biodiversity/domain/use_case/location/request_location_permission_use_case.dart';
 import 'package:biodiversity/domain/use_case/login/check_token_use_case.dart';
 import 'package:biodiversity/domain/use_case/login/login_use_case.dart';
+import 'package:biodiversity/domain/use_case/logout/logout_use_case.dart';
 import 'package:biodiversity/domain/use_case/submit/submit_sighting_use_case.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_camera_image_use_case.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_gallery_image_use_case.dart';
@@ -53,6 +54,7 @@ void main() async {
   final loginUseCase = LoginUseCase(
     authRepository: authRepository,
     localStorageRepository: localStorage,
+    dio: dio,
   );
 
   final imagePicker = ImagePicker();
@@ -87,11 +89,18 @@ void main() async {
   );
 
   final submitSightingUseCase = SubmitSightingUseCase(
+    gamificationRepository: gamificationRepository,
     sightingRepository: sightingRepository,
   );
 
   final getGamificationConfigUseCase = GetGamificationConfigUseCase(
     gamificationRepository: gamificationRepository,
+  );
+
+  final logoutUseCase = LogoutUseCase(
+    dio: dio,
+    localStorageRepository: localStorage,
+    authRepository: authRepository,
   );
 
   runApp(
@@ -108,6 +117,7 @@ void main() async {
       submitSightingUseCase: submitSightingUseCase,
       getGamificationConfigUseCase: getGamificationConfigUseCase,
       gamificationRepository: gamificationRepository,
+      logoutUseCase: logoutUseCase,
     ),
   );
 }

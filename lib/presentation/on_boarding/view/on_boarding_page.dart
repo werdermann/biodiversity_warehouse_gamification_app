@@ -3,13 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OnBoardingPage extends StatelessWidget {
-  static Route route() => MaterialPageRoute(builder: (_) => OnBoardingPage());
+  const OnBoardingPage({super.key});
+
+  static Route route() =>
+      MaterialPageRoute(builder: (_) => const OnBoardingPage());
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => OnBoardingCubit(),
-      child: OnBoardingView(),
+      child: const OnBoardingView(),
     );
   }
 }

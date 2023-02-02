@@ -28,6 +28,10 @@ mixin _$User {
   bool get isAdmin => throw _privateConstructorUsedError;
   @JsonKey()
   int get points => throw _privateConstructorUsedError;
+  @JsonKey()
+  List<UnlockedBadge> get unlockedBadges => throw _privateConstructorUsedError;
+  @JsonKey()
+  List<LockedBadge> get lockedBadges => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +47,9 @@ abstract class $UserCopyWith<$Res> {
       {@JsonKey() int? id,
       @JsonKey() String? username,
       @JsonKey() bool isAdmin,
-      @JsonKey() int points});
+      @JsonKey() int points,
+      @JsonKey() List<UnlockedBadge> unlockedBadges,
+      @JsonKey() List<LockedBadge> lockedBadges});
 }
 
 /// @nodoc
@@ -63,6 +69,8 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? username = freezed,
     Object? isAdmin = null,
     Object? points = null,
+    Object? unlockedBadges = null,
+    Object? lockedBadges = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -81,6 +89,14 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
               as int,
+      unlockedBadges: null == unlockedBadges
+          ? _value.unlockedBadges
+          : unlockedBadges // ignore: cast_nullable_to_non_nullable
+              as List<UnlockedBadge>,
+      lockedBadges: null == lockedBadges
+          ? _value.lockedBadges
+          : lockedBadges // ignore: cast_nullable_to_non_nullable
+              as List<LockedBadge>,
     ) as $Val);
   }
 }
@@ -95,7 +111,9 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       {@JsonKey() int? id,
       @JsonKey() String? username,
       @JsonKey() bool isAdmin,
-      @JsonKey() int points});
+      @JsonKey() int points,
+      @JsonKey() List<UnlockedBadge> unlockedBadges,
+      @JsonKey() List<LockedBadge> lockedBadges});
 }
 
 /// @nodoc
@@ -111,6 +129,8 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? username = freezed,
     Object? isAdmin = null,
     Object? points = null,
+    Object? unlockedBadges = null,
+    Object? lockedBadges = null,
   }) {
     return _then(_$_User(
       id: freezed == id
@@ -129,6 +149,14 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
               as int,
+      unlockedBadges: null == unlockedBadges
+          ? _value._unlockedBadges
+          : unlockedBadges // ignore: cast_nullable_to_non_nullable
+              as List<UnlockedBadge>,
+      lockedBadges: null == lockedBadges
+          ? _value._lockedBadges
+          : lockedBadges // ignore: cast_nullable_to_non_nullable
+              as List<LockedBadge>,
     ));
   }
 }
@@ -140,8 +168,12 @@ class _$_User extends _User {
       {@JsonKey() this.id,
       @JsonKey() this.username,
       @JsonKey() this.isAdmin = false,
-      @JsonKey() this.points = 0})
-      : super._();
+      @JsonKey() this.points = 0,
+      @JsonKey() final List<UnlockedBadge> unlockedBadges = const [],
+      @JsonKey() final List<LockedBadge> lockedBadges = const []})
+      : _unlockedBadges = unlockedBadges,
+        _lockedBadges = lockedBadges,
+        super._();
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
@@ -157,10 +189,27 @@ class _$_User extends _User {
   @override
   @JsonKey()
   final int points;
+  final List<UnlockedBadge> _unlockedBadges;
+  @override
+  @JsonKey()
+  List<UnlockedBadge> get unlockedBadges {
+    if (_unlockedBadges is EqualUnmodifiableListView) return _unlockedBadges;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_unlockedBadges);
+  }
+
+  final List<LockedBadge> _lockedBadges;
+  @override
+  @JsonKey()
+  List<LockedBadge> get lockedBadges {
+    if (_lockedBadges is EqualUnmodifiableListView) return _lockedBadges;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_lockedBadges);
+  }
 
   @override
   String toString() {
-    return 'User(id: $id, username: $username, isAdmin: $isAdmin, points: $points)';
+    return 'User(id: $id, username: $username, isAdmin: $isAdmin, points: $points, unlockedBadges: $unlockedBadges, lockedBadges: $lockedBadges)';
   }
 
   @override
@@ -172,12 +221,23 @@ class _$_User extends _User {
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.isAdmin, isAdmin) || other.isAdmin == isAdmin) &&
-            (identical(other.points, points) || other.points == points));
+            (identical(other.points, points) || other.points == points) &&
+            const DeepCollectionEquality()
+                .equals(other._unlockedBadges, _unlockedBadges) &&
+            const DeepCollectionEquality()
+                .equals(other._lockedBadges, _lockedBadges));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, username, isAdmin, points);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      username,
+      isAdmin,
+      points,
+      const DeepCollectionEquality().hash(_unlockedBadges),
+      const DeepCollectionEquality().hash(_lockedBadges));
 
   @JsonKey(ignore: true)
   @override
@@ -198,7 +258,9 @@ abstract class _User extends User {
       {@JsonKey() final int? id,
       @JsonKey() final String? username,
       @JsonKey() final bool isAdmin,
-      @JsonKey() final int points}) = _$_User;
+      @JsonKey() final int points,
+      @JsonKey() final List<UnlockedBadge> unlockedBadges,
+      @JsonKey() final List<LockedBadge> lockedBadges}) = _$_User;
   const _User._() : super._();
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
@@ -215,6 +277,12 @@ abstract class _User extends User {
   @override
   @JsonKey()
   int get points;
+  @override
+  @JsonKey()
+  List<UnlockedBadge> get unlockedBadges;
+  @override
+  @JsonKey()
+  List<LockedBadge> get lockedBadges;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

@@ -48,7 +48,7 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<dynamic> createSighting({
+  Future<GamificationResultResponse> createSighting({
     required createSightingDto,
     required files,
   }) async {
@@ -61,20 +61,21 @@ class _RestClient implements RestClient {
       jsonEncode(createSightingDto),
     ));
     _data.files.addAll(files.map((i) => MapEntry('files', i)));
-    final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<GamificationResultResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
       contentType: 'multipart/form-data',
     )
-        .compose(
-          _dio.options,
-          'sighting',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = _result.data;
+            .compose(
+              _dio.options,
+              'sighting',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = GamificationResultResponse.fromJson(_result.data!);
     return value;
   }
 

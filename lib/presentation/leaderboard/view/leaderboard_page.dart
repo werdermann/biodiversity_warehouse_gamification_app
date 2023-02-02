@@ -4,11 +4,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LeaderboardPage extends StatelessWidget {
+  const LeaderboardPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => LeaderboardCubit(),
-      child: LeaderboardView(),
+      child: const LeaderboardView(),
     );
   }
 }

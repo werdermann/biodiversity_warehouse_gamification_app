@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:biodiversity/data/dto/create_sighting_dto.dart';
 import 'package:biodiversity/data/dto/gamification_config.dart';
+import 'package:biodiversity/data/dto/gamification_result_response.dart';
 import 'package:biodiversity/data/dto/login_result.dart';
 import 'package:biodiversity/data/dto/user.dart';
 import 'package:dio/dio.dart';
@@ -21,12 +22,9 @@ abstract class RestClient {
     @Field('password') required String password,
   });
 
-  // TODO: Check how to combine these.
-  // TODO: https://github.com/trevorwang/retrofit.dart/issues/529
-
   @MultiPart()
   @POST('sighting')
-  Future<dynamic> createSighting({
+  Future<GamificationResultResponse> createSighting({
     @Part() required CreateSightingDto createSightingDto,
     @Part() required List<MultipartFile> files,
   });
