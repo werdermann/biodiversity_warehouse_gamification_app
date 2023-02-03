@@ -18,8 +18,6 @@ class GetLeaderboardUseCase {
     try {
       final user = _authRepository.currentUser;
 
-      print("USERNAME ${user.username}");
-
       final leaderboard = await _gamificationRepository.getLeaderboard(
         username: user.username!,
       );

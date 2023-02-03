@@ -3,8 +3,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class StepThree extends StatelessWidget {
-  const StepThree({super.key});
+class ReportStepThree extends StatelessWidget {
+  const ReportStepThree({super.key});
 
   @override
   Widget build(BuildContext context) {

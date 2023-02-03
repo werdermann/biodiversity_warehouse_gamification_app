@@ -1,6 +1,6 @@
 part of 'app_cubit.dart';
 
-enum AppStatus { authenticated, unauthenticated }
+enum AppStatus { authenticated, unauthenticated, onBoarding }
 
 class AppState extends Equatable {
   /// Constructor

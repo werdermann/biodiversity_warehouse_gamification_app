@@ -5,8 +5,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class StepOne extends StatelessWidget {
-  const StepOne({super.key});
+class ReportStepOne extends StatelessWidget {
+  const ReportStepOne({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -146,24 +146,6 @@ class StepOne extends StatelessWidget {
                         );
                       },
                     ),
-                    /*
-                    ListTile(
-                      title: Text('REPORT.COMMENT'.tr()),
-                      trailing: IconButton(
-                        onPressed: () => showDialog(
-                          context: context,
-                          builder: (_) => BlocProvider.value(
-                            value: cubit,
-                            child: SpeciesCommentDialog(
-                              speciesIndex: index,
-                            ),
-                          ),
-                        ),
-                        icon: const Icon(Icons.comment),
-                      ),
-                    ),
-
-                     */
                     if (state.species.length > 1)
                       Column(
                         mainAxisSize: MainAxisSize.min,

@@ -1,6 +1,7 @@
 import 'package:biodiversity/presentation/app/app.dart';
 import 'package:biodiversity/presentation/home/home.dart';
 import 'package:biodiversity/presentation/login/login.dart';
+import 'package:biodiversity/presentation/on_boarding/on_boarding.dart';
 import 'package:biodiversity/presentation/ui/snackbars.dart';
 import 'package:biodiversity/presentation/ui/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -30,9 +31,14 @@ class AppView extends StatelessWidget {
           },
           buildWhen: (previous, current) => previous.status != current.status,
           builder: (context, state) {
-            return state.status == AppStatus.authenticated
-                ? const HomePage()
-                : const LoginPage();
+            switch (state.status) {
+              case AppStatus.authenticated:
+                return const HomePage();
+              case AppStatus.unauthenticated:
+                return const LoginPage();
+              case AppStatus.onBoarding:
+                return const OnBoardingPage();
+            }
           },
         ),
       ),

@@ -22,4 +22,9 @@ class LocalStorageRepositoryImpl implements LocalStorageRepository {
   Future<bool> clearStorage() async {
     return await _sharedPreferences.clear();
   }
+
+  @override
+  Future<bool> storeBool({required bool value, required String key}) async {
+    return await _sharedPreferences.setBool(key, value);
+  }
 }

@@ -11,6 +11,8 @@ import 'package:biodiversity/domain/use_case/location/request_location_permissio
 import 'package:biodiversity/domain/use_case/login/check_token_use_case.dart';
 import 'package:biodiversity/domain/use_case/login/login_use_case.dart';
 import 'package:biodiversity/domain/use_case/logout/logout_use_case.dart';
+import 'package:biodiversity/domain/use_case/on_boarding/finish_on_boarding_use_case.dart';
+import 'package:biodiversity/domain/use_case/on_boarding/has_on_boarding_finished_use_case.dart';
 import 'package:biodiversity/domain/use_case/submit/submit_sighting_use_case.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_camera_image_use_case.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_gallery_image_use_case.dart';
@@ -110,6 +112,14 @@ void main() async {
     authRepository: authRepository,
   );
 
+  final finishOnBoardingUseCase = FinishOnBoardingUseCase(
+    localStorageRepository: localStorage,
+  );
+
+  final hasOnBoardingFinishedUseCase = HasOnBoardingFinishedUseCase(
+    localStorageRepository: localStorage,
+  );
+
   runApp(
     App(
       checkTokenUseCase: checkTokenUseCase,
@@ -126,6 +136,8 @@ void main() async {
       gamificationRepository: gamificationRepository,
       logoutUseCase: logoutUseCase,
       getLeaderboardUseCase: getLeaderboardUseCase,
+      hasOnBoardingFinishedUseCase: hasOnBoardingFinishedUseCase,
+      finishOnBoardingUseCase: finishOnBoardingUseCase,
     ),
   );
 }

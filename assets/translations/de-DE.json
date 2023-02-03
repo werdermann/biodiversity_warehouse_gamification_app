@@ -3,7 +3,19 @@
     "POINTS": "Punkte",
     "LEADERBOARD": "Rangliste",
     "BADGES": "Abzeichen",
+    "CONTINUE": "Weiter",
     "UNKNOWN_NAME": "Unbekannter Name"
+  },
+  "ON_BOARDING": {
+    "TITLE": "Willkommen beim \nBiodiversity Warehouse",
+    "INTRO": "Das Biodiversity-Warehouse (BDW) ist ein Projekt der Hochschule Bremen. Es dient zum Erfassen der Artenvielfalt in unterschiedlichen Regionen.",
+    "REPORT_SIGHTINGS": "Melde Funde",
+    "REPORT_SIGHTINGS_DESCRIPTION": "Registriere Tierarten aus deinem Umfeld",
+    "HELP_SCIENCE": "Helfe Wissenschaftler mit deinen Ergebnissen bei ihrer Forschung",
+    "HELP_SCIENCE_DESCRIPTION": "Verbessere die Wissenschaft",
+    "REPORT_FIRST_SIGHTING": "Melde deinen ersten Fund",
+    "INTRODUCTION": "Einleitung",
+    "DIALOG_1": "Das Melden von Tieren ist die Kernfunktionalität der App. In diesem Tutorial werden dir die einzelnen Schritte für das eigenständige Melden von Funden beigebracht. Probiere dabei gerne die verschiedenen Felder aus, um dich mit ihnen vertraut zu machen. Keine Sorge der Prozess dient zum Üben und wird nicht der Datenbank gespeichert."
   },
   "LOGIN": {
     "PROTOTYPE": "Gamification Prototype",

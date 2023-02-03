@@ -9,6 +9,8 @@ import 'package:biodiversity/domain/use_case/location/request_location_permissio
 import 'package:biodiversity/domain/use_case/login/check_token_use_case.dart';
 import 'package:biodiversity/domain/use_case/login/login_use_case.dart';
 import 'package:biodiversity/domain/use_case/logout/logout_use_case.dart';
+import 'package:biodiversity/domain/use_case/on_boarding/finish_on_boarding_use_case.dart';
+import 'package:biodiversity/domain/use_case/on_boarding/has_on_boarding_finished_use_case.dart';
 import 'package:biodiversity/domain/use_case/submit/submit_sighting_use_case.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_camera_image_use_case.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_gallery_image_use_case.dart';
@@ -34,6 +36,8 @@ class App extends StatelessWidget {
     required this.gamificationRepository,
     required this.logoutUseCase,
     required this.getLeaderboardUseCase,
+    required this.hasOnBoardingFinishedUseCase,
+    required this.finishOnBoardingUseCase,
   });
 
   /// Use cases
@@ -47,6 +51,8 @@ class App extends StatelessWidget {
   final GetGamificationConfigUseCase getGamificationConfigUseCase;
   final LogoutUseCase logoutUseCase;
   final GetLeaderboardUseCase getLeaderboardUseCase;
+  final HasOnBoardingFinishedUseCase hasOnBoardingFinishedUseCase;
+  final FinishOnBoardingUseCase finishOnBoardingUseCase;
 
   /// Repositories
   final LocalStorageRepository localStorage;
@@ -72,6 +78,8 @@ class App extends StatelessWidget {
           RepositoryProvider(create: (_) => getGamificationConfigUseCase),
           RepositoryProvider(create: (_) => logoutUseCase),
           RepositoryProvider(create: (_) => getLeaderboardUseCase),
+          RepositoryProvider(create: (_) => hasOnBoardingFinishedUseCase),
+          RepositoryProvider(create: (_) => finishOnBoardingUseCase),
 
           /// Repositories
           RepositoryProvider(create: (_) => authRepository),
@@ -84,6 +92,7 @@ class App extends StatelessWidget {
             checkTokenUseCase: checkTokenUseCase,
             authRepository: authRepository,
             getGamificationConfigUseCase: getGamificationConfigUseCase,
+            hasOnBoardingFinishedUseCase: hasOnBoardingFinishedUseCase,
           ),
           child: const AppView(),
         ),

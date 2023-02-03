@@ -85,7 +85,13 @@ class ReportView extends StatelessWidget {
   }
 
   Widget get _stepView {
-    const steps = [StepOne(), StepTwo(), StepThree(), StepFour(), StepFive()];
+    const steps = [
+      ReportStepOne(),
+      ReportStepTwo(),
+      ReportStepThree(),
+      ReportStepFour(),
+      ReportStepFive()
+    ];
 
     return BlocBuilder<ReportCubit, ReportState>(
       buildWhen: (previous, current) => previous.step != current.step,

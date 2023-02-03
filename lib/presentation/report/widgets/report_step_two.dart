@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 
-class StepTwo extends StatelessWidget {
-  const StepTwo({super.key});
+class ReportStepTwo extends StatelessWidget {
+  const ReportStepTwo({super.key});
 
   @override
   Widget build(BuildContext context) {
