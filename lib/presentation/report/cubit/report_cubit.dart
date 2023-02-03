@@ -283,6 +283,10 @@ class ReportCubit extends Cubit<ReportState> {
     emit(state.copyWith(images: images));
   }
 
+  void locationCommentChanged(String value) {
+    emit(state.copyWith(locationComment: value));
+  }
+
   void methodCommentChanged(String value) {
     emit(state.copyWith(methodComment: value));
   }

@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:biodiversity/data/common/network_exceptions.dart';
 import 'package:biodiversity/data/dto/create_sighting_dto.dart';
 import 'package:biodiversity/data/dto/gamification_result_response.dart';
 import 'package:biodiversity/data/rest_client.dart';
@@ -40,16 +39,8 @@ class SightingRepositoryImpl implements SightingRepository {
       );
 
       return result;
-    } catch (e) {
-      print("Error $e");
-
-      final exception = NetworkExceptions.getDioException(e);
-
-      final dio = NetworkExceptions.getDioError(exception);
-
-      print('ERROR ${dio?.response}');
-
-      throw exception;
+    } catch (_) {
+      rethrow;
     }
   }
 }

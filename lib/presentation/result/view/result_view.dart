@@ -1,3 +1,4 @@
+import 'package:biodiversity/domain/model/badge_condition.dart';
 import 'package:biodiversity/presentation/result/cubit/result_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +21,8 @@ class ResultView extends StatelessWidget {
         onPressed: () => Navigator.pop(context),
         child: Text('RESULT.BACK'.tr()),
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: SafeArea(
           child: Container(
             width: size.width,
             padding: const EdgeInsets.all(16),
@@ -38,6 +39,8 @@ class ResultView extends StatelessWidget {
                 const SizedBox(height: 16),
                 _points,
                 _leaderboard,
+                _badges,
+                const SizedBox(height: 62),
               ],
             ),
           ),
@@ -81,13 +84,14 @@ class ResultView extends StatelessWidget {
         // Only show leaderboard when the element is active
         if (!state.config.leaderboardActive ||
             state.result == null ||
-            state.result?.leaderboard == null && state.result?.user == null) {
+            state.result?.leaderboard == null ||
+            state.result?.user == null) {
           return Container();
         }
 
         final leaderboard = state.result!.leaderboard!;
 
-        final appUser = state.result!.user!;
+        final appUser = state.result!.user;
 
         final isFirst = appUser.id == leaderboard.users.first.id;
 
@@ -97,14 +101,101 @@ class ResultView extends StatelessWidget {
                 ? 'RESULT.NEW_POSITION'
                 : 'RESULT.SAME_POSITION';
 
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 16),
+          child: Card(
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Column(
+                children: [
+                  ListTile(
+                    title: Text('GENERAL.LEADERBOARD'.tr()),
+                    subtitle: Text(positionText.tr()),
+                    contentPadding: const EdgeInsets.only(
+                      bottom: 8,
+                      left: 16,
+                      right: 16,
+                    ),
+                  ),
+                  ListView.builder(
+                    itemCount: leaderboard.users.length,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      final position = index + 1;
+                      final user = leaderboard.users[index];
+
+                      final isPlayer = leaderboard.currentPosition == index;
+
+                      return ListTile(
+                        tileColor:
+                            isPlayer ? Colors.green.withOpacity(0.3) : null,
+                        leading: const CircleAvatar(
+                          child: Icon(Icons.person),
+                        ),
+                        title: Row(
+                          children: [
+                            Text('$position. ${user.username}'),
+                            const Spacer(),
+                            Text('${user.points}'),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget get _badges {
+    return BlocBuilder<ResultCubit, ResultState>(
+      buildWhen: (previous, current) => previous.result != current.result,
+      builder: (context, state) {
+        // Only show badges when the element is active
+        if (!state.config.badgesActive ||
+            state.result == null ||
+            state.result?.user == null ||
+            state.result?.newUnlockedBadges == null) {
+          return Container();
+        }
+
+        final newUnlockedBadges = state.result!.newUnlockedBadges;
+
+        final noNewBadges = newUnlockedBadges.isEmpty;
+
+        final user = state.result!.user;
+        final lockedBadges = user.lockedBadges;
+
+        final allBadgesUnlocked = user.lockedBadges.isEmpty;
+
         return Card(
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 8),
             child: Column(
               children: [
                 ListTile(
-                  title: Text('GENERAL.LEADERBOARD'.tr()),
-                  subtitle: Text(positionText.tr()),
+                  title: Text('GENERAL.BADGES'.tr()),
+                  subtitle: Text(
+                    allBadgesUnlocked
+                        ? 'RESULT.ALL_BADGES_UNLOCKED'.tr()
+                        : noNewBadges
+                            ? 'RESULT.NO_BADGE_UNLOCKED'.tr(
+                                namedArgs: {
+                                  'remaining': '${lockedBadges.length}',
+                                },
+                              )
+                            : 'RESULT.NEW_BADGE_UNLOCKED'.tr(
+                                namedArgs: {
+                                  'amount': '${newUnlockedBadges.length}',
+                                  'remaining': '${lockedBadges.length}',
+                                },
+                              ),
+                  ),
                   contentPadding: const EdgeInsets.only(
                     bottom: 8,
                     left: 16,
@@ -112,28 +203,20 @@ class ResultView extends StatelessWidget {
                   ),
                 ),
                 ListView.builder(
-                  itemCount: leaderboard.users.length,
+                  itemCount: newUnlockedBadges.length,
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
-                    final position = index + 1;
-                    final user = leaderboard.users[index];
-
-                    final isPlayer = appUser.id == user.id;
+                    final conditionIndex = newUnlockedBadges[index].condition!;
+                    final badge = BadgeCondition.values[conditionIndex];
 
                     return ListTile(
-                      tileColor:
-                          isPlayer ? Colors.green.withOpacity(0.3) : null,
-                      leading: const CircleAvatar(
-                        child: Icon(Icons.person),
+                      leading: CircleAvatar(
+                        foregroundColor: Colors.transparent,
+                        child: Image.asset(badge.imagePath),
                       ),
-                      title: Row(
-                        children: [
-                          Text('$position. ${user.username}'),
-                          const Spacer(),
-                          Text('${user.points}'),
-                        ],
-                      ),
+                      title: Text(badge.title.tr()),
+                      subtitle: Text(badge.unlockedText.tr()),
                     );
                   },
                 ),
@@ -144,11 +227,4 @@ class ResultView extends StatelessWidget {
       },
     );
   }
-
-  /*
-  Widget get _badges {
-    return BlocBuilder(builder: builder)
-  }
-
-   */
 }

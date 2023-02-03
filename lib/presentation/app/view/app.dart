@@ -3,6 +3,7 @@ import 'package:biodiversity/domain/repository/gamification_repository.dart';
 import 'package:biodiversity/domain/repository/image_picker_repository.dart';
 import 'package:biodiversity/domain/repository/local_storage_repository.dart';
 import 'package:biodiversity/domain/use_case/config/get_gamification_config_use_case.dart';
+import 'package:biodiversity/domain/use_case/leaderboard/get_leaderboard_use_case.dart';
 import 'package:biodiversity/domain/use_case/location/get_location_use_case.dart';
 import 'package:biodiversity/domain/use_case/location/request_location_permission_use_case.dart';
 import 'package:biodiversity/domain/use_case/login/check_token_use_case.dart';
@@ -32,6 +33,7 @@ class App extends StatelessWidget {
     required this.getGamificationConfigUseCase,
     required this.gamificationRepository,
     required this.logoutUseCase,
+    required this.getLeaderboardUseCase,
   });
 
   /// Use cases
@@ -44,6 +46,7 @@ class App extends StatelessWidget {
   final SubmitSightingUseCase submitSightingUseCase;
   final GetGamificationConfigUseCase getGamificationConfigUseCase;
   final LogoutUseCase logoutUseCase;
+  final GetLeaderboardUseCase getLeaderboardUseCase;
 
   /// Repositories
   final LocalStorageRepository localStorage;
@@ -68,6 +71,7 @@ class App extends StatelessWidget {
           RepositoryProvider(create: (_) => submitSightingUseCase),
           RepositoryProvider(create: (_) => getGamificationConfigUseCase),
           RepositoryProvider(create: (_) => logoutUseCase),
+          RepositoryProvider(create: (_) => getLeaderboardUseCase),
 
           /// Repositories
           RepositoryProvider(create: (_) => authRepository),

@@ -31,7 +31,7 @@ mixin _$GamificationResultResponse {
   @JsonKey()
   LeaderboardResponse? get leaderboard => throw _privateConstructorUsedError;
   @JsonKey()
-  User? get user => throw _privateConstructorUsedError;
+  User get user => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,10 +51,10 @@ abstract class $GamificationResultResponseCopyWith<$Res> {
       @JsonKey() List<UnlockedBadge> newUnlockedBadges,
       @JsonKey() bool hasNewLeaderboardPosition,
       @JsonKey() LeaderboardResponse? leaderboard,
-      @JsonKey() User? user});
+      @JsonKey() User user});
 
   $LeaderboardResponseCopyWith<$Res>? get leaderboard;
-  $UserCopyWith<$Res>? get user;
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -75,7 +75,7 @@ class _$GamificationResultResponseCopyWithImpl<$Res,
     Object? newUnlockedBadges = null,
     Object? hasNewLeaderboardPosition = null,
     Object? leaderboard = freezed,
-    Object? user = freezed,
+    Object? user = null,
   }) {
     return _then(_value.copyWith(
       gainedPoints: null == gainedPoints
@@ -94,10 +94,10 @@ class _$GamificationResultResponseCopyWithImpl<$Res,
           ? _value.leaderboard
           : leaderboard // ignore: cast_nullable_to_non_nullable
               as LeaderboardResponse?,
-      user: freezed == user
+      user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User?,
+              as User,
     ) as $Val);
   }
 
@@ -115,12 +115,8 @@ class _$GamificationResultResponseCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res>? get user {
-    if (_value.user == null) {
-      return null;
-    }
-
-    return $UserCopyWith<$Res>(_value.user!, (value) {
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
       return _then(_value.copyWith(user: value) as $Val);
     });
   }
@@ -140,12 +136,12 @@ abstract class _$$_GamificationResultResponseCopyWith<$Res>
       @JsonKey() List<UnlockedBadge> newUnlockedBadges,
       @JsonKey() bool hasNewLeaderboardPosition,
       @JsonKey() LeaderboardResponse? leaderboard,
-      @JsonKey() User? user});
+      @JsonKey() User user});
 
   @override
   $LeaderboardResponseCopyWith<$Res>? get leaderboard;
   @override
-  $UserCopyWith<$Res>? get user;
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -165,7 +161,7 @@ class __$$_GamificationResultResponseCopyWithImpl<$Res>
     Object? newUnlockedBadges = null,
     Object? hasNewLeaderboardPosition = null,
     Object? leaderboard = freezed,
-    Object? user = freezed,
+    Object? user = null,
   }) {
     return _then(_$_GamificationResultResponse(
       gainedPoints: null == gainedPoints
@@ -184,10 +180,10 @@ class __$$_GamificationResultResponseCopyWithImpl<$Res>
           ? _value.leaderboard
           : leaderboard // ignore: cast_nullable_to_non_nullable
               as LeaderboardResponse?,
-      user: freezed == user
+      user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User?,
+              as User,
     ));
   }
 }
@@ -200,7 +196,7 @@ class _$_GamificationResultResponse implements _GamificationResultResponse {
       @JsonKey() final List<UnlockedBadge> newUnlockedBadges = const [],
       @JsonKey() this.hasNewLeaderboardPosition = false,
       @JsonKey() this.leaderboard,
-      @JsonKey() this.user})
+      @JsonKey() this.user = User.empty})
       : _newUnlockedBadges = newUnlockedBadges;
 
   factory _$_GamificationResultResponse.fromJson(Map<String, dynamic> json) =>
@@ -227,7 +223,7 @@ class _$_GamificationResultResponse implements _GamificationResultResponse {
   final LeaderboardResponse? leaderboard;
   @override
   @JsonKey()
-  final User? user;
+  final User user;
 
   @override
   String toString() {
@@ -283,7 +279,7 @@ abstract class _GamificationResultResponse
       @JsonKey() final List<UnlockedBadge> newUnlockedBadges,
       @JsonKey() final bool hasNewLeaderboardPosition,
       @JsonKey() final LeaderboardResponse? leaderboard,
-      @JsonKey() final User? user}) = _$_GamificationResultResponse;
+      @JsonKey() final User user}) = _$_GamificationResultResponse;
 
   factory _GamificationResultResponse.fromJson(Map<String, dynamic> json) =
       _$_GamificationResultResponse.fromJson;
@@ -302,7 +298,7 @@ abstract class _GamificationResultResponse
   LeaderboardResponse? get leaderboard;
   @override
   @JsonKey()
-  User? get user;
+  User get user;
   @override
   @JsonKey(ignore: true)
   _$$_GamificationResultResponseCopyWith<_$_GamificationResultResponse>

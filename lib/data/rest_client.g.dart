@@ -93,12 +93,35 @@ class _RestClient implements RestClient {
     )
             .compose(
               _dio.options,
-              'gamification',
+              'gamification/config',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = GamificationConfig.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<LeaderboardResponse> getLeaderboard({required username}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = {'username': username};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<LeaderboardResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'gamification/leaderboard',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = LeaderboardResponse.fromJson(_result.data!);
     return value;
   }
 
@@ -116,7 +139,7 @@ class _RestClient implements RestClient {
     )
             .compose(
               _dio.options,
-              'profile',
+              'user/me',
               queryParameters: queryParameters,
               data: _data,
             )

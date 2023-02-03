@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:biodiversity/data/common/network_exceptions.dart';
 import 'package:biodiversity/data/dto/gamification_config.dart';
 import 'package:biodiversity/data/dto/gamification_result_response.dart';
+import 'package:biodiversity/data/dto/leaderboard_response.dart';
 import 'package:biodiversity/data/rest_client.dart';
 import 'package:biodiversity/domain/repository/gamification_repository.dart';
 import 'package:cache/cache.dart';
@@ -35,6 +36,14 @@ class GamificationRepositoryImpl implements GamificationRepository {
   /// Should only be used for testing purposes.
   @visibleForTesting
   static const resultCacheKey = '__result_cache_key__';
+
+  final StreamController<LeaderboardResponse> _leaderboardStreamController =
+      StreamController<LeaderboardResponse>.broadcast();
+
+  /// Leaderboard cache key.
+  /// Should only be used for testing purposes.
+  @visibleForTesting
+  static const leaderboardCacheKey = '__leaderboard_cache_key__';
 
   @override
   Future<GamificationConfig> getGamificationConfig() async {
@@ -85,5 +94,36 @@ class GamificationRepositoryImpl implements GamificationRepository {
   void updateResult({required GamificationResultResponse result}) {
     _cache.write(key: resultCacheKey, value: result);
     _resultStreamController.add(result);
+  }
+
+  @override
+  Future<LeaderboardResponse> getLeaderboard({required String username}) async {
+    try {
+      final leaderboard = await _biodiversityApi.getLeaderboard(
+        username: username,
+      );
+
+      return leaderboard;
+    } catch (_) {
+      rethrow;
+    }
+  }
+
+  @override
+  LeaderboardResponse? get currentLeaderboard {
+    return _cache.read<LeaderboardResponse>(key: leaderboardCacheKey);
+  }
+
+  @override
+  Stream<LeaderboardResponse> get leaderboard {
+    return _leaderboardStreamController.stream.asBroadcastStream().map(
+          (leaderboard) => leaderboard,
+        );
+  }
+
+  @override
+  void updateLeaderboard({required LeaderboardResponse leaderboard}) {
+    _cache.write(key: leaderboardCacheKey, value: leaderboard);
+    _leaderboardStreamController.add(leaderboard);
   }
 }

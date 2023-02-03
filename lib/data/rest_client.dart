@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:biodiversity/data/dto/create_sighting_dto.dart';
 import 'package:biodiversity/data/dto/gamification_config.dart';
 import 'package:biodiversity/data/dto/gamification_result_response.dart';
+import 'package:biodiversity/data/dto/leaderboard_response.dart';
 import 'package:biodiversity/data/dto/login_result.dart';
 import 'package:biodiversity/data/dto/user.dart';
 import 'package:dio/dio.dart';
@@ -29,9 +30,14 @@ abstract class RestClient {
     @Part() required List<MultipartFile> files,
   });
 
-  @GET('gamification')
+  @GET('gamification/config')
   Future<GamificationConfig> getGamificationConfig();
 
-  @GET('profile')
+  @GET('gamification/leaderboard')
+  Future<LeaderboardResponse> getLeaderboard({
+    @Field('username') required String username,
+  });
+
+  @GET('user/me')
   Future<User> getUser();
 }

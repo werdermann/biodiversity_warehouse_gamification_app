@@ -31,17 +31,13 @@ class CheckTokenUseCase {
       try {
         final user = await _authRepository.fetchUser();
 
-        print('User $user');
-
         _authRepository.updateUser(user: user);
 
         yield const EmptyResource.success();
       } catch (_) {
-        print('ERROR ! 2');
         yield const EmptyResource.error('ERROR.GENERAL');
       }
     } else {
-      print('ERROR ! 1');
       yield const EmptyResource.error('ERROR.GENERAL');
     }
   }

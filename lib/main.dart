@@ -5,6 +5,7 @@ import 'package:biodiversity/data/repository/image_picker_repository_impl.dart';
 import 'package:biodiversity/data/repository/local_storage_repository_impl.dart';
 import 'package:biodiversity/data/repository/sighting_repository_impl.dart';
 import 'package:biodiversity/domain/use_case/config/get_gamification_config_use_case.dart';
+import 'package:biodiversity/domain/use_case/leaderboard/get_leaderboard_use_case.dart';
 import 'package:biodiversity/domain/use_case/location/get_location_use_case.dart';
 import 'package:biodiversity/domain/use_case/location/request_location_permission_use_case.dart';
 import 'package:biodiversity/domain/use_case/login/check_token_use_case.dart';
@@ -91,6 +92,7 @@ void main() async {
   final submitSightingUseCase = SubmitSightingUseCase(
     gamificationRepository: gamificationRepository,
     sightingRepository: sightingRepository,
+    authRepository: authRepository,
   );
 
   final getGamificationConfigUseCase = GetGamificationConfigUseCase(
@@ -100,6 +102,11 @@ void main() async {
   final logoutUseCase = LogoutUseCase(
     dio: dio,
     localStorageRepository: localStorage,
+    authRepository: authRepository,
+  );
+
+  final getLeaderboardUseCase = GetLeaderboardUseCase(
+    gamificationRepository: gamificationRepository,
     authRepository: authRepository,
   );
 
@@ -118,6 +125,7 @@ void main() async {
       getGamificationConfigUseCase: getGamificationConfigUseCase,
       gamificationRepository: gamificationRepository,
       logoutUseCase: logoutUseCase,
+      getLeaderboardUseCase: getLeaderboardUseCase,
     ),
   );
 }

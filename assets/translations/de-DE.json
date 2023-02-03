@@ -24,6 +24,7 @@
       "STEP_1": "Schritt 1 / 5: Artinformationen",
       "SPECIES_INFORMATION": "Artinformationen",
       "SPECIES": "Art",
+      "COMMENT": "Artkommentar (optional)",
       "AMOUNT": "Anzahl",
       "STATUS": "Status",
       "ADD_SPECIES": "Art hinzufügen",
@@ -33,6 +34,7 @@
     "STEP_2": {
       "STEP_2": "Schritt 2 / 5: Ort",
       "PLACE": "Ort",
+      "PLACE_COMMENT": "Ortskommentar (optional)",
       "SET_POSITION": "Position setzen",
       "CURRENT_POSITION": "Aktuelle Position",
       "INSTRUCTIONS": "Klicke auf die Karte oder auf den Knopf um die Position deines Fundes zu setzen."
@@ -48,7 +50,7 @@
       "REPORT_DATE": "Funddatum",
       "UNKNOWN_DATE": "Unbekanntes Datum",
       "METHOD": "Methode",
-      "COMMENT": "Kommentar",
+      "COMMENT": "Methodenkommentar (optional)",
       "SELECT_DATE": "Funddatum auswählen",
       "IMAGE": "Bild {index}",
       "NO_IMAGE_SELECTED": "Noch kein Nachweisbild ausgewählt",
@@ -62,7 +64,6 @@
         "MISC": "Sonstige",
         "TRADITIONAL_FISHING": "Traditionelle Fischerei"
       }
-
     },
     "STEP_5": {
       "STEP_5": "Schritt 5 / 5: Zusammenfassung",
@@ -88,6 +89,8 @@
     "BACK": "Zurück zum Menü",
     "GAINED_POINTS": "Mit dieser Sichtung hast du +{points} Punkte dazu gewonnen. Deine Punktzahl basiert auf den Informationsgehalt deiner Sichtung.",
     "NEW_BADGE_UNLOCKED": "Du hast {amount} Abzeichen freigeschaltet. Es können noch {remaining} Abzeichen freigeschaltet werden.",
+    "NO_BADGE_UNLOCKED": "Es können noch {remaining} Abzeichen freigeschaltet werden.",
+    "ALL_BADGES_UNLOCKED": "Du hast alle Abzeichen freigeschaltet. Klasse Leistung.",
     "NEW_POSITION": "Du bist eine Position in der Rangliste aufgestiegen.",
     "SAME_POSITION": "Du befindest dich noch auf der gleichen Position.",
     "TOP_POSITION": "Du bist aktuell der Ranglistenbeste. Starke Leistung."
@@ -109,14 +112,19 @@
   },
   "SUCCESS": {
     "GENERAL": "Super. Aktion erfolgreich durchgeführt",
-    "GET_CONFIG": "Konfiguration der Gamifizierung erfolgreich geladen."
+    "GET_CONFIG": "Konfiguration der Gamifizierung erfolgreich geladen.",
+    "GET_LEADERBOARD": "Rangliste erfolgreich geladen."
   },
   "LEADERBOARD": {
-    "LEADERBOARD": "Rangliste"
+    "LEADERBOARD": "Rangliste",
+    "POINT_SYSTEM": "Punktesystem",
+    "POINTS_BASED_ON_INFORMATION": "Deine Punktzahl ist abhängig vom Informationsgehalt deiner Funde"
   },
   "BADGES": {
     "BADGES": "Abzeichen",
+    "CONDITION": "Bedingung",
     "UNLOCKED_BADGES": "Freigeschaltete Abzeichen",
+    "UNLOCKED_AMOUNT": "{remaining}/{all} Abzeichen freigeschaltet",
     "LOCKED_BADGES": "Freispielbare Abzeichen"
   },
   "ANIMALS": {
@@ -132,5 +140,70 @@
     "NOT_SPECIFIED": "Keine Angabe"
   },
   "BADGE_DESCRIPTIONS": {
+    "ONE_SIGHTING_REPORTED": {
+      "TITLE": "Entdecker - Anfänger",
+      "UNLOCKED": "Du hast deinen ersten Fund gemeldet",
+      "CONDITION": "Melde deinen ersten Fund"
+    },
+    "FIVE_SIGHTINGS_REPORTED": {
+      "TITLE": "Entdecker - Amateur",
+      "UNLOCKED": "Du hast 5 Funde gemeldet",
+      "CONDITION": "Melde 5 Funde"
+    },
+    "TEN_SIGHTINGS_REPORTED": {
+      "TITLE": "Entdecker - Profi",
+      "UNLOCKED": "Du hast 10 Funde gemeldet",
+      "CONDITION": "Melde 10 Funde"
+    },
+    "TWENTY_SIGHTINGS_REPORTED": {
+      "TITLE": "Entdecker - Experte",
+      "UNLOCKED": "Du hast 20 Funde gemeldet",
+      "CONDITION": "Melde 20 Funde"
+    },
+    "ONE_COMMENT_WRITTEN": {
+      "TITLE": "Autor - Anfänger",
+      "UNLOCKED": "Du hast deinen ersten Kommentar verfasst",
+      "CONDITION": "Verfasse deinen ersten Kommentar"
+    },
+    "FIVE_COMMENTS_REPORTED": {
+      "TITLE": "Autor - Amateur",
+      "UNLOCKED": "Du hast 5 Kommentare verfasst",
+      "CONDITION": "Verfasse 5 Kommentare"
+    },
+    "TEN_COMMENTS_REPORTED": {
+      "TITLE": "Autor - Profi",
+      "UNLOCKED": "Du hast 10 Kommentare verfasst",
+      "CONDITION": "Verfasse 10 Kommentare"
+    },
+    "TWENTY_COMMENTS_REPORTED": {
+      "TITLE": "Autor - Experte",
+      "UNLOCKED": "Du hast 20 Kommentare verfasst",
+      "CONDITION": "Verfasse 20 Kommentare"
+    },
+    "ONE_PHOTO_TAKEN": {
+      "TITLE": "Fotograf - Anfänger",
+      "UNLOCKED": "Du hast dein erstes Nachweisbild erstellt",
+      "CONDITION": "Erstelle dein erstes Nachweisbild"
+    },
+    "FIVE_PHOTOS_TAKEN": {
+      "TITLE": "Fotograf - Amateur",
+      "UNLOCKED": "Du hast 5 Nachweisbilder erstellt",
+      "CONDITION": "Erstelle 5 Nachweisbilder"
+    },
+    "TEN_PHOTOS_TAKEN": {
+      "TITLE": "Fotograf - Profi",
+      "UNLOCKED": "Du hast 10 Nachweisbilder erstellt",
+      "CONDITION": "Erstelle 10 Nachweisbilder"
+    },
+    "TWENTY_PHOTOS_TAKEN": {
+      "TITLE": "Fotograf - Experte",
+      "UNLOCKED": "Du hast 20 Nachweisbilder erstellt",
+      "CONDITION": "Erstelle 20 Nachweisbilder"
+    },
+    "ALL_BADGES": {
+      "TITLE": "Abräumer",
+      "UNLOCKED": "Du hast alle Abzeichen freigeschaltet",
+      "CONDITION": "Schalte alle Abzeichen frei"
+    }
   }
 }

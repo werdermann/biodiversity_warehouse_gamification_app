@@ -1,8 +1,10 @@
 import 'package:biodiversity/data/dto/gamification_config.dart';
 import 'package:biodiversity/data/dto/gamification_result_response.dart';
+import 'package:biodiversity/data/dto/leaderboard_response.dart';
 
 abstract class GamificationRepository {
   Future<GamificationConfig> getGamificationConfig();
+  Future<LeaderboardResponse> getLeaderboard({required String username});
 
   void updateConfig({required GamificationConfig config});
 
@@ -13,4 +15,9 @@ abstract class GamificationRepository {
 
   Stream<GamificationResultResponse> get result;
   GamificationResultResponse? get currentResult;
+
+  void updateLeaderboard({required LeaderboardResponse leaderboard});
+
+  Stream<LeaderboardResponse> get leaderboard;
+  LeaderboardResponse? get currentLeaderboard;
 }

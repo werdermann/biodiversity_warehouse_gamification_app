@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 
-// TODO: Add location comment
-
 class StepTwo extends StatelessWidget {
   const StepTwo({super.key});
 
@@ -37,6 +35,8 @@ class StepTwo extends StatelessWidget {
             ],
           ),
         ),
+        const SizedBox(height: 16),
+        _locationComment,
       ],
     );
   }
@@ -82,6 +82,24 @@ class StepTwo extends StatelessWidget {
                     )
                   : Container(),
             ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget get _locationComment {
+    return BlocBuilder<ReportCubit, ReportState>(
+      buildWhen: (previous, current) =>
+          previous.locationComment != current.locationComment,
+      builder: (context, state) {
+        final cubit = context.read<ReportCubit>();
+
+        return TextFormField(
+          initialValue: state.locationComment,
+          onChanged: cubit.locationCommentChanged,
+          decoration: InputDecoration(
+            labelText: 'REPORT.STEP_2.PLACE_COMMENT'.tr(),
           ),
         );
       },

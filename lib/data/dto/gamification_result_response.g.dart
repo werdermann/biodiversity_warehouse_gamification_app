@@ -21,7 +21,7 @@ _$_GamificationResultResponse _$$_GamificationResultResponseFromJson(
           : LeaderboardResponse.fromJson(
               json['leaderboard'] as Map<String, dynamic>),
       user: json['user'] == null
-          ? null
+          ? User.empty
           : User.fromJson(json['user'] as Map<String, dynamic>),
     );
 

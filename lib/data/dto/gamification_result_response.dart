@@ -13,7 +13,7 @@ class GamificationResultResponse with _$GamificationResultResponse {
     @Default([]) @JsonKey() List<UnlockedBadge> newUnlockedBadges,
     @Default(false) @JsonKey() bool hasNewLeaderboardPosition,
     @JsonKey() LeaderboardResponse? leaderboard,
-    @JsonKey() User? user,
+    @Default(User.empty) @JsonKey() User user,
   }) = _GamificationResultResponse;
 
   factory GamificationResultResponse.fromJson(Map<String, dynamic> json) =>

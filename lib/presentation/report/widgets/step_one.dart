@@ -1,7 +1,6 @@
 import 'package:biodiversity/domain/model/evidence_status.dart';
 import 'package:biodiversity/domain/model/species.dart';
 import 'package:biodiversity/presentation/report/cubit/report_cubit.dart';
-import 'package:biodiversity/presentation/report/widgets/species_comment_dialog.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -130,6 +129,24 @@ class StepOne extends StatelessWidget {
                         ],
                       ),
                     ),
+                    BlocBuilder<ReportCubit, ReportState>(
+                      buildWhen: (previous, current) =>
+                          previous.species[index].comment !=
+                          current.species[index].comment,
+                      builder: (context, state) {
+                        return TextFormField(
+                          initialValue: state.species[index].comment,
+                          onChanged: (value) => cubit.speciesCommentChanged(
+                            index: index,
+                            value: value,
+                          ),
+                          decoration: InputDecoration(
+                            labelText: 'REPORT.STEP_1.COMMENT'.tr(),
+                          ),
+                        );
+                      },
+                    ),
+                    /*
                     ListTile(
                       title: Text('REPORT.COMMENT'.tr()),
                       trailing: IconButton(
@@ -145,6 +162,8 @@ class StepOne extends StatelessWidget {
                         icon: const Icon(Icons.comment),
                       ),
                     ),
+
+                     */
                     if (state.species.length > 1)
                       Column(
                         mainAxisSize: MainAxisSize.min,
