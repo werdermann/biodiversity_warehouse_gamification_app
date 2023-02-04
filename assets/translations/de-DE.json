@@ -4,9 +4,13 @@
     "LEADERBOARD": "Rangliste",
     "BADGES": "Abzeichen",
     "CONTINUE": "Weiter",
-    "UNKNOWN_NAME": "Unbekannter Name"
+    "UNKNOWN_NAME": "Unbekannter Name",
+    "UNDERSTOOD": "Verstanden",
+    "FINISHED": "Fertig"
   },
   "ON_BOARDING": {
+    "STEP": "Schritt {step} / {max}",
+    "REPORT_SIGHTING": "Fund melden",
     "TITLE": "Willkommen beim \nBiodiversity Warehouse",
     "INTRO": "Das Biodiversity-Warehouse (BDW) ist ein Projekt der Hochschule Bremen. Es dient zum Erfassen der Artenvielfalt in unterschiedlichen Regionen.",
     "REPORT_SIGHTINGS": "Melde Funde",
@@ -15,7 +19,22 @@
     "HELP_SCIENCE_DESCRIPTION": "Verbessere die Wissenschaft",
     "REPORT_FIRST_SIGHTING": "Melde deinen ersten Fund",
     "INTRODUCTION": "Einleitung",
-    "DIALOG_1": "Das Melden von Tieren ist die Kernfunktionalität der App. In diesem Tutorial werden dir die einzelnen Schritte für das eigenständige Melden von Funden beigebracht. Probiere dabei gerne die verschiedenen Felder aus, um dich mit ihnen vertraut zu machen. Keine Sorge der Prozess dient zum Üben und wird nicht der Datenbank gespeichert."
+    "DIALOG_1_1": "In diesem Tutorial werden dir die Schritte zum Melden von Funden gezeigt. Das Melden stellt die Hauptfunktion der App dar. Probiere gerne die verschiedenen Eingabefelder aus. Keine Sorge der Prozess dient zum Üben und wird nicht gespeichert.",
+    "DIALOG_1_2_TITLE": "Artinformationen",
+    "DIALOG_1_2_CONTENT_1": "Im 1. Schritt werden die Informationen einer Art angegeben. Als Beispiel verwenden wir ein Eichhörchen",
+    "DIALOG_1_2_CONTENT_2": "Vor dir sieht du verschiedene Eingabefelder",
+    "DIALOG_1_2_CONTENT_3": "Art beschreibt die Art des Tieres",
+    "DIALOG_1_2_CONTENT_4": "Status beschreibt den aktuellen Zustand des Tieres",
+    "DIALOG_1_2_CONTENT_5": "Anzahl beschreibt die Anzahl der Tiere",
+    "DIALOG_1_2_CONTENT_6": "Zusätzlich können Kommentare bezüglich der Art genannt werden. Wenn du mehrere Arten auf einmal registrieren willst, kannst du über den Knopf eine weitere Art hinzufügen.",
+    "DIALOG_2_1_TITLE": "Ort",
+    "DIALOG_2_1_CONTENT_1": "Im 2. Schritt kannst du die Ortsinformationen des Funds eingeben. Hierzu kannst du entweder auf die Karte oder auf den Knopf klicken, um die Position festzulegen. Auch hier besitzt du die Möglichkeit einen zusätzlichen Kommentar zu verfassen.",
+    "DIALOG_3_1_TITLE": "Nachweisbilder",
+    "DIALOG_3_1_CONTENT_1": "Der 3. Schritt dient zum Hinzufügen von Nachweisbildern. Diese können entweder über die Kamera oder der Galerie hochgeladen werden.",
+    "DIALOG_4_1_TITLE": "Methode",
+    "DIALOG_4_1_CONTENT_1": "Im 4. Schritt werden Informationen bezüglich der Sichtmethode abgefragt. Das Datum kannst du über das Kalendar-Symbol verändern. Die Methode über das Klicken des Textfeldes. Außerdem kannst du einen Kommentar bezüglich der Methode verfassen.",
+    "DIALOG_5_1_TITLE": "Zusammenfassung",
+    "DIALOG_5_1_CONTENT_1": "Im 5. Schritt wird eine Zusammenfassung deiner Sichtung dargestellt. Hier kannst du einmal überprüfen ob die Daten korrekt sind. Klicke auf Fund melden, um das Tutorial abzuschließen."
   },
   "LOGIN": {
     "PROTOTYPE": "Gamification Prototype",

@@ -7,4 +7,6 @@ class Constants {
   static double zoomLevel = 16;
   static LatLng mapStartPosition =
       LatLng(53.891901513303246, 8.687039445348567);
+  static LatLng onBoardingMapStartPosition =
+      LatLng(53.888038887120246, 8.680851482537127);
 }

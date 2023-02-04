@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:biodiversity/common/constants.dart';
 import 'package:biodiversity/domain/repository/local_storage_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -7,6 +10,9 @@ class LocalStorageRepositoryImpl implements LocalStorageRepository {
   }) : _sharedPreferences = sharedPreferences;
 
   final SharedPreferences _sharedPreferences;
+
+  final StreamController<bool> _hasOnBoardingSeenStreamController =
+      StreamController.broadcast();
 
   @override
   T? getObject<T>({required String key}) {
@@ -26,5 +32,22 @@ class LocalStorageRepositoryImpl implements LocalStorageRepository {
   @override
   Future<bool> storeBool({required bool value, required String key}) async {
     return await _sharedPreferences.setBool(key, value);
+  }
+
+  @override
+  bool get currentHasOnBoardingSeen {
+    return _sharedPreferences.getBool(Constants.hasOnBoardingSeenKey) ?? false;
+  }
+
+  @override
+  Stream<bool> get hasOnBoardingSeen {
+    return _hasOnBoardingSeenStreamController.stream.asBroadcastStream().map(
+          (hasOnBoardingSeen) => hasOnBoardingSeen,
+        );
+  }
+
+  @override
+  void updateHasOnBoardingSeen({required bool hasOnBoardingSeen}) {
+    _hasOnBoardingSeenStreamController.add(hasOnBoardingSeen);
   }
 }

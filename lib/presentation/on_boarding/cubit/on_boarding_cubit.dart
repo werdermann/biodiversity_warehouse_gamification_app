@@ -1,15 +1,13 @@
 import 'dart:io';
 
 import 'package:biodiversity/common/constants.dart';
-import 'package:biodiversity/data/dto/create_sighting_dto.dart';
-import 'package:biodiversity/data/dto/create_species_entry_dto.dart';
 import 'package:biodiversity/data/dto/report_method.dart';
 import 'package:biodiversity/domain/model/evidence_status.dart';
 import 'package:biodiversity/domain/model/species.dart';
 import 'package:biodiversity/domain/model/species_entry.dart';
 import 'package:biodiversity/domain/use_case/location/get_location_use_case.dart';
 import 'package:biodiversity/domain/use_case/location/request_location_permission_use_case.dart';
-import 'package:biodiversity/domain/use_case/submit/submit_sighting_use_case.dart';
+import 'package:biodiversity/domain/use_case/on_boarding/finish_on_boarding_use_case.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_camera_image_use_case.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_gallery_image_use_case.dart';
 import 'package:equatable/equatable.dart';
@@ -28,18 +26,18 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
     required TakeCameraImageUseCase takeCameraImageUseCase,
     required GetLocationUseCase getLocationUseCase,
     required RequestLocationPermissionUseCase requestLocationPermissionUseCase,
-    required SubmitSightingUseCase submitSightingUseCase,
+    required FinishOnBoardingUseCase finishOnBoardingUseCase,
   })  : _takeGalleryImageUseCase = takeGalleryImageUseCase,
         _takeCameraImageUseCase = takeCameraImageUseCase,
         _getLocationUseCase = getLocationUseCase,
         _requestLocationPermissionUseCase = requestLocationPermissionUseCase,
-        _submitSightingUseCase = submitSightingUseCase,
+        _finishOnBoardingUseCase = finishOnBoardingUseCase,
         super(const OnBoardingState()) {
     // Set current date and start position
     emit(
       state.copyWith(
         date: DateTime.now(),
-        location: Constants.mapStartPosition,
+        location: Constants.onBoardingMapStartPosition,
       ),
     );
 
@@ -50,18 +48,11 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
   final TakeCameraImageUseCase _takeCameraImageUseCase;
   final GetLocationUseCase _getLocationUseCase;
   final RequestLocationPermissionUseCase _requestLocationPermissionUseCase;
-  final SubmitSightingUseCase _submitSightingUseCase;
+  final FinishOnBoardingUseCase _finishOnBoardingUseCase;
 
   final MapController mapController = MapController();
   final MapController summaryMapController = MapController();
-
-  void showNextStep() {
-    emit(state.copyWith(step: state.step + 1));
-  }
-
-  void showPreviousStep() {
-    emit(state.copyWith(step: state.step - 1));
-  }
+  final pageController = PageController();
 
   void addSpeciesEntry() {
     final species = List<SpeciesEntry>.from(state.species);
@@ -300,60 +291,6 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
     emit(state.copyWith(date: date));
   }
 
-  void submitSighting() async {
-    final speciesEntryDtos = state.species
-        .map(
-          (entry) => CreateSpeciesEntryDto(
-            species: entry.species.index,
-            evidenceStatus: entry.evidenceStatus.index,
-            count: entry.count,
-            comment: entry.comment,
-          ),
-        )
-        .toList();
-
-    final createSightingDto = CreateSightingDto(
-      latitude: state.location!.latitude,
-      longitude: state.location!.longitude,
-      locationComment: state.locationComment,
-      date: state.date!.toIso8601String(),
-      reportMethod: state.reportMethod.index,
-      detailsComment: state.methodComment,
-      speciesEntries: speciesEntryDtos,
-    );
-
-    _submitSightingUseCase
-        .execute(createSightingDto: createSightingDto, images: state.images)
-        .forEach((result) {
-      result.when(
-        loading: () {
-          emit(
-            state.copyWith(
-              submitStatus: FormzStatus.submissionInProgress,
-            ),
-          );
-        },
-        success: () {
-          emit(
-            state.copyWith(
-              submitStatus: FormzStatus.submissionSuccess,
-            ),
-          );
-        },
-        error: (message) {
-          emit(
-            state.copyWith(
-              submitError: message,
-              submitStatus: FormzStatus.submissionFailure,
-            ),
-          );
-        },
-      );
-    });
-  }
-
-  final pageController = PageController();
-
   void showNextPage() {
     pageController.nextPage(
       duration: const Duration(milliseconds: 300),
@@ -361,7 +298,62 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
     );
   }
 
+  void showPreviousPage() {
+    pageController.previousPage(
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOutCubic,
+    );
+  }
+
   void pageChanged(int page) {
     emit(state.copyWith(page: page));
+  }
+
+  void showNextPageOfDialogOne() {
+    emit(state.copyWith(dialogOneTextIndex: state.dialogOneTextIndex + 1));
+  }
+
+  void finishDialogOne() {
+    emit(state.copyWith(isDialogOneFinished: true));
+  }
+
+  void resetDialogOne() {
+    emit(state.copyWith(isDialogOneFinished: false, dialogOneTextIndex: 0));
+  }
+
+  void finishDialogTwo() {
+    emit(state.copyWith(isDialogTwoFinished: true));
+  }
+
+  void resetDialogTwo() {
+    emit(state.copyWith(isDialogTwoFinished: false));
+  }
+
+  void finishDialogThree() {
+    emit(state.copyWith(isDialogThreeFinished: true));
+  }
+
+  void resetDialogThree() {
+    emit(state.copyWith(isDialogThreeFinished: false));
+  }
+
+  void finishDialogFour() {
+    emit(state.copyWith(isDialogFourFinished: true));
+  }
+
+  void resetDialogFour() {
+    emit(state.copyWith(isDialogFourFinished: false));
+  }
+
+  void finishDialogFive() {
+    emit(state.copyWith(isDialogFiveFinished: true));
+  }
+
+  void resetDialogFive() {
+    emit(state.copyWith(isDialogFiveFinished: false));
+  }
+
+  void finishOnBoarding() {
+    _finishOnBoardingUseCase.execute().forEach((result) {});
   }
 }

@@ -93,6 +93,7 @@ class App extends StatelessWidget {
             authRepository: authRepository,
             getGamificationConfigUseCase: getGamificationConfigUseCase,
             hasOnBoardingFinishedUseCase: hasOnBoardingFinishedUseCase,
+            localStorageRepository: localStorage,
           ),
           child: const AppView(),
         ),

@@ -82,7 +82,7 @@ class ReportStepOne extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     DropdownButtonFormField(
-                      value: state.species[index].species.index,
+                      value: state.species[index].evidenceStatus.index,
                       decoration: InputDecoration(
                         labelText: 'REPORT.STEP_1.STATUS'.tr(),
                       ),

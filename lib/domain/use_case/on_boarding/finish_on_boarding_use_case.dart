@@ -13,10 +13,16 @@ class FinishOnBoardingUseCase {
     yield const EmptyResource.loading();
 
     try {
+      print("LETS GO!");
+
+      print("FINISH ON BOARDING!");
+
       await _localStorageRepository.storeBool(
         value: true,
         key: Constants.hasOnBoardingSeenKey,
       );
+
+      _localStorageRepository.updateHasOnBoardingSeen(hasOnBoardingSeen: true);
 
       yield const EmptyResource.success();
     } catch (_) {

@@ -3,16 +3,21 @@ part of 'on_boarding_cubit.dart';
 class OnBoardingState extends Equatable {
   const OnBoardingState({
     this.page = 0,
-    this.step = 0,
     this.cameraImageStatus = FormzStatus.pure,
     this.cameraImageError = '',
     this.galleryImageStatus = FormzStatus.pure,
     this.galleryImageError = '',
     this.images = const [],
     this.methodComment = '',
-    this.reportMethod = ReportMethod.notSpecified,
+    this.reportMethod = ReportMethod.visualObservation,
     this.date,
-    this.species = const [SpeciesEntry()],
+    this.species = const [
+      SpeciesEntry(
+        species: Species.squirrel,
+        evidenceStatus: EvidenceStatus.alive,
+        comment: 'Hat gefleckte Streifen',
+      ),
+    ],
     this.locationPermissionStatus = FormzStatus.pure,
     this.locationPermissionError = '',
     this.getPositionStatus = FormzStatus.pure,
@@ -20,11 +25,14 @@ class OnBoardingState extends Equatable {
     this.location,
     this.submitStatus = FormzStatus.pure,
     this.submitError = '',
-    this.locationComment = '',
+    this.locationComment = 'Auf einem Baum',
+    this.dialogOneTextIndex = 0,
+    this.isDialogOneFinished = false,
+    this.isDialogTwoFinished = false,
+    this.isDialogThreeFinished = false,
+    this.isDialogFourFinished = false,
+    this.isDialogFiveFinished = false,
   });
-
-  /// The current step of the reporting process.
-  final int step;
 
   /// Validation status when taking an image from the camera.
   final FormzStatus cameraImageStatus;
@@ -80,10 +88,21 @@ class OnBoardingState extends Equatable {
 
   final int page;
 
+  /// Determines which text should be displayed in the dialog.
+  final int dialogOneTextIndex;
+  final bool isDialogOneFinished;
+
+  final bool isDialogTwoFinished;
+
+  final bool isDialogThreeFinished;
+
+  final bool isDialogFourFinished;
+
+  final bool isDialogFiveFinished;
+
   /// Updates the state and returns a new instance.
   OnBoardingState copyWith({
     int? page,
-    int? step,
     FormzStatus? cameraImageStatus,
     String? cameraImageError,
     FormzStatus? galleryImageStatus,
@@ -101,10 +120,15 @@ class OnBoardingState extends Equatable {
     FormzStatus? submitStatus,
     String? submitError,
     String? locationComment,
+    int? dialogOneTextIndex,
+    bool? isDialogOneFinished,
+    bool? isDialogTwoFinished,
+    bool? isDialogThreeFinished,
+    bool? isDialogFourFinished,
+    bool? isDialogFiveFinished,
   }) {
     return OnBoardingState(
       page: page ?? this.page,
-      step: step ?? this.step,
       cameraImageStatus: cameraImageStatus ?? this.cameraImageStatus,
       cameraImageError: cameraImageError ?? this.cameraImageError,
       galleryImageStatus: galleryImageStatus ?? this.galleryImageStatus,
@@ -124,13 +148,19 @@ class OnBoardingState extends Equatable {
       submitStatus: submitStatus ?? this.submitStatus,
       submitError: submitError ?? this.submitError,
       locationComment: locationComment ?? this.locationComment,
+      dialogOneTextIndex: dialogOneTextIndex ?? this.dialogOneTextIndex,
+      isDialogOneFinished: isDialogOneFinished ?? this.isDialogOneFinished,
+      isDialogTwoFinished: isDialogTwoFinished ?? this.isDialogTwoFinished,
+      isDialogThreeFinished:
+          isDialogThreeFinished ?? this.isDialogThreeFinished,
+      isDialogFourFinished: isDialogFourFinished ?? this.isDialogFourFinished,
+      isDialogFiveFinished: isDialogFiveFinished ?? this.isDialogFiveFinished,
     );
   }
 
   @override
   List<Object?> get props => [
         page,
-        step,
         cameraImageStatus,
         cameraImageError,
         galleryImageStatus,
@@ -148,5 +178,11 @@ class OnBoardingState extends Equatable {
         submitStatus,
         submitError,
         locationComment,
+        dialogOneTextIndex,
+        isDialogOneFinished,
+        isDialogTwoFinished,
+        isDialogThreeFinished,
+        isDialogFourFinished,
+        isDialogFiveFinished,
       ];
 }
