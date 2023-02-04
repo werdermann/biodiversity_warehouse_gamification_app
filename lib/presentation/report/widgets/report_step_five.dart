@@ -47,6 +47,7 @@ class ReportStepFive extends StatelessWidget {
                 ListView.separated(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.zero,
                   itemBuilder: (context, index) {
                     final speciesEntry = state.species[index];
 

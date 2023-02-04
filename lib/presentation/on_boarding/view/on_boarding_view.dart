@@ -224,6 +224,7 @@ class OnBoardingView extends StatelessWidget {
               buttonText: 'GENERAL.CONTINUE',
               title: 'ON_BOARDING.INTRODUCTION',
               content: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [Text('ON_BOARDING.DIALOG_1_1'.tr())],
               ),
@@ -233,6 +234,7 @@ class OnBoardingView extends StatelessWidget {
               buttonText: 'GENERAL.UNDERSTOOD',
               title: 'ON_BOARDING.DIALOG_1_2_TITLE',
               content: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text('ON_BOARDING.DIALOG_1_2_CONTENT_1'.tr()),
@@ -263,6 +265,7 @@ class OnBoardingView extends StatelessWidget {
           buttonText: 'GENERAL.UNDERSTOOD',
           title: 'ON_BOARDING.DIALOG_2_1_TITLE',
           content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [Text('ON_BOARDING.DIALOG_2_1_CONTENT_1'.tr())],
           ),
@@ -279,6 +282,7 @@ class OnBoardingView extends StatelessWidget {
           buttonText: 'GENERAL.UNDERSTOOD',
           title: 'ON_BOARDING.DIALOG_3_1_TITLE',
           content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [Text('ON_BOARDING.DIALOG_3_1_CONTENT_1'.tr())],
           ),
@@ -295,6 +299,7 @@ class OnBoardingView extends StatelessWidget {
           buttonText: 'GENERAL.UNDERSTOOD',
           title: 'ON_BOARDING.DIALOG_4_1_TITLE',
           content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [Text('ON_BOARDING.DIALOG_4_1_CONTENT_1'.tr())],
           ),
@@ -311,6 +316,7 @@ class OnBoardingView extends StatelessWidget {
           buttonText: 'GENERAL.UNDERSTOOD',
           title: 'ON_BOARDING.DIALOG_5_1_TITLE',
           content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [Text('ON_BOARDING.DIALOG_5_1_CONTENT_1'.tr())],
           ),

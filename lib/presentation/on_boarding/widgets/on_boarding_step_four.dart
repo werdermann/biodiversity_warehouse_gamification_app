@@ -11,14 +11,16 @@ class OnBoardingStepFour extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
-      child: Column(
-        children: [
-          _reportDateInputField,
-          const SizedBox(height: 16),
-          _methodInputField,
-          const SizedBox(height: 16),
-          _methodCommentInputField,
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            _reportDateInputField,
+            const SizedBox(height: 16),
+            _methodInputField,
+            const SizedBox(height: 16),
+            _methodCommentInputField,
+          ],
+        ),
       ),
     );
   }

@@ -12,23 +12,25 @@ class OnBoardingStepFive extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
-      child: Column(
-        children: [
-          _details,
-          const SizedBox(height: 16),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Expanded(
-                child: _location,
-              ),
-              const SizedBox(width: 16),
-              Expanded(child: _images),
-            ],
-          ),
-          const SizedBox(height: 16),
-          _methodDetails,
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            _details,
+            const SizedBox(height: 16),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Expanded(
+                  child: _location,
+                ),
+                const SizedBox(width: 16),
+                Expanded(child: _images),
+              ],
+            ),
+            const SizedBox(height: 16),
+            _methodDetails,
+          ],
+        ),
       ),
     );
   }
@@ -50,6 +52,7 @@ class OnBoardingStepFive extends StatelessWidget {
                 ListView.separated(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.zero,
                   itemBuilder: (context, index) {
                     final speciesEntry = state.species[index];
 

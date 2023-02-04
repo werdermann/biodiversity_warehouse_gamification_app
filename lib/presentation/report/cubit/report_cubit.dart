@@ -351,5 +351,13 @@ class ReportCubit extends Cubit<ReportState> {
     });
   }
 
-  void resetState() => emit(state.resetState());
+  void resetState() {
+    emit(state.resetState());
+    emit(
+      state.copyWith(
+        date: DateTime.now(),
+        location: Constants.mapStartPosition,
+      ),
+    );
+  }
 }

@@ -14,32 +14,34 @@ class OnBoardingStepTwo extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.all(16),
-      child: Column(
-        children: [
-          Container(
-            height: 300,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 300,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: _leafletMap,
             ),
-            child: _leafletMap,
-          ),
-          const SizedBox(height: 32),
-          Text('REPORT.STEP_2.INSTRUCTIONS'.tr()),
-          const SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: cubit.getCurrentLocation,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Icon(Icons.add_location),
-                const SizedBox(width: 8),
-                Text('REPORT.STEP_2.CURRENT_POSITION'.tr()),
-              ],
+            const SizedBox(height: 32),
+            Text('REPORT.STEP_2.INSTRUCTIONS'.tr()),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: cubit.getCurrentLocation,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.add_location),
+                  const SizedBox(width: 8),
+                  Text('REPORT.STEP_2.CURRENT_POSITION'.tr()),
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 16),
-          _locationComment,
-        ],
+            const SizedBox(height: 16),
+            _locationComment,
+          ],
+        ),
       ),
     );
   }
