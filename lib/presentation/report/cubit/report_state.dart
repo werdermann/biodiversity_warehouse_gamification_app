@@ -122,6 +122,11 @@ class ReportState extends Equatable {
     );
   }
 
+  /// Resets the state to the default values and returns a new instance.
+  ReportState resetState() {
+    return const ReportState();
+  }
+
   @override
   List<Object?> get props => [
         step,

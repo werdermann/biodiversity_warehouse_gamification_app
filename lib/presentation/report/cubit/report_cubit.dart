@@ -350,4 +350,6 @@ class ReportCubit extends Cubit<ReportState> {
       );
     });
   }
+
+  void resetState() => emit(state.resetState());
 }

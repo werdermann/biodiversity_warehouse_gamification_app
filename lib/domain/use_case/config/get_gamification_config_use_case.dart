@@ -1,4 +1,5 @@
-import 'package:biodiversity/common/empty_resource.dart';
+import 'package:biodiversity/common/resource.dart';
+import 'package:biodiversity/data/dto/gamification_config.dart';
 import 'package:biodiversity/domain/repository/gamification_repository.dart';
 
 class GetGamificationConfigUseCase {
@@ -8,17 +9,17 @@ class GetGamificationConfigUseCase {
 
   final GamificationRepository _gamificationRepository;
 
-  Stream<EmptyResource> execute() async* {
-    yield const EmptyResource.loading();
+  Stream<Resource<GamificationConfig>> execute() async* {
+    yield const Resource.loading();
 
     try {
       final config = await _gamificationRepository.getGamificationConfig();
 
       _gamificationRepository.updateConfig(config: config);
 
-      yield const EmptyResource.success();
+      yield Resource.success(config);
     } catch (_) {
-      yield const EmptyResource.error('ERROR.GENERAL');
+      yield const Resource.error('ERROR.GENERAL');
     }
   }
 }

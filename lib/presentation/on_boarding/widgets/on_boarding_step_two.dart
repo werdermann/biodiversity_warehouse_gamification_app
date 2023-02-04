@@ -13,7 +13,7 @@ class OnBoardingStepTwo extends StatelessWidget {
     final cubit = context.read<OnBoardingCubit>();
 
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Column(
         children: [
           Container(

@@ -30,7 +30,7 @@ class AppCubit extends Cubit<AppState> {
       _hasOnBoardingFinishedChanged,
     );
 
-    _hasOnBoardingFinished();
+    _getGamificationConfig();
   }
 
   final AuthRepository _authRepository;
@@ -51,8 +51,6 @@ class AppCubit extends Cubit<AppState> {
   }
 
   void _userChanged(User user) {
-    print('User changed!');
-
     emit(
       state.copyWith(
         status: user.isNotEmpty
@@ -74,7 +72,13 @@ class AppCubit extends Cubit<AppState> {
             ),
           );
         },
-        success: () {
+        success: (config) {
+          if (config.badgesActive) {
+            _hasOnBoardingFinished();
+          } else {
+            _checkIfTokenIsSaved();
+          }
+
           emit(
             state.copyWith(
               getConfigStatus: FormzStatus.submissionSuccess,
@@ -102,14 +106,12 @@ class AppCubit extends Cubit<AppState> {
           } else {
             _checkIfTokenIsSaved();
           }
-          _getGamificationConfig();
         },
       );
     });
   }
 
   void _hasOnBoardingFinishedChanged(bool value) {
-    print("ON BOARDING CHANGED!");
     if (value) {
       emit(
         state.copyWith(

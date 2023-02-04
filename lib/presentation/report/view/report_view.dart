@@ -1,5 +1,4 @@
 import 'package:biodiversity/presentation/report/report.dart';
-import 'package:biodiversity/presentation/report/widgets/confirm_submission_dialog.dart';
 import 'package:biodiversity/presentation/result/view/result_page.dart';
 import 'package:biodiversity/presentation/ui/snackbars.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -30,6 +29,10 @@ class ReportView extends StatelessWidget {
               previous.submitStatus != current.submitStatus,
           listener: (context, state) {
             if (state.submitStatus.isSubmissionSuccess) {
+              final cubit = context.read<ReportCubit>();
+
+              cubit.resetState();
+
               Navigator.pop(context);
               Navigator.push(context, ResultPage.route());
             }

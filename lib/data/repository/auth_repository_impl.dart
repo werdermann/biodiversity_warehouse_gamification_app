@@ -40,10 +40,6 @@ class AuthRepositoryImpl implements AuthRepository {
   /// Updates the user and triggers the stream controller
   @override
   void updateUser({required User user}) {
-
-    print(user);
-
-    print('UPDATE user!');
     _cache.write(key: userCacheKey, value: user);
     _userStreamController.add(user);
   }
