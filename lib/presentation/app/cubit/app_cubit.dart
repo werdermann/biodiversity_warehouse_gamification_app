@@ -60,7 +60,9 @@ class AppCubit extends Cubit<AppState> {
     );
   }
 
-  void _checkIfTokenIsSaved() => _checkTokenUseCase.execute();
+  void _checkIfTokenIsSaved() => _checkTokenUseCase.execute().forEach(
+        (result) {},
+      );
 
   void _getGamificationConfig() async {
     _getGamificationConfigUseCase.execute().forEach((result) {
@@ -73,7 +75,7 @@ class AppCubit extends Cubit<AppState> {
           );
         },
         success: (config) {
-          if (config.badgesActive) {
+          if (config.onBoardingActive) {
             _hasOnBoardingFinished();
           } else {
             _checkIfTokenIsSaved();
