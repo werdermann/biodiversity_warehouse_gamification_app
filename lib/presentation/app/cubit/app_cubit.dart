@@ -75,8 +75,6 @@ class AppCubit extends Cubit<AppState> {
           );
         },
         success: (config) {
-          print("CONFIG $config");
-
           if (config.onBoardingActive) {
             _hasOnBoardingFinished();
           } else {

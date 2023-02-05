@@ -28,6 +28,12 @@ class AppView extends StatelessWidget {
             if (state.getConfigStatus.isSubmissionSuccess) {
               showSuccessSnackBar(context, message: 'SUCCESS.GET_CONFIG'.tr());
             }
+            if (state.getConfigStatus.isSubmissionFailure) {
+              showErrorSnackBar(
+                context,
+                error: 'ERROR.GET_CONFIG_FAILED'.tr(),
+              );
+            }
           },
           buildWhen: (previous, current) => previous.status != current.status,
           builder: (context, state) {
