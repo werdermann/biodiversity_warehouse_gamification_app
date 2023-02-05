@@ -156,7 +156,7 @@ class OnBoardingStepOne extends StatelessWidget {
                       Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Divider(),
+                          const SizedBox(height: 12),
                           TextButton(
                             onPressed: () => cubit.removeEntry(index),
                             style: TextButton.styleFrom(

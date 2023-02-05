@@ -20,6 +20,7 @@ class ReportState extends Equatable {
     this.submitStatus = FormzStatus.pure,
     this.submitError = '',
     this.locationComment = '',
+    this.searchSpeciesValue = '',
   });
 
   /// The current step of the reporting process.
@@ -77,6 +78,9 @@ class ReportState extends Equatable {
   /// Error message when submitting a sighting fails.
   final String submitError;
 
+  /// Value for searching the species
+  final String searchSpeciesValue;
+
   /// Updates the state and returns a new instance.
   ReportState copyWith({
     int? step,
@@ -97,6 +101,7 @@ class ReportState extends Equatable {
     FormzStatus? submitStatus,
     String? submitError,
     String? locationComment,
+    String? searchSpeciesValue,
   }) {
     return ReportState(
       step: step ?? this.step,
@@ -119,6 +124,7 @@ class ReportState extends Equatable {
       submitStatus: submitStatus ?? this.submitStatus,
       submitError: submitError ?? this.submitError,
       locationComment: locationComment ?? this.locationComment,
+      searchSpeciesValue: searchSpeciesValue ?? this.searchSpeciesValue,
     );
   }
 
@@ -147,5 +153,6 @@ class ReportState extends Equatable {
         submitStatus,
         submitError,
         locationComment,
+        searchSpeciesValue,
       ];
 }

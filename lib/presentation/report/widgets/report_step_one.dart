@@ -1,6 +1,7 @@
 import 'package:biodiversity/domain/model/evidence_status.dart';
 import 'package:biodiversity/domain/model/species.dart';
 import 'package:biodiversity/presentation/report/report_cubit.dart';
+import 'package:biodiversity/presentation/report/widgets/search_species_sheet.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -81,6 +82,15 @@ class ReportStepOne extends StatelessWidget {
                       },
                     ),
                     const SizedBox(height: 16),
+                    OutlinedButton(
+                        onPressed: () => showModalBottomSheet(
+                              context: context,
+                              builder: (context) => BlocProvider.value(
+                                value: cubit,
+                                child: SearchSpeciesSheet(itemIndex: index),
+                              ),
+                            ),
+                        child: Text('Status')),
                     DropdownButtonFormField(
                       value: state.species[index].evidenceStatus.index,
                       decoration: InputDecoration(
@@ -150,7 +160,7 @@ class ReportStepOne extends StatelessWidget {
                       Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Divider(),
+                          const SizedBox(height: 12),
                           TextButton(
                             onPressed: () => cubit.removeEntry(index),
                             style: TextButton.styleFrom(
