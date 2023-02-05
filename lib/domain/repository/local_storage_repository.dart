@@ -1,3 +1,4 @@
+/// Repository that represents the local storage of the device.
 abstract class LocalStorageRepository {
   Future<bool> storeBool({required bool value, required String key});
   Future<bool> storeString({required String value, required String key});

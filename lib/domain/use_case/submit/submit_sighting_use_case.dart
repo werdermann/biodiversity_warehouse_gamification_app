@@ -6,6 +6,7 @@ import 'package:biodiversity/domain/repository/auth_repository.dart';
 import 'package:biodiversity/domain/repository/gamification_repository.dart';
 import 'package:biodiversity/domain/repository/sighting_repository.dart';
 
+/// Use case for submitting a sighting to the backend.
 class SubmitSightingUseCase {
   SubmitSightingUseCase({
     required SightingRepository sightingRepository,

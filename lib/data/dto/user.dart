@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'user.freezed.dart';
 part 'user.g.dart';
 
+/// The user object represents the user of the application.
 @freezed
 class User with _$User {
   const User._();

@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:biodiversity/data/dto/login_result.dart';
 import 'package:biodiversity/data/dto/user.dart';
 
+/// Repository that is used for authenticating the user and maintains the
+/// current user object.
 abstract class AuthRepository {
   Future<LoginResult> login({
     required String username,

@@ -1,3 +1,4 @@
+/// Species represents the kind of animal that the animal is.
 enum Species {
   notSpecified(
     animalName: 'ANIMALS.NOT_SPECIFIED',

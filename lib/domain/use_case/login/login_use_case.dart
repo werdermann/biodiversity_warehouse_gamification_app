@@ -4,7 +4,7 @@ import 'package:biodiversity/domain/repository/auth_repository.dart';
 import 'package:biodiversity/domain/repository/local_storage_repository.dart';
 import 'package:dio/dio.dart';
 
-/// Logs the user into the server.
+/// Use case for logging the user into the server.
 class LoginUseCase {
   /// Constructor
   const LoginUseCase({

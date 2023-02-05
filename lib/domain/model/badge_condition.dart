@@ -1,3 +1,5 @@
+/// Badge conditions contain the title, condition, unlocked text and image path
+/// of a badge.
 enum BadgeCondition {
   oneSightingReported(
     title: 'BADGE_DESCRIPTIONS.ONE_SIGHTING_REPORTED.TITLE',

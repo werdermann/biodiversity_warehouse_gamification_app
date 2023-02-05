@@ -5,6 +5,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'species_entry.g.dart';
 
+/// The species entry is an entry that contains the species, the current state
+/// of the animal, the amount of animals and a comment.
 @JsonSerializable()
 class SpeciesEntry extends Equatable {
   /// Constructor

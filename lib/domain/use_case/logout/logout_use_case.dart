@@ -4,6 +4,9 @@ import 'package:biodiversity/domain/repository/auth_repository.dart';
 import 'package:biodiversity/domain/repository/local_storage_repository.dart';
 import 'package:dio/dio.dart';
 
+/// Use case for logging the user out of the application. Removes the
+/// authorization from the network headers and removes the token from the local
+/// storage.
 class LogoutUseCase {
   LogoutUseCase({
     required Dio dio,

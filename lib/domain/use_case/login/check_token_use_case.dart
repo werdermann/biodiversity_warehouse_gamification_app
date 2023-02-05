@@ -4,7 +4,10 @@ import 'package:biodiversity/domain/repository/auth_repository.dart';
 import 'package:biodiversity/domain/repository/local_storage_repository.dart';
 import 'package:dio/dio.dart';
 
+/// Use case to check if the user has already logged in and if a token is stored
+/// in the local storage.
 class CheckTokenUseCase {
+  /// Constructor
   CheckTokenUseCase({
     required LocalStorageRepository localStorageRepository,
     required AuthRepository authRepository,

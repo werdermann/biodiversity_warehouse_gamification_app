@@ -2,7 +2,9 @@ import 'package:biodiversity/common/constants.dart';
 import 'package:biodiversity/common/resource.dart';
 import 'package:biodiversity/domain/repository/local_storage_repository.dart';
 
+/// Use case for checking if the user has finished the on boarding process.
 class HasOnBoardingFinishedUseCase {
+  /// Constructor.
   HasOnBoardingFinishedUseCase({
     required LocalStorageRepository localStorageRepository,
   }) : _localStorageRepository = localStorageRepository;

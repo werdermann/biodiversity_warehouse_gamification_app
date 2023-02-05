@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'create_sighting_dto.g.dart';
 
+/// Data transfer object for creating a sighting.
 @JsonSerializable()
 class CreateSightingDto {
   CreateSightingDto({

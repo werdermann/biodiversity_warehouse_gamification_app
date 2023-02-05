@@ -4,6 +4,7 @@ import 'package:biodiversity/common/constants.dart';
 import 'package:biodiversity/domain/repository/local_storage_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+/// Implementation of the local storage repository.
 class LocalStorageRepositoryImpl implements LocalStorageRepository {
   LocalStorageRepositoryImpl({
     required SharedPreferences sharedPreferences,

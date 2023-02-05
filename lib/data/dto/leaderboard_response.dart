@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'leaderboard_response.freezed.dart';
 part 'leaderboard_response.g.dart';
 
+/// Response from the server when the user fetches the leaderboard.
 @freezed
 class LeaderboardResponse with _$LeaderboardResponse {
   const factory LeaderboardResponse({

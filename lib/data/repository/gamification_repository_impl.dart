@@ -1,24 +1,25 @@
 import 'dart:async';
 
+import 'package:biodiversity/data/biodiversity_api.dart';
 import 'package:biodiversity/data/common/network_exceptions.dart';
 import 'package:biodiversity/data/dto/gamification_config.dart';
 import 'package:biodiversity/data/dto/gamification_result_response.dart';
 import 'package:biodiversity/data/dto/leaderboard_response.dart';
-import 'package:biodiversity/data/rest_client.dart';
 import 'package:biodiversity/domain/repository/gamification_repository.dart';
 import 'package:cache/cache.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
+/// Implementation of the gamification repository.
 class GamificationRepositoryImpl implements GamificationRepository {
   GamificationRepositoryImpl({
     required Dio dio,
     required String baseUrl,
     CacheClient? cache,
-  })  : _biodiversityApi = RestClient(dio, baseUrl: baseUrl),
+  })  : _biodiversityApi = BiodiversityApi(dio, baseUrl: baseUrl),
         _cache = cache ?? CacheClient();
 
-  final RestClient _biodiversityApi;
+  final BiodiversityApi _biodiversityApi;
   final CacheClient _cache;
 
   final StreamController<GamificationConfig> _configStreamController =

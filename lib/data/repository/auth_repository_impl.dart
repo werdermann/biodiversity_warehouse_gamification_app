@@ -1,24 +1,25 @@
 import 'dart:async';
 
+import 'package:biodiversity/data/biodiversity_api.dart';
 import 'package:biodiversity/data/common/network_exceptions.dart';
 import 'package:biodiversity/data/dto/login_result.dart';
 import 'package:biodiversity/data/dto/user.dart';
-import 'package:biodiversity/data/rest_client.dart';
 import 'package:biodiversity/domain/repository/auth_repository.dart';
 import 'package:cache/cache.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
+/// Implementation of the authentication repository.
 class AuthRepositoryImpl implements AuthRepository {
   /// Constructor.
   AuthRepositoryImpl({
     required String baseUrl,
     required Dio dio,
     CacheClient? cache,
-  })  : _biodiversityApi = RestClient(dio, baseUrl: baseUrl),
+  })  : _biodiversityApi = BiodiversityApi(dio, baseUrl: baseUrl),
         _cache = cache ?? CacheClient();
 
-  final RestClient _biodiversityApi;
+  final BiodiversityApi _biodiversityApi;
 
   final CacheClient _cache;
 

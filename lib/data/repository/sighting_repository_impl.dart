@@ -1,19 +1,20 @@
 import 'dart:io';
 
+import 'package:biodiversity/data/biodiversity_api.dart';
 import 'package:biodiversity/data/dto/create_sighting_dto.dart';
 import 'package:biodiversity/data/dto/gamification_result_response.dart';
-import 'package:biodiversity/data/rest_client.dart';
 import 'package:biodiversity/domain/repository/sighting_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:http_parser/http_parser.dart';
 
+/// Implementation of the sighting repository.
 class SightingRepositoryImpl implements SightingRepository {
   SightingRepositoryImpl({
     required Dio dio,
     required String baseUrl,
-  }) : _biodiversityApi = RestClient(dio, baseUrl: baseUrl);
+  }) : _biodiversityApi = BiodiversityApi(dio, baseUrl: baseUrl);
 
-  final RestClient _biodiversityApi;
+  final BiodiversityApi _biodiversityApi;
 
   @override
   Future<GamificationResultResponse> submitSighting({

@@ -2,6 +2,7 @@ import 'package:biodiversity/common/resource.dart';
 import 'package:biodiversity/data/dto/gamification_config.dart';
 import 'package:biodiversity/domain/repository/gamification_repository.dart';
 
+/// Use case for fetching the gamification configuration from the backend.
 class GetGamificationConfigUseCase {
   GetGamificationConfigUseCase({
     required GamificationRepository gamificationRepository,

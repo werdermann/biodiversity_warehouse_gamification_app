@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'login_result.freezed.dart';
 part 'login_result.g.dart';
 
+/// Response object of the backend when the user logs successfully in.
 @freezed
 class LoginResult with _$LoginResult {
   const factory LoginResult({

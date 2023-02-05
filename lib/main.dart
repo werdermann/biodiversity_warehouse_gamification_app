@@ -16,7 +16,7 @@ import 'package:biodiversity/domain/use_case/on_boarding/has_on_boarding_finishe
 import 'package:biodiversity/domain/use_case/submit/submit_sighting_use_case.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_camera_image_use_case.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_gallery_image_use_case.dart';
-import 'package:biodiversity/presentation/app/app.dart';
+import 'package:biodiversity/presentation/app/app_provider.dart';
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -121,7 +121,7 @@ void main() async {
   );
 
   runApp(
-    App(
+    AppProvider(
       checkTokenUseCase: checkTokenUseCase,
       takeGalleryImageUseCase: takeGalleryImageUseCase,
       takeCameraImageUseCase: takeCameraImageUseCase,

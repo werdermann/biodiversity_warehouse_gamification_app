@@ -3,6 +3,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'gamification_config.freezed.dart';
 part 'gamification_config.g.dart';
 
+/// Gamification configuration that indicates the current degree of gamification
+/// inside the application.
 @freezed
 class GamificationConfig with _$GamificationConfig {
   const GamificationConfig._();

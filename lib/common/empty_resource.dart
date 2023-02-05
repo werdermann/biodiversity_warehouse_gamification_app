@@ -2,7 +2,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'empty_resource.freezed.dart';
 
-/// Represents a result that can either be successful or a failure.
+/// Represents a result that can either be successful, an error or indicate the
+/// loading process.
+///
+/// The successful result returns nothing.
 @freezed
 class EmptyResource with _$EmptyResource {
   const factory EmptyResource.loading() = Loading;

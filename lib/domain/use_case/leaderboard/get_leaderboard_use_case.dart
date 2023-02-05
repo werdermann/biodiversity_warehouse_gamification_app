@@ -2,6 +2,7 @@ import 'package:biodiversity/common/empty_resource.dart';
 import 'package:biodiversity/domain/repository/auth_repository.dart';
 import 'package:biodiversity/domain/repository/gamification_repository.dart';
 
+/// Use case for fetching the leaderboard from the backend.
 class GetLeaderboardUseCase {
   GetLeaderboardUseCase({
     required GamificationRepository gamificationRepository,

@@ -1,6 +1,7 @@
 import 'package:biodiversity/common/resource.dart';
 import 'package:geolocator/geolocator.dart';
 
+/// Use case for accessing the current position of the user.
 class GetLocationUseCase {
   GetLocationUseCase({
     required GeolocatorPlatform locator,

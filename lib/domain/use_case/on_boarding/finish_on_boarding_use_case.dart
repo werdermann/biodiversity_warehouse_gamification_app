@@ -2,6 +2,8 @@ import 'package:biodiversity/common/constants.dart';
 import 'package:biodiversity/common/empty_resource.dart';
 import 'package:biodiversity/domain/repository/local_storage_repository.dart';
 
+/// Use case for finishing the on boarding process. Stores the information in
+/// the local storage.
 class FinishOnBoardingUseCase {
   FinishOnBoardingUseCase({
     required LocalStorageRepository localStorageRepository,

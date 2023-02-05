@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:biodiversity/common/resource.dart';
 import 'package:biodiversity/domain/repository/image_picker_repository.dart';
 
+/// Use case for making a photo with the camera for the sighting process.
 class TakeCameraImageUseCase {
   TakeCameraImageUseCase({
     required ImageRepository imageRepository,

@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'create_species_entry_dto.g.dart';
 
+/// Data transfer object for creating a single species entry.
 @JsonSerializable()
 class CreateSpeciesEntryDto {
   CreateSpeciesEntryDto({

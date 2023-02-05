@@ -6,6 +6,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'gamification_result_response.freezed.dart';
 part 'gamification_result_response.g.dart';
 
+/// Response object of the backend that is returned when the user creates a
+/// sighting.
 @freezed
 class GamificationResultResponse with _$GamificationResultResponse {
   const factory GamificationResultResponse({

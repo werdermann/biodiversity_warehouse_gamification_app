@@ -1,7 +1,9 @@
 import 'package:biodiversity/common/empty_resource.dart';
 import 'package:geolocator/geolocator.dart';
 
+/// Use case for requesting to access the location of the user.
 class RequestLocationPermissionUseCase {
+  /// Constructor.
   RequestLocationPermissionUseCase({required GeolocatorPlatform locator})
       : _locator = locator;
 
