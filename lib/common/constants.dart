@@ -6,8 +6,8 @@ class Constants {
   /// Android-Emulator: Use 10.0.2.2 to access the machines localhost
   /// (127.0.0.1 refers to the emulators localhost instance.
   ///
-  ///
-  static String baseUrl = 'http://10.0.2.2:3000/';
+  /// iOS-Emulator: Use 127.0.0.1 to access the machines localhost
+  static String baseUrl = 'http://127.0.0.1:3000/';
   static String accessTokenStorageKey = '__access_token_key__';
   static String hasOnBoardingSeenKey = '__has_on_boarding_see_key__';
   static double zoomLevel = 16;
