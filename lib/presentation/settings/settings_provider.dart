@@ -4,6 +4,7 @@ import 'package:biodiversity/presentation/settings/settings_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+/// Injects the [SettingsCubit] inside the [SettingsView].
 class SettingsProvider extends StatelessWidget {
   const SettingsProvider({super.key});
 

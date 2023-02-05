@@ -5,6 +5,7 @@ import 'package:biodiversity/presentation/leaderboard/leaderboard_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+/// Injects the [LeaderboardCubit] inside the [LeaderboardView].
 class LeaderboardProvider extends StatelessWidget {
   const LeaderboardProvider({super.key});
 

@@ -13,8 +13,6 @@ class SettingsCubit extends Cubit<SettingsState> {
   final LogoutUseCase _logoutUseCase;
 
   void logout() async {
-    _logoutUseCase.execute().forEach(
-          (result) {},
-        );
+    _logoutUseCase.execute().forEach((result) {});
   }
 }

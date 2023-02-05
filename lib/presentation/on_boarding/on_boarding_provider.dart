@@ -8,6 +8,7 @@ import 'package:biodiversity/presentation/on_boarding/on_boarding_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+/// Injects the [OnBoardingCubit] inside the [OnBoardingView].
 class OnBoardingProvider extends StatelessWidget {
   const OnBoardingProvider({super.key});
 

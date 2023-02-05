@@ -10,6 +10,10 @@ import 'package:biodiversity/presentation/report/report_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+/// Injects the [HomeCubit] and the [ReportCubit] inside the [HomeView].
+///
+/// The [ReportCubit] is injected here, because then the state will remain
+/// between widget changes in the [HomeView].
 class HomeProvider extends StatelessWidget {
   const HomeProvider({super.key});
 

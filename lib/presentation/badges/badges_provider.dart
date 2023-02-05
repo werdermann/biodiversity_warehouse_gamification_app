@@ -4,6 +4,7 @@ import 'package:biodiversity/presentation/badges/badges_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+/// Injects the [BadgesCubit] inside the [BadgesView].
 class BadgesProvider extends StatelessWidget {
   const BadgesProvider({super.key});
 

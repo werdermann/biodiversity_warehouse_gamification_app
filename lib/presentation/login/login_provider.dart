@@ -4,6 +4,7 @@ import 'package:biodiversity/presentation/login/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+/// Injects the [LoginCubit] inside the [LoginView].
 class LoginProvider extends StatelessWidget {
   const LoginProvider({super.key});
 
