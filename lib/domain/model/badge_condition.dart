@@ -1,28 +1,28 @@
 /// Badge conditions contain the title, condition, unlocked text and image path
 /// of a badge.
 enum BadgeCondition {
-  oneSightingReported(
-    title: 'BADGE_DESCRIPTIONS.ONE_SIGHTING_REPORTED.TITLE',
-    condition: 'BADGE_DESCRIPTIONS.ONE_SIGHTING_REPORTED.CONDITION',
-    unlockedText: 'BADGE_DESCRIPTIONS.ONE_SIGHTING_REPORTED.UNLOCKED',
+  oneSpeciesReported(
+    title: 'BADGE_DESCRIPTIONS.ONE_SPECIES_REPORTED.TITLE',
+    condition: 'BADGE_DESCRIPTIONS.ONE_SPECIES_REPORTED.CONDITION',
+    unlockedText: 'BADGE_DESCRIPTIONS.ONE_SPECIES_REPORTED.UNLOCKED',
     imagePath: 'assets/badges/report_level_1.png',
   ),
-  fiveSightingsReported(
-    title: 'BADGE_DESCRIPTIONS.FIVE_SIGHTINGS_REPORTED.TITLE',
-    condition: 'BADGE_DESCRIPTIONS.FIVE_SIGHTINGS_REPORTED.CONDITION',
-    unlockedText: 'BADGE_DESCRIPTIONS.FIVE_SIGHTINGS_REPORTED.UNLOCKED',
+  fiveSpeciesReported(
+    title: 'BADGE_DESCRIPTIONS.FIVE_SPECIES_REPORTED.TITLE',
+    condition: 'BADGE_DESCRIPTIONS.FIVE_SPECIES_REPORTED.CONDITION',
+    unlockedText: 'BADGE_DESCRIPTIONS.FIVE_SPECIES_REPORTED.UNLOCKED',
     imagePath: 'assets/badges/report_level_2.png',
   ),
-  tenSightingsReported(
-    title: 'BADGE_DESCRIPTIONS.TEN_SIGHTINGS_REPORTED.TITLE',
-    condition: 'BADGE_DESCRIPTIONS.TEN_SIGHTINGS_REPORTED.CONDITION',
-    unlockedText: 'BADGE_DESCRIPTIONS.TEN_SIGHTINGS_REPORTED.UNLOCKED',
+  tenSpeciesReported(
+    title: 'BADGE_DESCRIPTIONS.TEN_SPECIES_REPORTED.TITLE',
+    condition: 'BADGE_DESCRIPTIONS.TEN_SPECIES_REPORTED.CONDITION',
+    unlockedText: 'BADGE_DESCRIPTIONS.TEN_SPECIES_REPORTED.UNLOCKED',
     imagePath: 'assets/badges/report_level_3.png',
   ),
-  twentySightingsReported(
-    title: 'BADGE_DESCRIPTIONS.TWENTY_SIGHTINGS_REPORTED.TITLE',
-    condition: 'BADGE_DESCRIPTIONS.TWENTY_SIGHTINGS_REPORTED.CONDITION',
-    unlockedText: 'BADGE_DESCRIPTIONS.TWENTY_SIGHTINGS_REPORTED.UNLOCKED',
+  twentySpeciesReported(
+    title: 'BADGE_DESCRIPTIONS.TWENTY_SPECIES_REPORTED.TITLE',
+    condition: 'BADGE_DESCRIPTIONS.TWENTY_SPECIES_REPORTED.CONDITION',
+    unlockedText: 'BADGE_DESCRIPTIONS.TWENTY_SPECIES_REPORTED.UNLOCKED',
     imagePath: 'assets/badges/report_level_4.png',
   ),
   oneImageUploaded(

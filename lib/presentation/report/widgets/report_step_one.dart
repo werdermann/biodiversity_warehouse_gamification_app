@@ -1,5 +1,4 @@
 import 'package:biodiversity/domain/model/evidence_status.dart';
-import 'package:biodiversity/domain/model/species.dart';
 import 'package:biodiversity/presentation/report/report_cubit.dart';
 import 'package:biodiversity/presentation/report/widgets/search_species_sheet.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -59,38 +58,23 @@ class ReportStepOne extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    DropdownButtonFormField(
-                      value: state.species[index].species.index,
-                      decoration: InputDecoration(
-                        labelText: 'REPORT.STEP_1.SPECIES'.tr(),
+                    ListTile(
+                      title: Text('REPORT.STEP_1.SPECIES'.tr()),
+                      subtitle: Text(
+                        state.species[index].species.animalName.tr(),
                       ),
-                      items: Species.values.map((Species species) {
-                        return DropdownMenuItem(
-                          value: species.index,
-                          child: Text(
-                            species.animalName.tr(),
+                      trailing: IconButton(
+                        onPressed: () => showModalBottomSheet(
+                          context: context,
+                          builder: (context) => BlocProvider.value(
+                            value: cubit,
+                            child: SearchSpeciesSheet(itemIndex: index),
                           ),
-                        );
-                      }).toList(),
-                      onChanged: (speciesIndex) {
-                        if (speciesIndex != null) {
-                          cubit.speciesChanged(
-                            index: index,
-                            speciesIndex: speciesIndex,
-                          );
-                        }
-                      },
+                        ),
+                        icon: const Icon(Icons.edit),
+                      ),
                     ),
                     const SizedBox(height: 16),
-                    OutlinedButton(
-                        onPressed: () => showModalBottomSheet(
-                              context: context,
-                              builder: (context) => BlocProvider.value(
-                                value: cubit,
-                                child: SearchSpeciesSheet(itemIndex: index),
-                              ),
-                            ),
-                        child: Text('Status')),
                     DropdownButtonFormField(
                       value: state.species[index].evidenceStatus.index,
                       decoration: InputDecoration(

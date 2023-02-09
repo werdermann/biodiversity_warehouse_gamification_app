@@ -13,6 +13,7 @@ import 'package:biodiversity/domain/use_case/submit/submit_sighting_use_case.dar
 import 'package:biodiversity/domain/use_case/take_image/take_camera_image_use_case.dart';
 import 'package:biodiversity/domain/use_case/take_image/take_gallery_image_use_case.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/plugin_api.dart';
 import 'package:formz/formz.dart';
@@ -53,6 +54,7 @@ class ReportCubit extends Cubit<ReportState> {
 
   final MapController mapController = MapController();
   final MapController summaryMapController = MapController();
+  final TextEditingController searchSpeciesController = TextEditingController();
 
   void showNextStep() {
     emit(state.copyWith(step: state.step + 1));
@@ -74,6 +76,8 @@ class ReportCubit extends Cubit<ReportState> {
     required,
     required int speciesIndex,
   }) {
+    emit(state.copyWith(selectSpeciesStatus: FormzStatus.submissionInProgress));
+
     final speciesList = List<SpeciesEntry>.from(state.species);
     final item = speciesList[index];
 
@@ -81,7 +85,12 @@ class ReportCubit extends Cubit<ReportState> {
 
     speciesList[index] = updatedEntry;
 
-    emit(state.copyWith(species: speciesList));
+    emit(
+      state.copyWith(
+        species: speciesList,
+        selectSpeciesStatus: FormzStatus.submissionSuccess,
+      ),
+    );
   }
 
   void evidenceMethodChanged({
@@ -364,5 +373,10 @@ class ReportCubit extends Cubit<ReportState> {
 
   void searchSpecies(String value) {
     emit(state.copyWith(searchSpeciesValue: value));
+  }
+
+  void resetSpeciesSearch() {
+    emit(state.copyWith(searchSpeciesValue: ''));
+    searchSpeciesController.clear();
   }
 }

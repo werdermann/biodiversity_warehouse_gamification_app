@@ -95,7 +95,7 @@ class LoginView extends StatelessWidget {
         final cubit = context.read<LoginCubit>();
 
         return ElevatedButton(
-          onPressed: state.loginStatus.isValid ? cubit.login : null,
+          onPressed: cubit.login,
           child: Text('LOGIN.LOGIN'.tr()),
         );
       },

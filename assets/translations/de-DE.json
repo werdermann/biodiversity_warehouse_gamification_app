@@ -238,25 +238,25 @@
     "NOT_SPECIFIED": "Keine Angabe"
   },
   "BADGE_DESCRIPTIONS": {
-    "ONE_SIGHTING_REPORTED": {
+    "ONE_SPECIES_REPORTED": {
       "TITLE": "Entdecker - Anfänger",
-      "UNLOCKED": "Du hast deinen ersten Fund gemeldet",
-      "CONDITION": "Melde deinen ersten Fund"
+      "UNLOCKED": "Du hast deinen ersten Spezieseintrag gemeldet",
+      "CONDITION": "Melde deinen ersten Spezieseintrag"
     },
-    "FIVE_SIGHTINGS_REPORTED": {
+    "FIVE_SPECIES_REPORTED": {
       "TITLE": "Entdecker - Amateur",
-      "UNLOCKED": "Du hast 5 Funde gemeldet",
-      "CONDITION": "Melde 5 Funde"
+      "UNLOCKED": "Du hast 5 Spezieseinträge gemeldet",
+      "CONDITION": "Melde 5 Spezieseinträge"
     },
-    "TEN_SIGHTINGS_REPORTED": {
+    "TEN_SPECIES_REPORTED": {
       "TITLE": "Entdecker - Profi",
-      "UNLOCKED": "Du hast 10 Funde gemeldet",
-      "CONDITION": "Melde 10 Funde"
+      "UNLOCKED": "Du hast 10 Spezieseinträge gemeldet",
+      "CONDITION": "Melde 10 Spezieseinträge"
     },
-    "TWENTY_SIGHTINGS_REPORTED": {
+    "TWENTY_SPECIES_REPORTED": {
       "TITLE": "Entdecker - Experte",
-      "UNLOCKED": "Du hast 20 Funde gemeldet",
-      "CONDITION": "Melde 20 Funde"
+      "UNLOCKED": "Du hast 20 Spezieseinträge gemeldet",
+      "CONDITION": "Melde 20 Spezieseinträge"
     },
     "ONE_COMMENT_WRITTEN": {
       "TITLE": "Autor - Anfänger",

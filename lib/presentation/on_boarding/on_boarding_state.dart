@@ -32,6 +32,8 @@ class OnBoardingState extends Equatable {
     this.isDialogThreeFinished = false,
     this.isDialogFourFinished = false,
     this.isDialogFiveFinished = false,
+    this.searchSpeciesValue = '',
+    this.selectSpeciesStatus = FormzStatus.pure,
   });
 
   /// Validation status when taking an image from the camera.
@@ -100,6 +102,11 @@ class OnBoardingState extends Equatable {
 
   final bool isDialogFiveFinished;
 
+  /// Value for searching the species
+  final String searchSpeciesValue;
+
+  final FormzStatus selectSpeciesStatus;
+
   /// Updates the state and returns a new instance.
   OnBoardingState copyWith({
     int? page,
@@ -126,6 +133,8 @@ class OnBoardingState extends Equatable {
     bool? isDialogThreeFinished,
     bool? isDialogFourFinished,
     bool? isDialogFiveFinished,
+    String? searchSpeciesValue,
+    FormzStatus? selectSpeciesStatus,
   }) {
     return OnBoardingState(
       page: page ?? this.page,
@@ -155,6 +164,8 @@ class OnBoardingState extends Equatable {
           isDialogThreeFinished ?? this.isDialogThreeFinished,
       isDialogFourFinished: isDialogFourFinished ?? this.isDialogFourFinished,
       isDialogFiveFinished: isDialogFiveFinished ?? this.isDialogFiveFinished,
+      searchSpeciesValue: searchSpeciesValue ?? this.searchSpeciesValue,
+      selectSpeciesStatus: selectSpeciesStatus ?? this.selectSpeciesStatus,
     );
   }
 
@@ -184,5 +195,7 @@ class OnBoardingState extends Equatable {
         isDialogThreeFinished,
         isDialogFourFinished,
         isDialogFiveFinished,
+        searchSpeciesValue,
+        selectSpeciesStatus,
       ];
 }

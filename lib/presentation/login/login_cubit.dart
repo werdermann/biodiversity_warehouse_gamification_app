@@ -40,7 +40,14 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   Future<void> login() async {
-    emit(state.copyWith(loginStatus: FormzStatus.submissionInProgress));
+    // Validate inputs
+    emit(
+      state.copyWith(
+        loginStatus: Formz.validate([state.username, state.password]),
+      ),
+    );
+
+    if (!state.loginStatus.isValid) return;
 
     final result = _loginUseCase.execute(
       username: state.username.value,

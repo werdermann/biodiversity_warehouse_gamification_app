@@ -1,6 +1,6 @@
 import 'package:biodiversity/domain/model/evidence_status.dart';
-import 'package:biodiversity/domain/model/species.dart';
 import 'package:biodiversity/presentation/on_boarding/on_boarding_cubit.dart';
+import 'package:biodiversity/presentation/on_boarding/widgets/on_boarding_search_species_sheet.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -64,27 +64,23 @@ class OnBoardingStepOne extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    DropdownButtonFormField(
-                      value: state.species[index].species.index,
-                      decoration: InputDecoration(
-                        labelText: 'REPORT.STEP_1.SPECIES'.tr(),
+                    ListTile(
+                      title: Text('REPORT.STEP_1.SPECIES'.tr()),
+                      subtitle: Text(
+                        state.species[index].species.animalName.tr(),
                       ),
-                      items: Species.values.map((Species species) {
-                        return DropdownMenuItem(
-                          value: species.index,
-                          child: Text(
-                            species.animalName.tr(),
+                      trailing: IconButton(
+                        onPressed: () => showModalBottomSheet(
+                          context: context,
+                          builder: (context) => BlocProvider.value(
+                            value: cubit,
+                            child: OnBoardingSearchSpeciesSheet(
+                              itemIndex: index,
+                            ),
                           ),
-                        );
-                      }).toList(),
-                      onChanged: (speciesIndex) {
-                        if (speciesIndex != null) {
-                          cubit.speciesChanged(
-                            index: index,
-                            speciesIndex: speciesIndex,
-                          );
-                        }
-                      },
+                        ),
+                        icon: const Icon(Icons.edit),
+                      ),
                     ),
                     const SizedBox(height: 16),
                     DropdownButtonFormField(

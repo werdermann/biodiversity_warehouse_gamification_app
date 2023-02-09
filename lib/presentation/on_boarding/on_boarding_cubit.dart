@@ -52,7 +52,8 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
 
   final MapController mapController = MapController();
   final MapController summaryMapController = MapController();
-  final pageController = PageController();
+  final PageController pageController = PageController();
+  final TextEditingController searchSpeciesController = TextEditingController();
 
   void addSpeciesEntry() {
     final species = List<SpeciesEntry>.from(state.species);
@@ -355,5 +356,14 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
 
   void finishOnBoarding() {
     _finishOnBoardingUseCase.execute().forEach((result) {});
+  }
+
+  void searchSpecies(String value) {
+    emit(state.copyWith(searchSpeciesValue: value));
+  }
+
+  void resetSpeciesSearch() {
+    emit(state.copyWith(searchSpeciesValue: ''));
+    searchSpeciesController.clear();
   }
 }

@@ -1,5 +1,5 @@
 import 'package:biodiversity/domain/model/species.dart';
-import 'package:biodiversity/presentation/report/report_cubit.dart';
+import 'package:biodiversity/presentation/on_boarding/on_boarding_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,8 +15,8 @@ class TranslatedSpecies {
   final int index;
 }
 
-class SearchSpeciesSheet extends StatelessWidget {
-  const SearchSpeciesSheet({super.key, required this.itemIndex});
+class OnBoardingSearchSpeciesSheet extends StatelessWidget {
+  const OnBoardingSearchSpeciesSheet({super.key, required this.itemIndex});
 
   final int itemIndex;
 
@@ -49,7 +49,7 @@ class SearchSpeciesSheet extends StatelessWidget {
       ),
     );
 
-    return BlocListener<ReportCubit, ReportState>(
+    return BlocListener<OnBoardingCubit, OnBoardingState>(
       listenWhen: (previous, current) =>
           previous.selectSpeciesStatus != current.selectSpeciesStatus,
       listener: (context, state) {
@@ -76,9 +76,9 @@ class SearchSpeciesSheet extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 16),
-            BlocBuilder<ReportCubit, ReportState>(
+            BlocBuilder<OnBoardingCubit, OnBoardingState>(
               builder: (context, state) {
-                final cubit = context.read<ReportCubit>();
+                final cubit = context.read<OnBoardingCubit>();
 
                 final filteredSpecies = translatedSpecies
                     .where(
