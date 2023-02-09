@@ -66,6 +66,8 @@ class ReportStepOne extends StatelessWidget {
                       trailing: IconButton(
                         onPressed: () => showModalBottomSheet(
                           context: context,
+                          isScrollControlled: true,
+                          useSafeArea: true,
                           builder: (context) => BlocProvider.value(
                             value: cubit,
                             child: SearchSpeciesSheet(itemIndex: index),

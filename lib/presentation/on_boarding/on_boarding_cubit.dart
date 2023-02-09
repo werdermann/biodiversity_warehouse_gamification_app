@@ -67,6 +67,8 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
     required,
     required int speciesIndex,
   }) {
+    emit(state.copyWith(selectSpeciesStatus: FormzStatus.submissionInProgress));
+
     final speciesList = List<SpeciesEntry>.from(state.species);
     final item = speciesList[index];
 
@@ -74,7 +76,12 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
 
     speciesList[index] = updatedEntry;
 
-    emit(state.copyWith(species: speciesList));
+    emit(
+      state.copyWith(
+        species: speciesList,
+        selectSpeciesStatus: FormzStatus.submissionSuccess,
+      ),
+    );
   }
 
   void evidenceMethodChanged({
@@ -153,8 +160,6 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
           final location = LatLng(position.latitude, position.longitude);
 
           mapController.move(location, Constants.zoomLevel);
-
-          // summaryMapController.move(location, Constants.zoomLevel);
 
           emit(state.copyWith(location: location));
         },
