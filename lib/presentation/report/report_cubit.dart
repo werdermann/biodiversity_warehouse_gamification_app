@@ -342,6 +342,8 @@ class ReportCubit extends Cubit<ReportState> {
           );
         },
         success: () {
+          searchSpeciesController.clear();
+
           emit(
             state.copyWith(
               submitStatus: FormzStatus.submissionSuccess,
