@@ -127,7 +127,7 @@
     "NEW_BADGE_UNLOCKED": "Du hast {amount} Abzeichen freigeschaltet. Es können noch {remaining} Abzeichen freigeschaltet werden.",
     "NO_BADGE_UNLOCKED": "Es können noch {remaining} Abzeichen freigeschaltet werden.",
     "ALL_BADGES_UNLOCKED": "Du hast alle Abzeichen freigeschaltet. Klasse Leistung.",
-    "NEW_POSITION": "Du bist eine Position in der Rangliste aufgestiegen.",
+    "NEW_POSITION": "Du bist in der Rangliste aufgestiegen.",
     "SAME_POSITION": "Du befindest dich noch auf der gleichen Position.",
     "TOP_POSITION": "Du bist aktuell der Ranglistenbeste. Starke Leistung."
   },
