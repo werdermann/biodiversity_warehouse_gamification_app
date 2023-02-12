@@ -253,10 +253,10 @@
       "UNLOCKED": "Du hast 10 Spezieseinträge gemeldet",
       "CONDITION": "Melde 10 Spezieseinträge"
     },
-    "TWENTY_SPECIES_REPORTED": {
+    "FIFTEEN_SPECIES_REPORTED": {
       "TITLE": "Entdecker - Experte",
-      "UNLOCKED": "Du hast 20 Spezieseinträge gemeldet",
-      "CONDITION": "Melde 20 Spezieseinträge"
+      "UNLOCKED": "Du hast 15 Spezieseinträge gemeldet",
+      "CONDITION": "Melde 15 Spezieseinträge"
     },
     "ONE_COMMENT_WRITTEN": {
       "TITLE": "Autor - Anfänger",
@@ -273,10 +273,10 @@
       "UNLOCKED": "Du hast 10 Kommentare verfasst",
       "CONDITION": "Verfasse 10 Kommentare"
     },
-    "TWENTY_COMMENTS_REPORTED": {
+    "FIFTEEN_COMMENTS_REPORTED": {
       "TITLE": "Autor - Experte",
-      "UNLOCKED": "Du hast 20 Kommentare verfasst",
-      "CONDITION": "Verfasse 20 Kommentare"
+      "UNLOCKED": "Du hast 15 Kommentare verfasst",
+      "CONDITION": "Verfasse 15 Kommentare"
     },
     "ONE_PHOTO_TAKEN": {
       "TITLE": "Fotograf - Anfänger",
@@ -293,10 +293,10 @@
       "UNLOCKED": "Du hast 10 Nachweisbilder erstellt",
       "CONDITION": "Erstelle 10 Nachweisbilder"
     },
-    "TWENTY_PHOTOS_TAKEN": {
+    "FIFTEEN_PHOTOS_TAKEN": {
       "TITLE": "Fotograf - Experte",
-      "UNLOCKED": "Du hast 20 Nachweisbilder erstellt",
-      "CONDITION": "Erstelle 20 Nachweisbilder"
+      "UNLOCKED": "Du hast 15 Nachweisbilder erstellt",
+      "CONDITION": "Erstelle 15 Nachweisbilder"
     },
     "ALL_BADGES": {
       "TITLE": "Abräumer",
