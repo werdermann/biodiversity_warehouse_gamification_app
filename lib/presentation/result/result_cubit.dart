@@ -19,7 +19,6 @@ class ResultCubit extends Cubit<ResultState> {
     final result = _gamificationRepository.currentResult;
     _resultSubscription = _gamificationRepository.result.listen(_resultChanged);
 
-    // Set current date and start position
     emit(state.copyWith(config: config, result: result));
   }
 
