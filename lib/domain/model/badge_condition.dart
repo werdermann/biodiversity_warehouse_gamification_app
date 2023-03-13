@@ -19,10 +19,10 @@ enum BadgeCondition {
     unlockedText: 'BADGE_DESCRIPTIONS.TEN_SPECIES_REPORTED.UNLOCKED',
     imagePath: 'assets/badges/report_level_3.png',
   ),
-  twentySpeciesReported(
-    title: 'BADGE_DESCRIPTIONS.TWENTY_SPECIES_REPORTED.TITLE',
-    condition: 'BADGE_DESCRIPTIONS.TWENTY_SPECIES_REPORTED.CONDITION',
-    unlockedText: 'BADGE_DESCRIPTIONS.TWENTY_SPECIES_REPORTED.UNLOCKED',
+  fifteenSpeciesReported(
+    title: 'BADGE_DESCRIPTIONS.FIFTEEN_SPECIES_REPORTED.TITLE',
+    condition: 'BADGE_DESCRIPTIONS.FIFTEEN_SPECIES_REPORTED.CONDITION',
+    unlockedText: 'BADGE_DESCRIPTIONS.FIFTEEN_SPECIES_REPORTED.UNLOCKED',
     imagePath: 'assets/badges/report_level_4.png',
   ),
   oneImageUploaded(
@@ -43,10 +43,10 @@ enum BadgeCondition {
     unlockedText: 'BADGE_DESCRIPTIONS.TEN_PHOTOS_TAKEN.UNLOCKED',
     imagePath: 'assets/badges/camera_level_3.png',
   ),
-  twentyImagesUploaded(
-    title: 'BADGE_DESCRIPTIONS.TWENTY_PHOTOS_TAKEN.TITLE',
-    condition: 'BADGE_DESCRIPTIONS.TWENTY_PHOTOS_TAKEN.CONDITION',
-    unlockedText: 'BADGE_DESCRIPTIONS.TWENTY_PHOTOS_TAKEN.UNLOCKED',
+  fifteenImagesUploaded(
+    title: 'BADGE_DESCRIPTIONS.FIFTEEN_PHOTOS_TAKEN.TITLE',
+    condition: 'BADGE_DESCRIPTIONS.FIFTEEN_PHOTOS_TAKEN.CONDITION',
+    unlockedText: 'BADGE_DESCRIPTIONS.FIFTEEN_PHOTOS_TAKEN.UNLOCKED',
     imagePath: 'assets/badges/camera_level_4.png',
   ),
   oneCommentWritten(
@@ -67,10 +67,10 @@ enum BadgeCondition {
     unlockedText: 'BADGE_DESCRIPTIONS.TEN_COMMENTS_REPORTED.UNLOCKED',
     imagePath: 'assets/badges/comment_level_3.png',
   ),
-  twentyCommentsWritten(
-    title: 'BADGE_DESCRIPTIONS.TWENTY_COMMENTS_REPORTED.TITLE',
-    condition: 'BADGE_DESCRIPTIONS.TWENTY_COMMENTS_REPORTED.CONDITION',
-    unlockedText: 'BADGE_DESCRIPTIONS.TWENTY_COMMENTS_REPORTED.UNLOCKED',
+  fifteenCommentsWritten(
+    title: 'BADGE_DESCRIPTIONS.FIFTEEN_COMMENTS_REPORTED.TITLE',
+    condition: 'BADGE_DESCRIPTIONS.FIFTEEN_COMMENTS_REPORTED.CONDITION',
+    unlockedText: 'BADGE_DESCRIPTIONS.FIFTEEN_COMMENTS_REPORTED.UNLOCKED',
     imagePath: 'assets/badges/comment_level_4.png',
   ),
   allBadgesUnlocked(

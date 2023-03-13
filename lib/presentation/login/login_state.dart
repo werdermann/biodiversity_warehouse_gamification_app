@@ -3,8 +3,8 @@ part of 'login_cubit.dart';
 class LoginState extends Equatable {
   /// Constructor.
   const LoginState({
-    this.username = const Username.pure(),
-    this.password = const Password.pure(),
+    this.username = const Username.dirty('Testnutzer'),
+    this.password = const Password.dirty('123'),
     this.loginErrorMessage = '',
     this.loginStatus = FormzStatus.pure,
   });

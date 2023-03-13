@@ -63,6 +63,8 @@ enum Species {
   horse(animalName: 'ANIMALS.HORSE'),
   mallard(animalName: 'ANIMALS.MALLARD'),
   dog(animalName: 'ANIMALS.DOG'),
+  stork(animalName: 'ANIMALS.WHITE_STORK'),
+  crab(animalName: 'ANIMALS.FIDDLER_CRAB'),
   moose(animalName: 'ANIMALS.MOOSE');
 
   const Species({

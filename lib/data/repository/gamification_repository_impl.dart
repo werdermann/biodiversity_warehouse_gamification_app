@@ -5,8 +5,9 @@ import 'package:biodiversity/data/common/network_exceptions.dart';
 import 'package:biodiversity/data/dto/gamification_config.dart';
 import 'package:biodiversity/data/dto/gamification_result_response.dart';
 import 'package:biodiversity/data/dto/leaderboard_response.dart';
+import 'package:biodiversity/data/repository/cache_repository_impl.dart';
+import 'package:biodiversity/domain/repository/cache_repository.dart';
 import 'package:biodiversity/domain/repository/gamification_repository.dart';
-import 'package:cache/cache.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -15,12 +16,12 @@ class GamificationRepositoryImpl implements GamificationRepository {
   GamificationRepositoryImpl({
     required Dio dio,
     required String baseUrl,
-    CacheClient? cache,
+    CacheRepository? cache,
   })  : _biodiversityApi = BiodiversityApi(dio, baseUrl: baseUrl),
-        _cache = cache ?? CacheClient();
+        _cache = cache ?? CacheRepositoryImpl();
 
   final BiodiversityApi _biodiversityApi;
-  final CacheClient _cache;
+  final CacheRepository _cache;
 
   final StreamController<GamificationConfig> _configStreamController =
       StreamController<GamificationConfig>.broadcast();

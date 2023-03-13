@@ -93,7 +93,7 @@ class ResultView extends StatelessWidget {
 
         final appUser = state.result!.user;
 
-        final isFirst = appUser.id == leaderboard.users.first.id;
+        final isFirst = appUser.username == leaderboard.users.first.username;
 
         final positionText = isFirst
             ? 'RESULT.TOP_POSITION'

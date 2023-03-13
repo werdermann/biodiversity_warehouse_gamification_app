@@ -10,5 +10,5 @@ part 'resource.freezed.dart';
 class Resource<T> with _$Resource<T> {
   const factory Resource.loading() = Loading<T>;
   const factory Resource.success(T data) = Success<T>;
-  const factory Resource.error(String message) = Error<T>;
+  const factory Resource.error(String messageKey) = Error<T>;
 }

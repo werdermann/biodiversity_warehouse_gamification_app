@@ -19,9 +19,7 @@ class FinishOnBoardingUseCase {
         value: true,
         key: Constants.hasOnBoardingSeenKey,
       );
-
       _localStorageRepository.updateHasOnBoardingSeen(hasOnBoardingSeen: true);
-
       yield const EmptyResource.success();
     } catch (_) {
       yield const EmptyResource.error('ERROR.GENERAL');
