@@ -4,8 +4,9 @@ import 'package:biodiversity/data/biodiversity_api.dart';
 import 'package:biodiversity/data/common/network_exceptions.dart';
 import 'package:biodiversity/data/dto/login_result.dart';
 import 'package:biodiversity/data/dto/user.dart';
+import 'package:biodiversity/data/repository/cache_repository_impl.dart';
 import 'package:biodiversity/domain/repository/auth_repository.dart';
-import 'package:cache/cache.dart';
+import 'package:biodiversity/domain/repository/cache_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -15,13 +16,13 @@ class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl({
     required String baseUrl,
     required Dio dio,
-    CacheClient? cache,
+    CacheRepository? cache,
   })  : _biodiversityApi = BiodiversityApi(dio, baseUrl: baseUrl),
-        _cache = cache ?? CacheClient();
+        _cache = cache ?? CacheRepositoryImpl();
 
   final BiodiversityApi _biodiversityApi;
 
-  final CacheClient _cache;
+  final CacheRepository _cache;
 
   final StreamController<User> _userStreamController =
       StreamController<User>.broadcast();

@@ -1,8 +1,9 @@
 import 'package:biodiversity/domain/use_case/login/login_use_case.dart';
+import 'package:biodiversity/presentation/ui/validation/password.dart';
+import 'package:biodiversity/presentation/ui/validation/username.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:validation/validation.dart';
 
 part 'login_state.dart';
 
