@@ -14,8 +14,8 @@ abstract class GamificationRepository {
 
   void updateResult({required GamificationResultResponse result});
 
-  Stream<GamificationResultResponse> get result;
-  GamificationResultResponse? get currentResult;
+  Stream<GamificationResultResponse> get gamificationResult;
+  GamificationResultResponse? get currentGamificationResult;
 
   void updateLeaderboard({required LeaderboardResponse leaderboard});
 

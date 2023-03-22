@@ -81,12 +81,12 @@ class GamificationRepositoryImpl implements GamificationRepository {
   }
 
   @override
-  GamificationResultResponse? get currentResult {
+  GamificationResultResponse? get currentGamificationResult {
     return _cache.read<GamificationResultResponse>(key: resultCacheKey);
   }
 
   @override
-  Stream<GamificationResultResponse> get result {
+  Stream<GamificationResultResponse> get gamificationResult {
     return _resultStreamController.stream.asBroadcastStream().map(
           (result) => result,
         );
