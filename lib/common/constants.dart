@@ -8,7 +8,7 @@ class Constants {
   ///
   /// iOS-Emulator: Use 127.0.0.1 to access the machines localhost
   static String baseUrl =
-      'http://127.0.0.1:3000/'; // TODO: Update by own address
+      'http://10.0.2.2:3000/'; // TODO: Update by own address
   static String accessTokenStorageKey = '__access_token_key__';
   static String hasOnBoardingSeenKey = '__has_on_boarding_see_key__';
   static double zoomLevel = 16;

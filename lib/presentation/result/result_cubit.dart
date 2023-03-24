@@ -16,8 +16,10 @@ class ResultCubit extends Cubit<ResultState> {
     final config = _gamificationRepository.currentConfig;
     _configSubscription = _gamificationRepository.config.listen(_configChanged);
 
-    final result = _gamificationRepository.currentResult;
-    _resultSubscription = _gamificationRepository.result.listen(_resultChanged);
+    final result = _gamificationRepository.currentGamificationResult;
+    _resultSubscription = _gamificationRepository.gamificationResult.listen(
+      _resultChanged,
+    );
 
     emit(state.copyWith(config: config, result: result));
   }
