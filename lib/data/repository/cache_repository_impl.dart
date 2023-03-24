@@ -2,7 +2,8 @@ library cache;
 
 import 'package:biodiversity/domain/repository/cache_repository.dart';
 
-/// An in-memory cache client.
+/// Run time memory cache.
+/// SOURCE: https://github.com/felangel/bloc/blob/master/examples/flutter_firebase_login/packages/cache/lib/cache.dart
 class CacheRepositoryImpl implements CacheRepository {
   /// Cache Constructor
   CacheRepositoryImpl() : _cache = <String, Object>{};
